@@ -1,0 +1,88 @@
+---
+// 获取用户配置数据
+import SITE_CONFIG from "../config";
+import { fmtTime, fmtDate } from "../utils/index";
+const { Avatar, Author, Motto, WebSites } = SITE_CONFIG;
+// 获取文章数据
+import { getCategories, getTags, getRecommendArticles } from "../utils/getPostInfo";
+// 分类列表
+const categories = getCategories();
+// 热门标签
+const tags = getTags();
+// 最新文章
+const recommendArticles = getRecommendArticles();
+// 静态图片
+import { Image } from "astro:assets";
+// 侧边栏样式
+import "../styles/components/Aside.less";
+---
+
+<aside class="vh-aside">
+	<!-- 头像块 -->
+	<section class="vh-aside-item user">
+		<div onclick="window.history.back()" class="vh-aside-avatar">
+			<Image class="vh-aside-avatar" src={Avatar} alt={Author} width="1" height="1" />
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"> <path d="M512 256A256 256 0 1 0 0 256a256 256 0 1 0 512 0zM116.7 244.7l112-112c4.6-4.6 11.5-5.9 17.4-3.5s9.9 8.3 9.9 14.8l0 64 96 0c17.7 0 32 14.3 32 32l0 32c0 17.7-14.3 32-32 32l-96 0 0 64c0 6.5-3.9 12.3-9.9 14.8s-12.9 1.1-17.4-3.5l-112-112c-6.2-6.2-6.2-16.4 0-22.6z"></path></svg>
+		</div>
+		<span class="vh-aside-auther">{Author}</span>
+		<p class="vh-aside-motto">{Motto}</p>
+		<section class="vh-aside-links">
+			{
+				WebSites.map(item => (
+					<a class="vh-aside-links-item" href={item.link} title={item.text} target="_blank" rel="noopener nofollow">
+						<img src={item.icon} />
+					</a>
+				))
+			}
+		</section>
+	</section>
+
+	<!-- 分类块 -->
+	<section class="vh-aside-item categories">
+		<h3>分类</h3>
+		<div class="vh-aside-categories">
+			{
+				categories.map(i => (
+					<a href={`/categories/${i.title}`}>
+						<span>{i.title}</span>
+						<i>{i.count}</i>
+					</a>
+				))
+			}
+		</div>
+	</section>
+
+	<!-- 标签块 -->
+	<section class="vh-aside-item tags">
+		<h3>热门标签</h3>
+		<div class="vh-aside-tags">
+			{
+				tags.map(i => (
+					<a href={`/tags/${i}`}>
+						<span>{i}</span>
+					</a>
+				))
+			}
+		</div>
+	</section>
+
+	<!-- 最新文章块 -->
+	<section class="vh-aside-item articles">
+		<h3>推荐文章</h3>
+		<div class="vh-aside-articles">
+			{
+				recommendArticles.map(async i => (
+					<a href={`/article/${(await i).id}`}>
+						<p class="cover">
+							<img src={(await i).cover} />
+						</p>
+						<p class="info">
+							<span>{(await i).title}</span>
+							<time>{fmtDate((await i).date)}</time>
+						</p>
+					</a>
+				))
+			}
+		</div>
+	</section>
+</aside>

@@ -1,0 +1,155 @@
+@import url('/assets/font/index.css');
+
+:root {
+	--vh-animation-delay: 0ms;
+	--vh-padding-top: calc(66px + 1rem);
+	--vh-back-top: calc((calc(100vw - 2rem) - min((100vw - 2rem), 1388px)) / 2 + 1rem);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote {
+	margin: 0;
+	padding: 0;
+	color: #333;
+}
+
+p {
+	line-height: 2;
+}
+
+
+a {
+	margin: 0;
+	padding: 0;
+	color: #333;
+	text-decoration: none;
+	line-height: 1.6;
+}
+
+pre,
+code {
+	margin: 0;
+	padding: 0;
+	font-family: 'SF Mono' !important;
+	font-weight: normal;
+}
+
+ul,
+ol {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+
+
+* {
+	// IOS 点击阴影
+	-webkit-tap-highlight-color: transparent;
+	// 隐藏滚动条
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+	// 消除边框
+	outline: none; // 隐藏滚动条
+
+	::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+html {
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+	font-size: 16px;
+	color: #333;
+
+	&>body {
+		position: relative;
+		margin: 0;
+		box-sizing: border-box;
+		padding: var(--vh-padding-top) 1rem 0;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 100vw;
+		height: max-content;
+		font-family: 'MiSans', serif;
+		font-weight: 400;
+		cursor: url(/assets/images/default.cur), default;
+		overflow-x: hidden;
+	}
+
+	// 其他页面Header 封装
+	header.vh-page-header {
+		box-sizing: border-box;
+		padding: 1rem;
+		width: 100%;
+		height: max-content;
+		border-radius: 0.5rem;
+		background: #fff;
+		box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.05);
+		overflow: hidden;
+
+		&>h1 {
+			font-size: 1.5rem;
+		}
+	}
+}
+
+
+// 动画效果
+.vh-animation {
+	opacity: 0;
+	animation: 300ms fade-in-up;
+	animation-fill-mode: forwards;
+}
+
+@keyframes fade-in-up {
+	0% {
+		transform: translateY(2rem);
+		opacity: 0;
+	}
+
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+// 设置图片懒加载样式
+main>.vh-container {
+	img[data-vh-lz-src] {
+		transition: all 0.18s ease-in;
+
+		&:not(.loaded) {
+			filter: blur(0.88rem) brightness(1);
+		}
+	}
+}
+
+
+// 加载进度条样式
+#nprogress {
+	.bar {
+		height: 0.28rem !important;
+		background: #01C4B6 !important;
+	}
+
+	.peg {
+		box-shadow: 0 0 10px #01C4B6, 0 0 5px #01C4B6 !important;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	// 手机端 禁止选择
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+}

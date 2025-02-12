@@ -1,0 +1,34 @@
+---
+// 页面 Info
+import SITE_CONFIG from "../../config";
+const { Description } = SITE_CONFIG;
+// Aside组件
+import Aside from "../../components/Aside.astro";
+// 公共 Layout
+import Layout from "../../layouts/Layout.astro";
+// 评论组件
+import Comment from "../../components/Comment.astro";
+// 动态说说样式
+import "../../styles/Talking.less";
+---
+
+<Layout title="动态" description={Description} activeNav="talking">
+	<section class="vh-container">
+		<section class="vh-talking">
+			<header class="vh-page-header">
+				<h1>动态 🥫</h1>
+				<p>记录美好生活.</p>
+			</header>
+			<main></main>
+			<Comment />
+		</section>
+		<Aside />
+	</section>
+
+	<script>
+		import updateRouter from "../../utils/updateRouter";
+		import TalkingInit from "../../scripts/Talking";
+		// 进入页面时初始化
+		updateRouter("afterMount", TalkingInit);
+	</script>
+</Layout>

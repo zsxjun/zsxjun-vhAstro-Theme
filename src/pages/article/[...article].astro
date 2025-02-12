@@ -1,0 +1,82 @@
+---
+import { getDescription, fmtTime } from "../../utils/index";
+import { type CollectionEntry, getCollection } from "astro:content";
+import { render } from "astro:content";
+export async function getStaticPaths() {
+	const posts = await getCollection("blog");
+	return posts.map((post: any) => ({ params: { article: post.data.id }, props: post }));
+}
+// 处理文章内容
+type Props = CollectionEntry<"blog">;
+const post: any = Astro.props;
+// 页面 Info
+import SITE_CONFIG from "../../config";
+// 处理文章内容
+const description = getDescription(post);
+const { Content } = await render(post);
+// 公共 Layout
+import Layout from "../../layouts/Layout.astro";
+// Aside组件
+import Aside from "../../components/Aside.astro";
+// Footer 组件
+import Copyright from "../../components/Copyright.astro";
+// 评论组件
+import Comment from "../../components/Comment.astro";
+// 文章页面样式
+import "../../styles/Article.less";
+---
+
+<Layout title={post.data.title} keywords={post.data.tags} description={description}>
+	<section class="vh-container">
+		<article class="vh-animation vh-article-main">
+			<header>
+				<h1>{post.data.title}</h1>
+				<div class="article-meta">
+					<span class="article-meta-item">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"> <path d="M152 24c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 40L64 64C28.7 64 0 92.7 0 128l0 16 0 48L0 448c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-256 0-48 0-16c0-35.3-28.7-64-64-64l-40 0 0-40c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 40L152 64l0-40zM48 192l80 0 0 56-80 0 0-56zm0 104l80 0 0 64-80 0 0-64zm128 0l96 0 0 64-96 0 0-64zm144 0l80 0 0 64-80 0 0-64zm80-48l-80 0 0-56 80 0 0 56zm0 160l0 40c0 8.8-7.2 16-16 16l-64 0 0-56 80 0zm-128 0l0 56-96 0 0-56 96 0zm-144 0l0 56-64 0c-8.8 0-16-7.2-16-16l0-40 80 0zM272 248l-96 0 0-56 96 0 0 56z"></path></svg>
+						<time>{fmtTime(post.data.date, "YYYY-MM-DD")}</time>
+					</span>
+					<span class="article-meta-item">
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"> <path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9L0 168c0 13.3 10.7 24 24 24l110.1 0c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24l0 104c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65 0-94.1c0-13.3-10.7-24-24-24z"></path></svg>
+						<time>{fmtTime(post.data.updated, "YYYY-MM-DD")}</time>
+					</span>
+					<a class="article-meta-item" href={`/categories/${post.data.categories}`}>
+						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"> <path d="M40 48C26.7 48 16 58.7 16 72l0 48c0 13.3 10.7 24 24 24l48 0c13.3 0 24-10.7 24-24l0-48c0-13.3-10.7-24-24-24L40 48zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32l288 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L192 64zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32l288 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-288 0zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32l288 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-288 0zM16 232l0 48c0 13.3 10.7 24 24 24l48 0c13.3 0 24-10.7 24-24l0-48c0-13.3-10.7-24-24-24l-48 0c-13.3 0-24 10.7-24 24zM40 368c-13.3 0-24 10.7-24 24l0 48c0 13.3 10.7 24 24 24l48 0c13.3 0 24-10.7 24-24l0-48c0-13.3-10.7-24-24-24l-48 0z"></path></svg>
+						<span>{post.data.categories}</span>
+					</a>
+				</div>
+			</header>
+			<Content />
+			<Copyright site={SITE_CONFIG.Site} id={post.data.id} title={post.data.title} sitename={SITE_CONFIG.Title} time={fmtTime(post.data.date, "YYYY-MM-DD")} auther={SITE_CONFIG.Author} />
+			<Comment />
+		</article>
+		<Aside />
+	</section>
+
+	<script>
+		import updateRouter from "../../utils/updateRouter";
+		// 初始化文章功能脚本
+		import ArticleInit from "../../scripts/Article";
+		// 初始化视频播放器
+		import videoInit from "../../scripts/Video";
+		// 初始化音乐播放器
+		import musicInit from "../../scripts/Music";
+		// 进入页面时初始化
+		const videoList: any[] = [];
+		const MusicList: any[] = [];
+		updateRouter("afterMount", () => {
+			ArticleInit();
+			videoInit(videoList);
+			musicInit(MusicList);
+		});
+		// 页面离开卸载播放器
+		updateRouter("beforeCreate", () => {
+			// 销毁播放器
+			videoList.forEach((i: any) => i.destroy());
+			videoList.length = 0;
+			// 销毁音乐
+			MusicList.forEach((i: any) => i.destroy());
+			MusicList.length = 0;
+		});
+	</script>
+</Layout>

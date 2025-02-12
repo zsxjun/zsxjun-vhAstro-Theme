@@ -1,0 +1,26 @@
+---
+import { Image } from "astro:assets";
+import { getDescription, fmtTime } from "../utils/index";
+const { post, index } = Astro.props;
+// 获取文章的摘要
+const description = getDescription(post);
+// 获取封面图
+import getCover from "../utils/getCover";
+const ARTICLE_COVER: string = await getCover(post.data.cover);
+// 文章Item组件样式
+import "../styles/components/ArticleCard.less";
+---
+
+<article class="vh-article-item vh-animation" style={`animation-delay:calc(var(--vh-animation-delay) + ${index * 50}ms)`}>
+	<a class="vh-article-link" href={`/article/${post.data.id}`}>
+		<section class="vh-article-banner"><Image src={ARTICLE_COVER} alt={post.data.title} width="10" height="10" /></section>
+		<section class="vh-article-desc">
+			<header>
+				<span class={`vh-article-categories vh-categories-${post.data.categories}`}>{post.data.categories}</span>
+				<h2 class="title">{post.data.title}</h2>
+			</header>
+			<p class="vh-article-excerpt">{description}</p>
+			<footer>{fmtTime(post.data.date)}</footer>
+		</section>
+	</a>
+</article>

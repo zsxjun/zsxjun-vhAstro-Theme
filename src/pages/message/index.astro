@@ -1,0 +1,31 @@
+---
+// 页面 Info
+import SITE_CONFIG from "../../config";
+const { Description } = SITE_CONFIG;
+// Aside组件
+import Aside from "../../components/Aside.astro";
+// 公共 Layout
+import Layout from "../../layouts/Layout.astro";
+// 评论组件
+import Comment from "../../components/Comment.astro";
+---
+
+<Layout title="留言" description={Description} activeNav="message">
+	<section class="vh-container">
+		<section class="vh-message" style="gap:1.25rem;">
+			<header class="vh-page-header">
+				<h1>留言板 🌸</h1>
+				<p>快友之事莫若谈。</p>
+			</header>
+			<Comment />
+		</section>
+		<Aside />
+	</section>
+
+	<script>
+		import updateRouter from "../../utils/updateRouter";
+		import LinksInit from "../../scripts/Links";
+		// 进入页面时初始化
+		updateRouter("afterMount", LinksInit);
+	</script>
+</Layout>

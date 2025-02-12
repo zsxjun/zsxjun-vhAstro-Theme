@@ -1,0 +1,53 @@
+body {
+  &::before {
+    content: "";
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='8' height='8' fill='none' stroke='rgb(0 0 0 / 0.1)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+    z-index: -1;
+  }
+
+  &>main.vh-main {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    max-width: 1388px;
+    height: max-content;
+
+    &>section.vh-container {
+      position: relative;
+      box-sizing: border-box;
+      padding-bottom: 5.66rem;
+      display: flex;
+      flex-direction: row-reverse;
+      gap: 1.8rem;
+      width: 100%;
+      height: max-content;
+
+      &>section:not(.article-list) {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: max-content;
+      }
+    }
+  }
+}
+
+
+
+@media screen and (max-width: 888px) {
+  body {
+    &>main.vh-main {
+      &>section.vh-container {
+        flex-direction: column;
+      }
+    }
+  }
+}

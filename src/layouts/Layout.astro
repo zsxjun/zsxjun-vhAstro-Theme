@@ -1,0 +1,51 @@
+---
+import { ClientRouter } from "astro:transitions";
+const { title, keywords, description, activeNav } = Astro.props;
+// Head 依赖
+import Head from "../components/Head.astro";
+// 顶部 Header
+import Header from "../components/Header.astro";
+// 返回顶部
+import BackTop from "../components/BackTop.astro";
+// 手机端侧边栏
+import MobileSidebar from "../components/MobileSidebar.astro";
+// Layout 样式
+import "../styles/Layout.less";
+---
+
+<html lang="zh-CN">
+	<Head Title={title} Keywords={keywords} Description={description}>
+		<ClientRouter />
+	</Head>
+
+	<body>
+		<MobileSidebar activeNav={activeNav} />
+		<Header activeNav={activeNav} />
+		<main class="vh-main">
+			<slot />
+		</main>
+		<BackTop />
+		<script>
+			import updateRouter from "../utils/updateRouter";
+			// 搜索
+			import { searchFn } from "../scripts/Search";
+			// 图片懒加载
+			import vhLzImgInit from "../scripts/vhLazyImg";
+			// 加载进度条
+			import NProgress from "nprogress";
+			import "nprogress/nprogress.css";
+			NProgress.configure({ easing: "ease", speed: 500, showSpinner: false, trickleSpeed: 200, minimum: 0.3 });
+			// 初始化 图片懒加载初
+			updateRouter("afterMount", () => {
+				// 预加载搜索数据
+				searchFn("");
+				// 图片懒加载初始化
+				vhLzImgInit();
+				// 进入页面，进度条结束
+				NProgress.done();
+			});
+			// 离开页面，进度条开始
+			updateRouter("beforeCreate", NProgress.start);
+		</script>
+	</body>
+</html>

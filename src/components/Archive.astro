@@ -1,0 +1,30 @@
+---
+import { fmtTime } from "../utils/index";
+const { articleList } = Astro.props;
+// 文章页面样式
+import "../styles/Archive.less";
+---
+
+<section class="vh-animation vh-archive-main">
+	<div class="archive-list">
+		{
+			articleList.map((i: any) => (
+				<div class="archive-list-item">
+					<p class="title">
+						<em>{i.name}</em>
+						<i />
+						<span>{i.data.length} total</span>
+					</p>
+					{i.data.map((_: any) => (
+						<a href={`/article/${_.id}`}>
+							<em>{fmtTime(_.date, "MM-DD")}</em>
+							<i />
+							<span>{_.title}</span>
+							<cite>{_.tags.map((tag: string) => `#${tag}`).join(" ")}</cite>
+						</a>
+					))}
+				</div>
+			))
+		}
+	</div>
+</section>

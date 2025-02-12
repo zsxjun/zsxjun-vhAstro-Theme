@@ -1,0 +1,35 @@
+---
+// 搜索样式
+import "../styles/components/Search.less";
+---
+
+<section class="vh-search">
+	<main>
+		<div class="search-input">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#B4B4B4" d="m19.6 21l-6.3-6.3q-.75.6-1.725.95T9.5 16q-2.725 0-4.612-1.888T3 9.5t1.888-4.612T9.5 3t4.613 1.888T16 9.5q0 1.1-.35 2.075T14.7 13.3l6.3 6.3zM9.5 14q1.875 0 3.188-1.312T14 9.5t-1.312-3.187T9.5 5T6.313 6.313T5 9.5t1.313 3.188T9.5 14"></path></svg>
+			<input type="text" placeholder="Search" />
+		</div>
+		<section class="vh-search-list"></section>
+	</main>
+</section>
+
+<script>
+	import updateRouter from "../utils/updateRouter";
+	import { searchInputChange } from "../scripts/Search";
+	// 初始化搜索框
+	const vhSearchInit = () => {
+		const searchDOM: any = document.querySelector(".vh-header>.main>.nav-btn>span.search-btn");
+		const searchMainDOM: any = document.querySelector(".vh-header>.main>.vh-search>main");
+		const searchListDOM: any = document.querySelector(".vh-header>.main>.vh-search");
+		const addActive = () => setTimeout(() => searchListDOM.classList.add("active"));
+		const removeActive = () => setTimeout(() => searchListDOM.classList.remove("active"));
+		// 禁止默认事件
+		searchMainDOM.addEventListener("click", (e: Event) => e.stopPropagation());
+		searchDOM.addEventListener("click", addActive);
+		searchListDOM.addEventListener("click", removeActive);
+		// 搜索框初内容变化
+		searchListDOM.querySelector(".search-input>input").addEventListener("input", searchInputChange);
+	};
+	// 初始化
+	updateRouter("afterMount", vhSearchInit);
+</script>

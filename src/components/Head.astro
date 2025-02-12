@@ -1,0 +1,51 @@
+---
+import SITE_CONFIG from "../config";
+// 当前页面的 URL 元地址
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+// 页面内容的元数据
+const { Title: title, Keywords, Description } = Astro.props;
+const { Site, Title, Subtitle, Author, Cover, DNSOptimization } = SITE_CONFIG;
+// 基础 样式
+import "../styles/Base.less";
+---
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+	<title>{title ? `${title} | ${Title}` : `${Title} - ${Subtitle}`}</title>
+	<meta name="keywords" content={(Keywords || ["Astro", "分享", "博客"]).join(", ")} />
+	<meta name="description" content={Description} />
+	<meta name="format-detection" content="telephone=no, email=no, date=no, address=no" />
+	<!-- 元数据 -->
+	<meta name="title" content={Title} />
+	<meta name="site" content={Site} />
+	<meta name="author" content={Author} />
+	<meta name="generator" content={Astro.generator} />
+	<meta property="article:author" content={Author} />
+	<meta name="robots" content="max-image-preview:large" />
+	<!-- Open Graph -->
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content={Title} />
+	<meta property="og:url" content={canonicalURL} />
+	<meta property="og:site_name" content={Title} />
+	<meta property="og:description" content={Description} />
+	<meta property="og:locale" content="zh_CN" />
+	<meta property="og:image" content={Cover} />
+	<!-- Twitter -->
+	<meta property="twitter:card" content="summary_large_image" />
+	<meta property="twitter:url" content={canonicalURL} />
+	<meta property="twitter:title" content={Title} />
+	<meta property="twitter:description" content={Description} />
+	<meta property="twitter:image" content={Cover} />
+	<!-- Sitemap -->
+	<link rel="sitemap" href="/sitemap-index.xml" />
+	<!-- DNS预解析 -->
+	{DNSOptimization.map((url: string) => <link rel="dns-prefetch" href={url} />)}
+	{DNSOptimization.map((url: string) => <link rel="preconnect" href={url} />)}
+	<!-- LINK 标签 -->
+	<link rel="canonical" href={canonicalURL} />
+	<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+	<slot />
+</head>

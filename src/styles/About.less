@@ -1,0 +1,48 @@
+.vh-about {
+  gap: 1.25rem;
+
+  &>main {
+    box-sizing: border-box;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    background: #fff;
+    box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.05);
+    width: 100%;
+    min-height: 5.5rem;
+    overflow: hidden;
+
+    &>h3 {
+      box-sizing: border-box;
+      padding: 0.88rem 0;
+      width: 100%;
+      height: max-content;
+      font-size: 1.125rem;
+    }
+
+    &>.language-tool {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.56rem;
+      width: 100%;
+      max-width: 100%;
+      height: max-content;
+
+      &>a {
+        width: max-content;
+        max-width: 100%;
+        height: max-content;
+        line-height: 1;
+        overflow: hidden;
+        transition: transform 0.16s ease-in-out;
+
+        &>img {
+          border-bottom: 1px solid #2563eb;
+        }
+
+        &:hover {
+          transform: translateY(-0.12rem);
+        }
+      }
+    }
+  }
+}
