@@ -24,9 +24,10 @@ import Layout from "../layouts/Layout.astro";
 import Aside from "../components/Aside.astro";
 // 分页组件
 import Pagination from "../components/Pagination.astro";
+const currentPage = page_data.url.current.replace("/", "");
 ---
 
-<Layout title="" description={Description}>
+<Layout title={currentPage ? `第${currentPage}页` : ""} description={Description}>
 	<section class="vh-container">
 		<section class="vh-animation article-list">
 			<!-- 文章列表 -->
