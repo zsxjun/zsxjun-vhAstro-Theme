@@ -1,7 +1,7 @@
 ---
 // 页面 Info
 import SITE_CONFIG from "../../config";
-const { Description } = SITE_CONFIG;
+const { Description, Twikoo } = SITE_CONFIG;
 // Aside组件
 import Aside from "../../components/Aside.astro";
 // 公共 Layout
@@ -17,7 +17,7 @@ import Comment from "../../components/Comment.astro";
 				<h1>留言板 🌸</h1>
 				<p>快友之事莫若谈。</p>
 			</header>
-			<Comment />
+			{Twikoo.envId && <Comment envId={Twikoo.envId} />}
 		</section>
 		<Aside />
 	</section>

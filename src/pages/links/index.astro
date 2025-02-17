@@ -1,7 +1,7 @@
 ---
 // 页面 Info
 import SITE_CONFIG from "../../config";
-const { Description } = SITE_CONFIG;
+const { Description, Twikoo } = SITE_CONFIG;
 // Aside组件
 import Aside from "../../components/Aside.astro";
 // 公共 Layout
@@ -20,7 +20,7 @@ import "../../styles/Links.less";
 				<p>天下快意之事莫若友。</p>
 			</header>
 			<main></main>
-			<Comment />
+			{Twikoo.envId && <Comment envId={Twikoo.envId} />}
 		</section>
 		<Aside />
 	</section>
@@ -29,6 +29,9 @@ import "../../styles/Links.less";
 		import updateRouter from "../../utils/updateRouter";
 		import LinksInit from "../../scripts/Links";
 		// 进入页面时初始化
-		updateRouter("afterMount", LinksInit);
+		// 数据源
+		import LINKS_DATA from "../../page_data/Link";
+		const { api, data } = LINKS_DATA;
+		updateRouter("afterMount", () => LinksInit(api || data));
 	</script>
 </Layout>

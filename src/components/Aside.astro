@@ -1,7 +1,7 @@
 ---
 // 获取用户配置数据
 import SITE_CONFIG from "../config";
-import { fmtTime, fmtDate } from "../utils/index";
+import { fmtDate } from "../utils/index";
 const { Avatar, Author, Motto, WebSites } = SITE_CONFIG;
 // 获取文章数据
 import { getCategories, getTags, getRecommendArticles } from "../utils/getPostInfo";
@@ -78,7 +78,7 @@ import "../styles/components/Aside.less";
 						</p>
 						<p class="info">
 							<span>{(await i).title}</span>
-							<time>{fmtDate((await i).date)}</time>
+							<time>{fmtDate((await i).date)}前</time>
 						</p>
 					</a>
 				))

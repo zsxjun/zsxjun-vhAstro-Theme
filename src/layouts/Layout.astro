@@ -5,6 +5,8 @@ const { title, keywords, description, activeNav } = Astro.props;
 import Head from "../components/Head.astro";
 // 顶部 Header
 import Header from "../components/Header.astro";
+// 底部 Footer
+import Footer from "../components/Footer.astro";
 // 返回顶部
 import BackTop from "../components/BackTop.astro";
 // 手机端侧边栏
@@ -24,6 +26,7 @@ import "../styles/Layout.less";
 		<main class="vh-main">
 			<slot />
 		</main>
+		<Footer />
 		<BackTop />
 		<script>
 			import updateRouter from "../utils/updateRouter";
@@ -35,6 +38,10 @@ import "../styles/Layout.less";
 			import NProgress from "nprogress";
 			import "nprogress/nprogress.css";
 			NProgress.configure({ easing: "ease", speed: 500, showSpinner: false, trickleSpeed: 200, minimum: 0.3 });
+			// Han Analytics 统计
+			import SITE_INFO from "../config";
+			const { HanAnalytics } = SITE_INFO;
+			import { LoadScript } from "../utils/index";
 			// 初始化 图片懒加载初
 			updateRouter("afterMount", () => {
 				// 预加载搜索数据
@@ -43,6 +50,8 @@ import "../styles/Layout.less";
 				vhLzImgInit();
 				// 进入页面，进度条结束
 				NProgress.done();
+				// Han Analytics 统计
+				HanAnalytics.enable && LoadScript(`${HanAnalytics.server}/tracker.min.js`, [{ k: "data-website-id", v: HanAnalytics.siteId }]);
 			});
 			// 离开页面，进度条开始
 			updateRouter("beforeCreate", NProgress.start);

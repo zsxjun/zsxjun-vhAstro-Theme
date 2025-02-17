@@ -1,7 +1,7 @@
 ---
 // 页面 Info
 import SITE_CONFIG from "../../config";
-const { Description } = SITE_CONFIG;
+const { Description, Twikoo } = SITE_CONFIG;
 // Aside组件
 import Aside from "../../components/Aside.astro";
 // 公共 Layout
@@ -42,7 +42,7 @@ import "../../styles/About.less";
 					<a href="https://code.visualstudio.com/" target="_blank" rel="noopener nofollow"><img data-vh-lz-src="https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white" alt="VS Code" /></a>
 				</div>
 			</main>
-			<Comment />
+			{Twikoo.envId && <Comment envId={Twikoo.envId} />}
 		</section>
 		<Aside />
 	</section>

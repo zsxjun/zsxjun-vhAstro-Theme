@@ -1,7 +1,7 @@
 ---
 // 页面 Info
 import SITE_CONFIG from "../../config";
-const { Description } = SITE_CONFIG;
+const { Description, Twikoo } = SITE_CONFIG;
 // Aside组件
 import Aside from "../../components/Aside.astro";
 // 公共 Layout
@@ -20,7 +20,7 @@ import "../../styles/Talking.less";
 				<p>记录美好生活.</p>
 			</header>
 			<main></main>
-			<Comment />
+			{Twikoo.envId && <Comment envId={Twikoo.envId} />}
 		</section>
 		<Aside />
 	</section>
@@ -29,6 +29,9 @@ import "../../styles/Talking.less";
 		import updateRouter from "../../utils/updateRouter";
 		import TalkingInit from "../../scripts/Talking";
 		// 进入页面时初始化
-		updateRouter("afterMount", TalkingInit);
+		// 数据源
+		import TALKING_DATA from "../../page_data/Talking";
+		const { api, data } = TALKING_DATA;
+		updateRouter("afterMount", () => TalkingInit(api || data));
 	</script>
 </Layout>

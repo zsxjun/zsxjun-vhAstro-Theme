@@ -38,7 +38,7 @@ export default {
   // 博客音乐组件解析接口
   vhMusicApi: 'https://meting-dd.2333332.xyz/api',
   // 评论组件 Twikoo
-  Twikoo: {
-    envId: "https://twikoo.vvhan.com/.netlify/functions/twikoo",
-  }
+  Twikoo: { envId: 'https://twikoo.vvhan.com/.netlify/functions/twikoo' },
+  // Han Analytics 统计（https://github.com/uxiaohan/HanAnalytics）
+  HanAnalytics: { enable: true, server: 'https://analytics.vvhan.com', siteId: 'Hello-HanHexoBlog' }
 }

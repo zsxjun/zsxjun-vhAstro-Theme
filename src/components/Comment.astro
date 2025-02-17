@@ -3,20 +3,19 @@ import "../styles/components/Comment.less";
 ---
 
 <section class="vh-comment"><section></section></section>
-
 <script>
 	import updateRouter from "../utils/updateRouter";
 	import { LoadScript } from "../utils/index";
-	import SITE_CONFIG from "../config";
-	const { Twikoo } = SITE_CONFIG;
+	import SITE_INFO from "../config";
 	declare const twikoo: any;
 	// 初始化评论插件
-	updateRouter("afterMount", async () => {
-		if (!document.querySelector(".vh-comment>section")) return;
-		await LoadScript("https://registry.npmmirror.com/twikoo/1.6.41/files/dist/twikoo.all.min.js");
-		twikoo.init({
-			envId: Twikoo.envId,
-			el: ".vh-comment>section"
+	SITE_INFO.Twikoo.envId &&
+		updateRouter("afterMount", async () => {
+			if (!document.querySelector(".vh-comment>section")) return;
+			await LoadScript("https://registry.npmmirror.com/twikoo/1.6.41/files/dist/twikoo.all.min.js");
+			twikoo.init({
+				envId: SITE_INFO.Twikoo.envId,
+				el: ".vh-comment>section"
+			});
 		});
-	});
 </script>

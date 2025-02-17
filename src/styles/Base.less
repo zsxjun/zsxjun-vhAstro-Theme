@@ -3,7 +3,8 @@
 :root {
 	--vh-animation-delay: 0ms;
 	--vh-padding-top: calc(66px + 1rem);
-	--vh-back-top: calc((calc(100vw - 2rem) - min((100vw - 2rem), 1388px)) / 2 + 1rem);
+	--vh-main-max-width: 1388px;
+	--vh-back-top: calc((calc(100vw - 2rem) - min((100vw - 2rem), var(--vh-main-max-width))) / 2 + 1rem);
 }
 
 h1,

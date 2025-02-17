@@ -26,23 +26,3 @@ test/
 /public/hanplayer
 /public/MineWeb
 /public/other
-/src/content/blog/*
-!/src/content/blog
-/src/content/blog/2024/*
-!/src/content/blog/2024
-/src/content/blog/2024/07/*
-!/src/content/blog/2024/07
-/src/content/blog/2024/08/*
-!/src/content/blog/2024/08
-/src/content/blog/2024/09/*
-!/src/content/blog/2024/09
-/src/content/blog/2024/11/*
-!/src/content/blog/2024/11
-/src/content/blog/2024/12/*
-!/src/content/blog/2024/12
-!/src/content/blog/2024/07/【开源】骤雨重山无限存储图床托管于（Cloudflare Pages）.md
-!/src/content/blog/2024/08/Cloudflare优选IP➕DnsPod的DDNS自动切换.md
-!/src/content/blog/2024/09/【开源】HanAnalytics访问分析Web统计托管于（Cloudflare Pages）.md
-!/src/content/blog/2024/09/基于AI的微博动态心情分析【开源】.md
-!/src/content/blog/2024/11/推荐一个开源项目WebWatermark图片添加水印在线小助手.md
-!/src/content/blog/2024/12/【开源】Tarot-塔罗牌占卜.md
