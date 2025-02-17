@@ -3,6 +3,8 @@
 const { activeNav } = Astro.props;
 import SITE_CONFIG from "../config";
 const { Navs } = SITE_CONFIG;
+// 原生图片
+import { Image } from "astro:assets";
 // 搜索框组件
 import Search from "./Search.astro";
 // 顶部 Header 样式
@@ -20,7 +22,7 @@ import "../styles/components/Header.less";
 				Navs.map(i => (
 					<a class={i.link.includes(activeNav) ? "active" : ""} href={i.link} target={i.target ? "_blank" : "_self"}>
 						{i.text}
-						<span set:html={i.icon} />
+						<Image src={i.icon} alt={i.text} width="10" height="10" />
 					</a>
 				))
 			}
