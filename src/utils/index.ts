@@ -5,25 +5,30 @@ const getDescription = (post: any, num: number = 150) => (post.rendered ? post.r
 const fmtTime = (time: any, fmt: string = 'MMMM D, YYYY') => dayjs(time).format(fmt)
 // 处理日期
 const fmtDate = (time: string | Date) => {
-  const now = dayjs()
-  const past = dayjs(time)
-  // 计算时间差组件
-  const years = now.diff(past, 'year')
-  const months = now.diff(past.add(years, 'year'), 'month')
-  const days = now.diff(past.add(years, 'year').add(months, 'month'), 'day')
-  const hours = now.diff(past, 'hour')
-  const minutes = now.diff(past, 'minute')
-  const seconds = now.diff(past, 'second')
-  // 构建时间差描述
+  const now = dayjs();
+  const past = dayjs(time);
+  // 计算各时间单位，逐步扣除已计算的部分
+  const years = now.diff(past, 'year');
+  const adjustedPastYears = past.add(years, 'year');
+  const months = now.diff(adjustedPastYears, 'month');
+  const adjustedPastMonths = adjustedPastYears.add(months, 'month');
+  const days = now.diff(adjustedPastMonths, 'day');
+  const adjustedPastDays = adjustedPastMonths.add(days, 'day');
+  const hours = now.diff(adjustedPastDays, 'hour');
+  const adjustedPastHours = adjustedPastDays.add(hours, 'hour');
+  const minutes = now.diff(adjustedPastHours, 'minute');
+  const adjustedPastMinutes = adjustedPastHours.add(minutes, 'minute');
+  const seconds = now.diff(adjustedPastMinutes, 'second');
+  // 构建时间差描述，仅在没有更大单位时显示较小单位
   return [
     years && `${years}年`,
     months && `${months}月`,
     days && `${days}天`,
-    !years && !months && hours && `${hours}小时`,
-    !years && !months && !days && minutes && `${minutes}分钟`,
-    !years && !months && !days && !hours && `${seconds}秒`
-  ].filter(Boolean).join('')
-}
+    hours && !years && !months && `${hours}小时`,
+    minutes && !years && !months && !days && `${minutes}分`,
+    seconds && !years && !months && !days && !hours && `${seconds}秒`
+  ].filter(Boolean).join('');
+};
 
 // 处理页码展示
 const fmtPage = (page: string | undefined) => page ? page.replace(/\//g, '') : null
