@@ -13,9 +13,6 @@ import "../styles/components/Comment.less";
 		updateRouter("afterMount", async () => {
 			if (!document.querySelector(".vh-comment>section")) return;
 			await LoadScript("https://registry.npmmirror.com/twikoo/1.6.41/files/dist/twikoo.all.min.js");
-			twikoo.init({
-				envId: SITE_INFO.Twikoo.envId,
-				el: ".vh-comment>section"
-			});
+			twikoo.init({ envId: SITE_INFO.Twikoo.envId, el: ".vh-comment>section" });
 		});
 </script>

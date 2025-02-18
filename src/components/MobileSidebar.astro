@@ -12,12 +12,12 @@ import "../styles/components/MobileSidebar.less";
 		<div class="vh-mobilesidebar-list user-panel">
 			<h3>{Title}</h3>
 		</div>
-    
+
 		<div class="vh-mobilesidebar-list">
 			{
 				Navs.map(i => (
 					<a class={i.link.includes(activeNav) ? "active" : ""} href={i.link} target={i.target ? "_blank" : "_self"}>
-						<span set:html={i.icon} />
+						<object data={i.icon} type="image/svg+xml" />
 						{i.text}
 					</a>
 				))
