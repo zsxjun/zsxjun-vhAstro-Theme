@@ -30,7 +30,7 @@ import "../styles/components/Aside.less";
 			{
 				WebSites.map(item => (
 					<a class="vh-aside-links-item" href={item.link} title={item.text} target="_blank" rel="noopener nofollow">
-						<img src={item.icon} />
+						<Image src={item.icon} alt={item.text} width="1" height="1" />
 					</a>
 				))
 			}
@@ -74,7 +74,7 @@ import "../styles/components/Aside.less";
 				recommendArticles.map(async i => (
 					<a href={`/article/${(await i).id}`}>
 						<p class="cover">
-							<img src={(await i).cover} />
+							<Image src={(await i).cover} alt={(await i).title} width="1" height="1" />
 						</p>
 						<p class="info">
 							<span>{(await i).title}</span>

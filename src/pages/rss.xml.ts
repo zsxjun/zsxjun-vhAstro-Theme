@@ -16,6 +16,6 @@ export async function GET(context: any) {
 			pubDate: post.data.updated || post.data.date,
 			description: getDescription(post),
 			link: `/article/${post.data.id}`
-		})),
+		})).reverse(),
 	});
 }

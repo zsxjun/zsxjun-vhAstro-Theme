@@ -30,12 +30,15 @@
       &>a {
         width: max-content;
         max-width: 100%;
-        height: max-content;
+        height: 2rem;
         line-height: 1;
         overflow: hidden;
         transition: transform 0.16s ease-in-out;
 
         &>img {
+          height: calc(100% - 1px);
+          width: auto;
+          object-fit: contain;
           border-bottom: 1px solid #2563eb;
         }
 
