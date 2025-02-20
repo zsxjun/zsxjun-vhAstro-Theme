@@ -30,10 +30,17 @@
 
         // 其下面的code标签样式
         code {
-          background-color: #edeef3;
-          padding: .125rem .375rem;
-          font-size: 0.8125rem;
+          background: transparent;
         }
+
+        :not(pre) {
+          &>code {
+            background-color: #edeef3;
+            padding: .125rem .375rem;
+            font-size: 0.8125rem;
+          }
+        }
+
       }
 
       ul:not(.OwO-items):not(.OwO-packages),
@@ -43,7 +50,8 @@
 
       p {
         color: #4c4948;
-        font-weight: 500;
+        font-weight: 300;
+        font-size: 0.875rem;
 
         a {
           box-shadow: inset 0 -.12em #60a5fa;
