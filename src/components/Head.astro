@@ -3,8 +3,14 @@ import SITE_CONFIG from "../config";
 // 当前页面的 URL 元地址
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 // 页面内容的元数据
-const { Title: title, Keywords, Description } = Astro.props;
-const { Site, Title, Subtitle, Author, Cover, DNSOptimization } = SITE_CONFIG;
+const { Title, Keywords, Description, PageCover } = Astro.props;
+const { Site, Title: SiteName, Subtitle, Author, Cover, DNSOptimization } = SITE_CONFIG;
+const WebTitle = Title || SiteName;
+const SiteCover = Site + Cover;
+const WebCover = PageCover || SiteCover;
+// Schema.org 结构化数据（JSON-LD）
+const WebSiteData = { "@context": "https://schema.org", "@type": "WebSite", name: WebTitle, url: canonicalURL, image: { "@type": "ImageObject", url: SiteCover } };
+const ArticleData = { "@context": "https://schema.org", "@type": "BlogPosting", mainEntityOfPage: { "@type": "WebPage", "@id": canonicalURL.href }, headline: WebTitle, image: [WebCover], author: { "@type": "Person", name: Author, url: Site }, publisher: { "@type": "Organization", name: SiteName, logo: { "@type": "ImageObject", url: SiteCover } } };
 // 基础 样式
 import "../styles/Base.less";
 ---
@@ -14,12 +20,12 @@ import "../styles/Base.less";
 	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
-	<title>{title ? `${title} | ${Title}` : `${Title} - ${Subtitle}`}</title>
+	<title>{Title ? `${Title} | ${SiteName}` : `${SiteName} - ${Subtitle}`}</title>
 	<meta name="keywords" content={(Keywords || ["Astro", "分享", "博客"]).join(", ")} />
 	<meta name="description" content={Description} />
 	<meta name="format-detection" content="telephone=no, email=no, date=no, address=no" />
 	<!-- 元数据 -->
-	<meta name="title" content={Title} />
+	<meta name="title" content={WebTitle} />
 	<meta name="site" content={Site} />
 	<meta name="author" content={Author} />
 	<meta name="generator" content={Astro.generator} />
@@ -27,18 +33,20 @@ import "../styles/Base.less";
 	<meta name="robots" content="max-image-preview:large" />
 	<!-- Open Graph -->
 	<meta property="og:type" content="website" />
-	<meta property="og:title" content={Title} />
+	<meta property="og:title" content={WebTitle} />
 	<meta property="og:url" content={canonicalURL} />
-	<meta property="og:site_name" content={Title} />
+	<meta property="og:site_name" content={WebTitle} />
 	<meta property="og:description" content={Description} />
 	<meta property="og:locale" content="zh_CN" />
-	<meta property="og:image" content={Cover} />
+	<meta property="og:image" content={WebCover} />
 	<!-- Twitter -->
 	<meta property="twitter:card" content="summary_large_image" />
 	<meta property="twitter:url" content={canonicalURL} />
-	<meta property="twitter:title" content={Title} />
+	<meta property="twitter:title" content={WebTitle} />
 	<meta property="twitter:description" content={Description} />
-	<meta property="twitter:image" content={Cover} />
+	<meta property="twitter:image" content={WebCover} />
+	<!-- 输出结构化数据 -->
+	<script type="application/ld+json" set:html={JSON.stringify(PageCover ? ArticleData : WebSiteData)} is:inline />
 	<!-- Sitemap -->
 	<link rel="sitemap" href="/sitemap-index.xml" />
 	<!-- DNS预解析 -->

@@ -1,6 +1,6 @@
 ---
 import { ClientRouter } from "astro:transitions";
-const { title, keywords, description, activeNav } = Astro.props;
+const { title, keywords, description, pagecover, activeNav } = Astro.props;
 // Head 依赖
 import Head from "../components/Head.astro";
 // 顶部 Header
@@ -16,9 +16,8 @@ import "../styles/Layout.less";
 ---
 
 <html lang="zh-CN">
-	<Head Title={title} Keywords={keywords} Description={description}>
-		<ClientRouter />
-	</Head>
+	<Head Title={title} Keywords={keywords} Description={description} PageCover={pagecover} />
+	<ClientRouter />
 
 	<body>
 		<MobileSidebar activeNav={activeNav} />
