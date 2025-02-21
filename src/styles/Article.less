@@ -164,16 +164,22 @@ section.vh-container {
         display: flex;
         align-items: center;
         gap: 1.18rem;
-        font-size: 0.88rem;
+        font-size: 0.85rem;
 
         &>.article-meta-item {
           display: flex;
           align-items: center;
-          gap: 0.56rem;
+          gap: 0.38rem;
+          width: max-content;
 
           &>svg {
+            flex-shrink: 0;
             height: 0.86rem;
-            width: 0.86rem;
+            width: auto;
+          }
+
+          &>time {
+            color: #9A9A9A;
           }
         }
       }
