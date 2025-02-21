@@ -30,22 +30,24 @@ import "../styles/Base.less";
 	<meta name="site" content={Site} />
 	<meta name="author" content={Author} />
 	<meta name="generator" content={Astro.generator} />
-	<meta property="article:author" content={Author} />
 	<meta name="robots" content="max-image-preview:large" />
 	<!-- Open Graph -->
-	<meta property="og:type" content="website" />
+	<meta property="article:author" content={Author} />
+	<meta property="og:type" content={PageCover ? "article" : "website"} />
+	<meta property="og:site_name" content={SiteName} />
 	<meta property="og:title" content={WebTitle} />
-	<meta property="og:url" content={canonicalURL} />
-	<meta property="og:site_name" content={WebTitle} />
 	<meta property="og:description" content={Description} />
-	<meta property="og:locale" content="zh_CN" />
+	<meta property="og:url" content={canonicalURL} />
 	<meta property="og:image" content={WebCover} />
+	<meta property="og:locale" content="zh_CN" />
 	<!-- Twitter -->
-	<meta property="twitter:card" content="summary_large_image" />
-	<meta property="twitter:url" content={canonicalURL} />
-	<meta property="twitter:title" content={WebTitle} />
-	<meta property="twitter:description" content={Description} />
-	<meta property="twitter:image" content={WebCover} />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:site" content={SiteName} />
+	<meta name="twitter:creator" content={Author} />
+	<meta name="twitter:title" content={WebTitle} />
+	<meta name="twitter:description" content={Description} />
+	<meta name="twitter:url" content={canonicalURL} />
+	<meta name="twitter:image" content={WebCover} />
 	<!-- 输出结构化数据 -->
 	<script type="application/ld+json" set:html={JSON.stringify(PageCover ? ArticleData : WebSiteData)} is:inline />
 	<!-- Sitemap -->
