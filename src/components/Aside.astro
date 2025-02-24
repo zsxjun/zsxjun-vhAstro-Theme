@@ -42,12 +42,14 @@ import "../styles/components/Aside.less";
 		<h3>分类</h3>
 		<div class="vh-aside-categories">
 			{
-				categories.map(i => (
-					<a href={`/categories/${i.title}`}>
-						<span>{i.title}</span>
-						<i>{i.count}</i>
-					</a>
-				))
+				categories
+					.sort((a: any, b: any) => b.count - a.count)
+					.map(i => (
+						<a href={`/categories/${i.title}`}>
+							<span>{i.title}</span>
+							<i>{i.count}</i>
+						</a>
+					))
 			}
 		</div>
 	</section>
