@@ -11,15 +11,3 @@ import "../styles/Footer.less";
 		<p><a href="https://astro.build/" target="_blank" rel="noopener noreferrer"><Image width="1" height="1" alt="Astro" src="/assets/images/footer/astro.svg" /></a><a href="https://github.com/uxiaohan/vhAstro-Theme" target="_blank" rel="noopener noreferrer"><Image width="1" height="1" alt="vhAstro-Theme" src="/assets/images/footer/theme.svg" /></a><a href="/sitemap-index.xml" target="_blank"><Image width="1" height="1" alt="sitemap" src="/assets/images/footer/sitemap.svg" /></a><a href="/rss.xml" target="_blank"><Image width="1" height="1" alt="rss" src="/assets/images/footer/rss.svg" /></a><a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer"><Image width="1" height="1" alt="icp" src="/assets/images/footer/icp.svg" /></a></p>
 	</main>
 </footer>
-<script>
-	import updateRouter from "../utils/updateRouter";
-	// 格式化时间
-	import { fmtDate } from "../utils/index";
-	// 页面内容的元数据
-	import SITE_CONFIG from "../config";
-	const { CreateTime } = SITE_CONFIG;
-	// 初始化 网站运行时间
-	updateRouter("afterMount", () => {
-		document.querySelector("em.web_time")!.textContent = fmtDate(CreateTime);
-	});
-</script>

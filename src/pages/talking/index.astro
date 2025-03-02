@@ -12,26 +12,16 @@ import Comment from "../../components/Comment.astro";
 import "../../styles/Talking.less";
 ---
 
-<Layout title="动态" description={Description} activeNav="talking">
+<Layout title="动态" description={Description}>
 	<section class="vh-container">
-		<section class="vh-talking">
+		<section class="vh-talking vh-animation vh-animation-init">
 			<header class="vh-page-header">
 				<h1>动态 🥫</h1>
 				<p>记录美好生活.</p>
 			</header>
-			<main></main>
+			<main><section class="vh-space-loading white"><span></span><span></span><span></span></section></main>
 			{Twikoo.envId && <Comment envId={Twikoo.envId} />}
 		</section>
 		<Aside />
 	</section>
-
-	<script>
-		import updateRouter from "../../utils/updateRouter";
-		import TalkingInit from "../../scripts/Talking";
-		// 进入页面时初始化
-		// 数据源
-		import TALKING_DATA from "../../page_data/Talking";
-		const { api, data } = TALKING_DATA;
-		updateRouter("afterMount", () => TalkingInit(api || data));
-	</script>
 </Layout>

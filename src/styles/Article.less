@@ -43,6 +43,16 @@ section.vh-container {
           &>time {
             color: #9A9A9A;
           }
+
+          &>span {
+            &.count {
+              color: #3FA67F;
+            }
+
+            &.time {
+              color: #E9B740;
+            }
+          }
         }
       }
     }
@@ -111,6 +121,7 @@ section.vh-container {
       height: max-content;
     }
 
+
     // 文章内容样式开始=========================
     h1,
     h2,
@@ -169,8 +180,8 @@ section.vh-container {
     // p标签样式
     // ul标签样式
     p,
-    ul,
-    ol {
+    ul:not(.vh-vhMusic ul),
+    ol:not(.vh-vhMusic ol) {
       margin: 0;
       padding: 0.618rem 0;
       font-size: 0.9375rem;
@@ -200,9 +211,25 @@ section.vh-container {
       }
     }
 
-    ul,
-    ol {
+    ul:not(.vh-vhMusic ul),
+    ol:not(.vh-vhMusic ol) {
+      box-sizing: border-box;
       padding-left: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    blockquote {
+      padding: 0.188rem 0.58rem;
+      border-left: 5px solid #eee;
+      border-left-color: #929292;
+      background: #f3f5f7;
+
+      &>p {
+        font-size: 0.875rem;
+        font-weight: 500;
+      }
     }
 
     /* 全局表格样式 */
@@ -223,7 +250,7 @@ section.vh-container {
       }
 
       th {
-        text-align: left;
+        text-align: center;
         background-color: #f8f9fa;
         padding: 0.75rem;
         border-bottom: solid 1px #EEEEEE;
@@ -280,6 +307,40 @@ section.vh-container {
         border-left-color: #777;
         border-radius: 3px;
         background: #f7f7f7;
+
+        &.note-success {
+          border-color: #01C4B6;
+          border-left: 5px solid #01C4B6;
+          border-left-color: #01C4B6;
+          background: #01C4B618;
+        }
+
+        &.note-info {
+          border-color: #3253b4;
+          border-left: 5px solid #3253b4;
+          border-left-color: #3253b4;
+          background: #3253b418;
+        }
+
+        &.note-warning {
+          border-color: #DD8636;
+          border-left: 5px solid #DD8636;
+          border-left-color: #DD8636;
+          background: #DD863618;
+        }
+
+        &.note-error {
+          border-color: #DE3C3D;
+          border-left: 5px solid #DE3C3D;
+          border-left-color: #DE3C3D;
+          background: #DE3C3D18;
+        }
+
+        &.note-import {
+          border-left: 5px solid #B984DF;
+          border-left-color: #B984DF;
+          background: #B984DF18;
+        }
 
         p {
           font-size: 0.875rem;
@@ -363,14 +424,14 @@ section.vh-container {
         }
 
         &.btn-info {
-          border-color: #3275B4;
+          border-color: #3253b4;
 
           &>span {
-            color: #3275B4;
+            color: #3253b4;
           }
 
           &::before {
-            background-color: #3275B4;
+            background-color: #3253b4;
           }
         }
 
@@ -395,6 +456,18 @@ section.vh-container {
 
           &::before {
             background-color: #DE3C3D;
+          }
+        }
+
+        &.btn-import {
+          border-color: #B984DF;
+
+          &>span {
+            color: #B984DF;
+          }
+
+          &::before {
+            background-color: #B984DF;
           }
         }
       }

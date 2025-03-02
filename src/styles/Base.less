@@ -1,7 +1,6 @@
 @import url('/assets/font/index.css');
 
 :root {
-	--vh-animation-delay: 0ms;
 	--vh-padding-top: calc(66px + 1rem);
 	--vh-main-max-width: 1388px;
 	--vh-back-top: calc((calc(100vw - 2rem) - min((100vw - 2rem), var(--vh-main-max-width))) / 2 + 1rem);
@@ -18,6 +17,11 @@ blockquote {
 	margin: 0;
 	padding: 0;
 	color: #333;
+	text-decoration: none;
+}
+
+span {
+	text-decoration: none !important;
 }
 
 p {
@@ -41,14 +45,11 @@ code {
 	font-weight: normal;
 }
 
-ul,
-ol {
-	display: flex;
-	flex-direction: column;
-	gap: 0.5rem;
+img {
+	max-width: 100%;
+	max-height: 100%;
+	overflow: hidden;
 }
-
-
 
 * {
 	// IOS 点击阴影
@@ -103,26 +104,6 @@ html {
 	}
 }
 
-
-// 动画效果
-.vh-animation {
-	opacity: 0;
-	animation: 300ms fade-in-up;
-	animation-fill-mode: forwards;
-}
-
-@keyframes fade-in-up {
-	0% {
-		transform: translateY(2rem);
-		opacity: 0;
-	}
-
-	100% {
-		transform: translateY(0);
-		opacity: 1;
-	}
-}
-
 // 设置图片懒加载样式
 main>.vh-container {
 	img[data-vh-lz-src] {
@@ -134,23 +115,163 @@ main>.vh-container {
 	}
 }
 
-
-// 加载进度条样式
-#nprogress {
-	.bar {
-		height: 0.28rem !important;
-		background: #01C4B6 !important;
-	}
-
-	.peg {
-		box-shadow: 0 0 10px #01C4B6, 0 0 5px #01C4B6 !important;
-	}
-}
-
 @media screen and (max-width: 768px) {
 	// 手机端 禁止选择
 	user-select: none;
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
+}
+
+// 首次加载效果
+.vh-animation.vh-animation-init {
+	opacity: 0;
+	animation: 300ms vh-init-show;
+	animation-fill-mode: forwards;
+	transition: opacity 0.16s ease-in-out, transform 0.16s ease-in-out;
+}
+
+// swup 动画效果
+html.swup-enabled,
+html.is-changing {
+	.vh-animation {
+		&.vh-animation-init {
+			transform: translateY(0);
+			opacity: 1;
+			animation: none;
+		}
+	}
+}
+
+html.is-animating {
+	.vh-animation {
+		&.vh-animation-init {
+			transform: translateY(0.88rem);
+			opacity: 0;
+		}
+	}
+}
+
+// 占位加载
+.vh-space-loading {
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	grid-column: span 3;
+	width: 100%;
+	height: 8.88rem;
+	overflow: hidden;
+
+	&.white {
+		background: #fff;
+		box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.05);
+	}
+
+	&>span {
+		background: #000;
+		position: relative;
+		width: 5px;
+		height: 5px;
+		margin: 3px;
+		border-radius: 5px;
+
+		&:nth-of-type(1) {
+			-webkit-animation: scale .8s ease infinite;
+			animation: vh-loading-animation .8s ease infinite
+		}
+
+		&:nth-of-type(2) {
+			-webkit-animation: scale .8s ease .2s infinite;
+			animation: vh-loading-animation .8s ease .2s infinite
+		}
+
+		&:nth-of-type(3) {
+			-webkit-animation: scale .8s ease .4s infinite;
+			animation: vh-loading-animation .8s ease .4s infinite
+		}
+
+	}
+}
+
+// 谷歌广告模块
+
+.vh-ad {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: max-content;
+	min-height: 5.88rem;
+	overflow: hidden !important;
+	z-index: 1;
+
+	&.vh-article-ad {
+		box-sizing: border-box;
+		padding: 0.75rem;
+		margin-top: 1rem;
+		border-radius: 0.5rem;
+		background: #fff;
+		box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.05);
+		overflow: hidden;
+
+		&::before {
+			top: 50%;
+		}
+	}
+
+	&::before {
+		position: absolute;
+		left: 50%;
+		top: 30%;
+		transform: translate(-50%, -50%);
+		content: '广告加载中...';
+		color: #e3e4e6;
+		z-index: -1;
+	}
+}
+
+
+
+@keyframes vh-init-show {
+	0% {
+		transform: translateY(2rem);
+		opacity: 0;
+	}
+
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+@keyframes vh-loading-animation {
+	50% {
+		height: 25px
+	}
+
+	0% {
+		height: 5px
+	}
+}
+
+@-webkit-keyframes vh-init-show {
+	0% {
+		transform: translateY(2rem);
+		opacity: 0;
+	}
+
+	100% {
+		transform: translateY(0);
+		opacity: 1;
+	}
+}
+
+@-webkit-keyframes vh-loading-animation {
+	50% {
+		height: 25px
+	}
+
+	0% {
+		height: 5px
+	}
 }

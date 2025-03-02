@@ -8,7 +8,11 @@ export async function getStaticPaths(options: GetStaticPathsOptions) {
 	// 生成 Search JSON 文件 ======
 	await setSearchJson(posts);
 	// 生成 Search JSON 文件 ======
-	return paginate(posts, { pageSize: 15 });
+	// 隐藏的文章不显示
+	return paginate(
+		posts.filter(i => !i.data.hide),
+		{ pageSize: 15 }
+	);
 }
 
 const { page } = Astro.props;
@@ -27,9 +31,9 @@ import Pagination from "../components/Pagination.astro";
 const currentPage = page_data.url.current.replace("/", "");
 ---
 
-<Layout title={currentPage ? `第${currentPage}页` : ""} description={Description}>
+<Layout title={currentPage ? `第${currentPage}页文章` : ""} description={Description}>
 	<section class="vh-container">
-		<section class="vh-animation article-list">
+		<section class="article-list vh-animation vh-animation-init">
 			<!-- 文章列表 -->
 			{data.map((post, index) => <ArticleCard post={post} index={index} />)}
 			<!-- 分页 -->

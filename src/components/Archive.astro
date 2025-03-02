@@ -5,7 +5,7 @@ const { articleList } = Astro.props;
 import "../styles/Archive.less";
 ---
 
-<section class="vh-animation vh-archive-main">
+<section class="vh-archive-main vh-animation vh-animation-init">
 	<div class="archive-list">
 		{
 			articleList.map((i: any) => (
@@ -13,7 +13,7 @@ import "../styles/Archive.less";
 					<p class="title">
 						<em>{i.name}</em>
 						<i />
-						<span>{i.data.length} total</span>
+						<span>{i.data.length}篇文章</span>
 					</p>
 					{i.data.map((_: any) => (
 						<a href={`/article/${_.id}`}>

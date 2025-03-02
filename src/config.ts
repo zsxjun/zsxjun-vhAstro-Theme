@@ -40,5 +40,13 @@ export default {
   // 评论组件 Twikoo
   Twikoo: { envId: 'https://twikoo.vvhan.com/.netlify/functions/twikoo' },
   // Han Analytics 统计（https://github.com/uxiaohan/HanAnalytics）
-  HanAnalytics: { enable: true, server: 'https://analytics.vvhan.com', siteId: 'Hello-HanHexoBlog' }
+  HanAnalytics: { enable: true, server: 'https://analytics.vvhan.com', siteId: 'Hello-HanHexoBlog' },
+  // Google 广告
+  GoogleAds: {
+    ad_Client: 'ca-pub-3037456000720711',
+    // 侧边栏广告(不填不开启)
+    asideAD_Slot: `<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3037456000720711" data-ad-slot="6102098907" data-ad-format="auto" data-full-width-responsive="true"></ins>`,
+    // 文章页广告(不填不开启)
+    articleAD_Slot: `<ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3037456000720711" data-ad-slot="8753809833" data-ad-format="auto" data-full-width-responsive="true"></ins>`
+  },
 }

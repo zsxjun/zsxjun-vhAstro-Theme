@@ -9,7 +9,9 @@ import { OverlayScrollbars } from "overlayscrollbars";
 // Pre Code 代码复制功能======
 let copyText = null;
 // Pre Code 代码复制功能======
-const ArticleInit = () => {
+
+// 初始化
+export default () => {
   // 灯箱JS初始化======
   ViewImage && ViewImage.init("main>.vh-container>article.vh-article-main img.vh-article-img");
   // 灯箱JS初始化======
@@ -35,4 +37,3 @@ const ArticleInit = () => {
   });
   // Pre Code 代码复制功能======
 }
-export default ArticleInit;

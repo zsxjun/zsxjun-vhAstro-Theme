@@ -12,7 +12,6 @@ declare const ViewImage: any;
 const TalkingInit = async (data: any) => {
   const talkingDOM = document.querySelector('.vh-container>.vh-talking>main')
   if (!talkingDOM) return;
-  vh.showLoading();
   try {
     let res = data;
     if (typeof data === 'string') {
@@ -26,8 +25,11 @@ const TalkingInit = async (data: any) => {
     // 灯箱JS初始化======
   } catch {
     vh.Toast('获取数据失败')
-  } finally {
-    vh.hideLoading();
   }
 }
-export default TalkingInit;
+
+
+// 动态说说初始化
+import TALKING_DATA from "../page_data/Talking";
+const { api, data } = TALKING_DATA;
+export default () => TalkingInit(api || data);

@@ -19,7 +19,9 @@ let backTop: any = document.querySelector(".vh-back-top");
 // 彩虹圈圈 DOM
 let circle: any = document.querySelector(".vh-back-top>svg>circle");
 const circumference = 2 * Math.PI * 10;
-const BackTopInitFn = () => {
+
+//  初始化
+export default () => {
   // 更新 彩虹圈圈 DOM
   circle = document.querySelector(".vh-back-top>svg>circle");
   // 更新 回顶部DOM
@@ -38,5 +40,3 @@ const BackTopInitFn = () => {
   // 触发 scrollChangeFn
   scrollChangeFn();
 };
-
-export default BackTopInitFn;

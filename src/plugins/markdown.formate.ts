@@ -1,15 +1,17 @@
 // src/plugins/remark-note.js
 import { visit } from 'unist-util-visit';
+import getReadingTime from 'reading-time';
+import { toString } from 'mdast-util-to-string';
 
 // 处理函数
 const nodeTreeFmt = (node: any, parent: any) => {
   if (node.type === 'text') parent.children = node.value.split('\n').map((i: string) => ({ type: 'paragraph', children: [{ type: 'text', value: i }] }));
-  if (node.children && node.children.length > 0) node.children.forEach((child: any) => nodeTreeFmt(child, node));
+  if (node.children && node.children.length) node.children.forEach((child: any) => nodeTreeFmt(child, node));
 }
 
 // 处理标签
 const remarkNote = () => {
-  return (tree: any) => {
+  return (tree: any, { data: astroData }: any) => {
     visit(tree, (node, index, parent) => {
       const { type, name, attributes } = node;
       // 处理组件
@@ -35,6 +37,11 @@ const remarkNote = () => {
         };
         // 设置 class
         hProperties.class = `vh-node vh-${name}${attributes.type ? ` ${name}-${attributes.type}` : ''}`;
+        // 文章字数统计
+        const textOnPage = toString(tree);
+        const readingTime = getReadingTime(textOnPage);
+        astroData.astro.frontmatter.reading_time = readingTime.minutes
+        astroData.astro.frontmatter.article_word_count = readingTime.words
       }
     });
   };

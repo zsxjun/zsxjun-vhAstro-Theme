@@ -1,6 +1,4 @@
 ---
-// 导航高亮
-const { activeNav } = Astro.props;
 import SITE_CONFIG from "../config";
 const { Navs, Title } = SITE_CONFIG;
 // 侧边栏 MobileSidebar 样式
@@ -13,10 +11,10 @@ import "../styles/components/MobileSidebar.less";
 			<h3>{Title}</h3>
 		</div>
 
-		<div class="vh-mobilesidebar-list">
+		<div class="vh-mobilesidebar-list vh-link-list">
 			{
 				Navs.map(i => (
-					<a class={i.link.includes(activeNav) ? "active" : ""} href={i.link} target={i.target ? "_blank" : "_self"}>
+					<a class={i.link.replace("/", "")} href={i.link} target={i.target ? "_blank" : "_self"}>
 						<object data={i.icon} type="image/svg+xml" />
 						{i.text}
 					</a>
@@ -25,18 +23,3 @@ import "../styles/components/MobileSidebar.less";
 		</div>
 	</section>
 </nav>
-
-<script>
-	import updateRouter from "../utils/updateRouter";
-	// 初始化搜索框
-	const vhSearchInit = () => {
-		const menuDOM: any = document.querySelector(".vh-header>.main>.nav-btn>span.menu-btn");
-		const mobileSidebarDOM: any = document.querySelector("body>.vh-mobilesidebar");
-		const addActive = () => setTimeout(() => mobileSidebarDOM.classList.add("active"));
-		const removeActive = () => setTimeout(() => mobileSidebarDOM.classList.remove("active"));
-		menuDOM.addEventListener("click", addActive);
-		mobileSidebarDOM.addEventListener("click", removeActive);
-	};
-	// 初始化
-	updateRouter("afterMount", vhSearchInit);
-</script>

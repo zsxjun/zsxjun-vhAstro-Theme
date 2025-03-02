@@ -1,8 +1,11 @@
 ---
+// 静态图片
+import { Image } from "astro:assets";
+// 时间处理
+import { fmtTime } from "../utils/index";
 // 获取用户配置数据
 import SITE_CONFIG from "../config";
-import { fmtTime } from "../utils/index";
-const { Avatar, Author, Motto, WebSites } = SITE_CONFIG;
+const { Avatar, Author, Motto, WebSites, GoogleAds } = SITE_CONFIG;
 // 获取文章数据
 import { getCategories, getTags, getRecommendArticles } from "../utils/getPostInfo";
 // 分类列表
@@ -11,8 +14,8 @@ const categories = getCategories();
 const tags = getTags();
 // 最新文章
 const recommendArticles = getRecommendArticles();
-// 静态图片
-import { Image } from "astro:assets";
+// Google 广告组件
+import GoogleAd from "../components/GoogleAd.astro";
 // 侧边栏样式
 import "../styles/components/Aside.less";
 ---
@@ -20,10 +23,7 @@ import "../styles/components/Aside.less";
 <aside class="vh-aside">
 	<!-- 头像块 -->
 	<section class="vh-aside-item user">
-		<div onclick="window.history.back()" class="vh-aside-avatar">
-			<Image class="vh-aside-avatar" src={Avatar} alt={Author} width="1" height="1" />
-			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"> <path d="M512 256A256 256 0 1 0 0 256a256 256 0 1 0 512 0zM116.7 244.7l112-112c4.6-4.6 11.5-5.9 17.4-3.5s9.9 8.3 9.9 14.8l0 64 96 0c17.7 0 32 14.3 32 32l0 32c0 17.7-14.3 32-32 32l-96 0 0 64c0 6.5-3.9 12.3-9.9 14.8s-12.9 1.1-17.4-3.5l-112-112c-6.2-6.2-6.2-16.4 0-22.6z"></path></svg>
-		</div>
+		<Image class="vh-aside-avatar" src="/assets/images/lazy-loading.webp" data-vh-lz-src={Avatar} alt={Author} width="1" height="1" />
 		<span class="vh-aside-auther">{Author}</span>
 		<p class="vh-aside-motto">{Motto}</p>
 		<section class="vh-aside-links">
@@ -60,7 +60,7 @@ import "../styles/components/Aside.less";
 		<div class="vh-aside-tags">
 			{
 				tags.map(i => (
-					<a href={`/tags/${i}`}>
+					<a href={`/tag/${i}`}>
 						<span>{i}</span>
 					</a>
 				))
@@ -68,23 +68,37 @@ import "../styles/components/Aside.less";
 		</div>
 	</section>
 
-	<!-- 最新文章块 -->
-	<section class="vh-aside-item articles">
-		<h3>推荐文章</h3>
-		<div class="vh-aside-articles">
-			{
-				recommendArticles.map(async i => (
-					<a href={`/article/${(await i).id}`}>
-						<p class="cover">
-							<Image src={(await i).cover} alt={(await i).title} width="1" height="1" />
-						</p>
-						<p class="info">
-							<span>{(await i).title}</span>
-							<time>{fmtTime((await i).date, "YYYY-MM-DD A")}</time>
-						</p>
-					</a>
-				))
-			}
-		</div>
+	<section class="sticky-aside">
+		<!-- 最新文章块 -->
+		{
+			recommendArticles.length && (
+				<section class="vh-aside-item articles">
+					<h3>推荐文章</h3>
+					<div class="vh-aside-articles">
+						{recommendArticles.map(async i => (
+							<a href={`/article/${(await i).id}`}>
+								<p class="cover">
+									<Image src="/assets/images/lazy-loading.webp" data-vh-lz-src={(await i).cover} alt={(await i).title} width="1" height="1" />
+								</p>
+								<p class="info">
+									<span>{(await i).title}</span>
+									<time>{fmtTime((await i).date, "YYYY-MM-DD A")}</time>
+								</p>
+							</a>
+						))}
+					</div>
+				</section>
+			)
+		}
+
+		<!-- 谷歌广告块 -->
+		{
+			GoogleAds.ad_Client && GoogleAds.asideAD_Slot && (
+				<section class="vh-aside-item ad">
+					<h3>广而告之</h3>
+					<GoogleAd className="vh-aside-ad" slotID={GoogleAds.asideAD_Slot} />
+				</section>
+			)
+		}
 	</section>
 </aside>

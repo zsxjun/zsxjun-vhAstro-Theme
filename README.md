@@ -1,82 +1,80 @@
-# vhAstro-Theme
-一款简约的 Astro 主题
+# 🍥 Astro主题 vhAstro-Theme
 
-# Astro Starter Kit: Blog
+## 🚀 vhAstro-Theme：一款基于 Astro 构建的优雅的响应式博客主题
 
-```sh
-npm i pnpm -g
+**「当极简主义遇上工程之美」**
+
+在线演示 ➡️ [https://www.vvhan.com](https://www.vvhan.com)
+官方文档 ➡️ [vhAstro-Theme](https://www.vvhan.com/article/astro-theme-vhastro-theme)
+
+![Astro主题 vhAstro-Theme](https://i0.wp.com/uxiaohan.github.io/v2/2025/03/1740899552.webp)
+
+## ✨ 功能特性
+
+- [x] 简洁的响应式设计
+- [x] 流畅的动画和页面过渡
+- [x] 两列布局
+- [x] 阅读时间
+- [x] 字数统计
+- [x] 代码块
+- [x] 语法高亮
+- [x] 图片懒加载
+- [x] 图片灯箱
+- [x] Twikoo 评论
+- [x] 本地搜索
+- [x] 标签
+- [x] 分类
+- [x] 归档
+- [x] 动态
+- [x] 关于
+- [x] 友情链接
+- [x] 推荐文章
+- [x] 谷歌广告
+- [x] 内置 404 页面
+- [x] Sitemap 支持
+- [x] RSS 支持
+- [x] 活跃的社区支持
+- [x] 广泛的现代框架兼容性
+- [x] 高效的性能优化
+- [x] 优秀的开发体验
+
+## 🚀 使用方法
+
+- 使用此模板生成新仓库或 Fork 此仓库
+- 进行本地开发，Clone 新的仓库，执行 `pnpm install` 以安装依赖
+- 若未安装 pnpm，执行 `npm install -g pnpm`
+- 通过配置文件 `src/config.ts` 自定义博客
+- 执行 pnpm newpost '文章标题' 创建新文章，并在 src/content/posts/ 目录中编辑
+- 参考官方指南将博客部署至 Vercel, Netlify,Cloudflare Pages, GitHub Pages 等
+- 部署前需编辑 `astro.config.mjs` 中的站点设置。
+
+## ⚙️ 文章格式
+
+```md
+---
+title: 标题
+categories: 分类
+tags:
+  - 标签1
+  - 标签2
+id: 文章ID
+date: 文章创建日期
+updated: 文章更新日期
+cover: "封面图URL (为空默认随机内置封面 /public/assets/images/banner)"
+recommend: false # 是否推荐文章
+hide: false # 是否隐藏文章
+---
 ```
 
-```sh
+## 💻 命令
+
+```bash
 # 安装依赖
-pnpm i
-```
-
-```sh
-# 启动开发环境
+pnpm install
+# 本地开发
 pnpm dev
-```
-
-```sh
-# 编译
+# 构建静态文件
 pnpm build
+# 创建新文章
+pnpm newpost '文章标题'
 ```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![blog](https://github.com/withastro/astro/assets/2244813/ff10799f-a816-4703-b967-c78997e8323d)
-
-Features:
-
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and OpenGraph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-├── public/
-├── src/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).

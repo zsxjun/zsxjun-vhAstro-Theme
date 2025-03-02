@@ -12,24 +12,3 @@ import "../styles/components/Search.less";
 		<section class="vh-search-list"></section>
 	</main>
 </section>
-
-<script>
-	import updateRouter from "../utils/updateRouter";
-	import { searchInputChange } from "../scripts/Search";
-	// 初始化搜索框
-	const vhSearchInit = () => {
-		const searchDOM: any = document.querySelector(".vh-header>.main>.nav-btn>span.search-btn");
-		const searchMainDOM: any = document.querySelector(".vh-header>.main>.vh-search>main");
-		const searchListDOM: any = document.querySelector(".vh-header>.main>.vh-search");
-		const addActive = () => setTimeout(() => searchListDOM.classList.add("active"));
-		const removeActive = () => setTimeout(() => searchListDOM.classList.remove("active"));
-		// 禁止默认事件
-		searchMainDOM.addEventListener("click", (e: Event) => e.stopPropagation());
-		searchDOM.addEventListener("click", addActive);
-		searchListDOM.addEventListener("click", removeActive);
-		// 搜索框初内容变化
-		searchListDOM.querySelector(".search-input>input").addEventListener("input", searchInputChange);
-	};
-	// 初始化
-	updateRouter("afterMount", vhSearchInit);
-</script>

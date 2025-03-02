@@ -1,17 +1,17 @@
-type RouterEventKey = "beforeCreate" | "created" | "beforeMount" | "mounted" | "afterMount";
-type RouterEventName = "astro:before-preparation" | "astro:after-preparation" | "astro:before-swap" | "astro:after-swap" | "astro:page-load";
+// 扩展 Window 接口以包含 swup 属性
+declare global {
+  interface Window {
+    swup: { hooks: { on: (event: string, handler: EventHandler) => void } };
+  }
+}
 type EventHandler = (event: Event) => void;
 
-// 路由事件映射
-const routerFn: Record<RouterEventKey, RouterEventName> = { beforeCreate: 'astro:before-preparation', created: 'astro:after-preparation', beforeMount: 'astro:before-swap', mounted: 'astro:after-swap', afterMount: 'astro:page-load' };
-
-const updateRouter = (key: RouterEventKey, handler: EventHandler) => {
-  const eventName = routerFn[key];
-  if (!eventName) {
-    throw new Error(`Invalid key ${key} for router update. Valid keys are: ${Object.keys(routerFn).join(", ")}.`);
-  }
-  document.removeEventListener(eventName, handler);
-  document.addEventListener(eventName, handler);
+//  进入页面时触发
+const inRouter = (handler: EventHandler) => {
+  const setup = () => window.swup.hooks.on("page:view", handler);
+  window.swup ? setup() : document.addEventListener("swup:enable", setup);
 };
+// 离开当前页面时触发
+const outRouter = (handler: EventHandler) => window.swup ? window.swup.hooks.on("visit:start", handler) : document.addEventListener("swup:enable", () => outRouter(handler));
 
-export default updateRouter;
+export { inRouter, outRouter };

@@ -1,13 +1,11 @@
-
 import vh from 'vh-plugin'
 import { $GET } from '../utils/index'
 // 图片懒加载
 import vhLzImgInit from "../scripts/vhLazyImg";
-
+// 渲染
 const LinksInit = async (data: any) => {
   const linksDOM = document.querySelector('.vh-container>.vh-links>main')
   if (!linksDOM) return;
-  vh.showLoading();
   try {
     let res = data;
     if (typeof data === 'string') {
@@ -18,8 +16,10 @@ const LinksInit = async (data: any) => {
     vhLzImgInit();
   } catch {
     vh.Toast('获取数据失败')
-  } finally {
-    vh.hideLoading();
   }
 }
-export default LinksInit;
+
+// 友情链接初始化
+import LINKS_DATA from "../page_data/Link";
+const { api, data } = LINKS_DATA;
+export default () => LinksInit(api || data)

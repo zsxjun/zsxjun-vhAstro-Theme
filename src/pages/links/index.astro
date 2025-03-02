@@ -12,26 +12,16 @@ import Comment from "../../components/Comment.astro";
 import "../../styles/Links.less";
 ---
 
-<Layout title="友情链接" description={Description} activeNav="links">
+<Layout title="友情链接" description={Description}>
 	<section class="vh-container">
-		<section class="vh-links">
+		<section class="vh-links vh-animation vh-animation-init">
 			<header class="vh-page-header">
 				<h1>朋友圈 👭</h1>
 				<p>天下快意之事莫若友。</p>
 			</header>
-			<main></main>
+			<main><section class="vh-space-loading"><span></span><span></span><span></span></section></main>
 			{Twikoo.envId && <Comment envId={Twikoo.envId} />}
 		</section>
 		<Aside />
 	</section>
-
-	<script>
-		import updateRouter from "../../utils/updateRouter";
-		import LinksInit from "../../scripts/Links";
-		// 进入页面时初始化
-		// 数据源
-		import LINKS_DATA from "../../page_data/Link";
-		const { api, data } = LINKS_DATA;
-		updateRouter("afterMount", () => LinksInit(api || data));
-	</script>
 </Layout>

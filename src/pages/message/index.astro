@@ -10,9 +10,9 @@ import Layout from "../../layouts/Layout.astro";
 import Comment from "../../components/Comment.astro";
 ---
 
-<Layout title="留言" description={Description} activeNav="message">
+<Layout title="留言" description={Description}>
 	<section class="vh-container">
-		<section class="vh-message" style="gap:1.25rem;">
+		<section class="vh-message vh-animation vh-animation-init" style="gap:1.25rem;">
 			<header class="vh-page-header">
 				<h1>留言板 🌸</h1>
 				<p>快友之事莫若谈。</p>
@@ -21,11 +21,4 @@ import Comment from "../../components/Comment.astro";
 		</section>
 		<Aside />
 	</section>
-
-	<script>
-		import updateRouter from "../../utils/updateRouter";
-		import LinksInit from "../../scripts/Links";
-		// 进入页面时初始化
-		updateRouter("afterMount", LinksInit);
-	</script>
 </Layout>

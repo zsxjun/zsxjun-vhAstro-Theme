@@ -2,7 +2,8 @@ import { LoadScript } from "../utils/index";
 // 初始化视频播放器
 declare const DPlayer: any;
 declare const Hls: any;
-const videoInit = async (videoList: any[]) => {
+// 初始化视频播放器
+export default async (videoList: any[]) => {
   const videoDOM: any = document.querySelectorAll(".vh-node.vh-vhVideo");
   if (videoDOM.length === 0) return;
   // 载入依赖
@@ -33,5 +34,3 @@ const videoInit = async (videoList: any[]) => {
     videoList.push(dp);
   });
 };
-
-export default videoInit;

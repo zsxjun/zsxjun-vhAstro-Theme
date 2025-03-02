@@ -3,7 +3,7 @@ section.article-list {
   position: relative;
   padding-bottom: 6rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1.6rem;
   width: 100%;
   height: max-content;
@@ -12,7 +12,8 @@ section.article-list {
   &>.vh-article-item {
     box-sizing: border-box;
     width: 100%;
-    height: 100%;
+    height: initial;
+    min-height: max-content;
     border: solid 1px #eee;
     border-radius: 1rem;
     background: #fff;
@@ -23,7 +24,8 @@ section.article-list {
       display: flex;
       flex-direction: column;
       width: 100%;
-      height: 100%;
+      height: max-content;
+      min-height: 100%;
       border-radius: 0.618rem;
       overflow: hidden;
       transition: background 0.16s;
@@ -53,6 +55,7 @@ section.article-list {
 
 
       &>.vh-article-desc {
+        flex: 1;
         box-sizing: border-box;
         padding: 1.25rem;
         display: flex;
@@ -163,5 +166,17 @@ section.article-list {
     position: absolute;
     bottom: 0;
     right: 0;
+  }
+}
+
+@media screen and (max-width: 1150px) {
+  section.article-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 556px) {
+  section.article-list {
+    grid-template-columns: repeat(1, 1fr);
   }
 }

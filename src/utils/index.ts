@@ -54,10 +54,7 @@ const LoadScript = (
         const value = typeof v === "boolean"
           ? (v ? "" : null)  // 布尔值处理为 HTML 标准属性格式
           : String(v);       // 其他类型转为字符串
-
-        if (value !== null) {
-          script.setAttribute(k, value);
-        }
+        if (value !== null) script.setAttribute(k, value);
       });
     }
     script.onload = () => resolve(script);
@@ -86,7 +83,6 @@ const $GET = async (url: string, headers: Record<string, string> = {}): Promise<
     return res.json();
   } catch (error) {
     console.error("GET request failed:", error);
-    throw error; // 抛出错误以便调用者处理
   }
 };
 
@@ -97,7 +93,6 @@ const $POST = async (url: string, data: Record<string, any>, headers: Record<str
     return res.json(); // 解析 JSON 数据
   } catch (error) {
     console.error("POST request failed:", error);
-    throw error; // 抛出错误以便调用者处理
   }
 };
 

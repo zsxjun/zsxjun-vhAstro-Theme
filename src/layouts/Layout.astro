@@ -1,6 +1,9 @@
 ---
-import { ClientRouter } from "astro:transitions";
-const { title, keywords, description, pagecover, activeNav } = Astro.props;
+const { title, keywords, description, pagecover } = Astro.props;
+// 网站配置
+import SITE_INFO from "../config";
+const { GoogleAds, Twikoo } = SITE_INFO;
+const { ad_Client, asideAD_Slot, articleAD_Slot } = GoogleAds;
 // Head 依赖
 import Head from "../components/Head.astro";
 // 顶部 Header
@@ -16,44 +19,24 @@ import "../styles/Layout.less";
 ---
 
 <html lang="zh-CN">
-	<Head Title={title} Keywords={keywords} Description={description} PageCover={pagecover} />
-	<ClientRouter />
-
+	<Head Title={title} Keywords={keywords} Description={description} PageCover={pagecover}>
+		<!-- TwikooJS 加载项 -->
+		{Twikoo.envId && <script is:inline async src={`https://registry.npmmirror.com/twikoo/1.6.41/files/dist/twikoo.all.min.js`} />}
+		<!-- 谷歌广告JS加载项 -->
+		{ad_Client && (asideAD_Slot || articleAD_Slot) && <script is:inline async src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ad_Client}`} crossorigin="anonymous" />}
+	</Head>
 	<body>
-		<MobileSidebar activeNav={activeNav} />
-		<Header activeNav={activeNav} />
+		<MobileSidebar />
+		<Header />
 		<main class="vh-main">
 			<slot />
 		</main>
 		<Footer />
 		<BackTop />
 		<script>
-			import updateRouter from "../utils/updateRouter";
-			// 搜索
-			import { searchFn } from "../scripts/Search";
-			// 图片懒加载
-			import vhLzImgInit from "../scripts/vhLazyImg";
-			// 加载进度条
-			import NProgress from "nprogress";
-			import "nprogress/nprogress.css";
-			NProgress.configure({ easing: "ease", speed: 500, showSpinner: false, trickleSpeed: 200, minimum: 0.3 });
-			// Han Analytics 统计
-			import SITE_INFO from "../config";
-			const { HanAnalytics } = SITE_INFO;
-			import { LoadScript } from "../utils/index";
-			// 初始化 图片懒加载初
-			updateRouter("afterMount", () => {
-				// 预加载搜索数据
-				searchFn("");
-				// 图片懒加载初始化
-				vhLzImgInit();
-				// 进入页面，进度条结束
-				NProgress.done();
-				// Han Analytics 统计
-				HanAnalytics.enable && LoadScript(`${HanAnalytics.server}/tracker.min.js`, [{ k: "data-website-id", v: HanAnalytics.siteId }]);
-			});
-			// 离开页面，进度条开始
-			updateRouter("beforeCreate", NProgress.start);
+			import InitFn from "../scripts/Init";
+			// 全局初始化
+			InitFn();
 		</script>
 	</body>
 </html>

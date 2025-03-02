@@ -11,7 +11,7 @@ export async function GET(context: any) {
 		title: Title,
 		description: Description,
 		site: context.site,
-		items: posts.map((post) => ({
+		items: posts.filter(i => !i.data.hide).map((post) => ({
 			title: post.data.title,
 			pubDate: post.data.updated || post.data.date,
 			description: getDescription(post),

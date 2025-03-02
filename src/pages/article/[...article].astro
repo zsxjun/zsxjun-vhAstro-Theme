@@ -14,10 +14,12 @@ import getCover from "../../utils/getCover";
 const ARTICLE_COVER: string = await getCover(post.data.cover);
 // 页面 Info
 import SITE_CONFIG from "../../config";
-const { Site, Title, Author, Twikoo } = SITE_CONFIG;
+const { Site, Title, Author, Twikoo, GoogleAds } = SITE_CONFIG;
 // 处理文章内容
 const description = getDescription(post);
-const { Content } = await render(post);
+const { Content, remarkPluginFrontmatter } = await render(post);
+// 文章字数和阅读时间
+const { reading_time, article_word_count } = remarkPluginFrontmatter;
 // 公共 Layout
 import Layout from "../../layouts/Layout.astro";
 // Aside组件
@@ -26,19 +28,23 @@ import Aside from "../../components/Aside.astro";
 import Copyright from "../../components/Copyright.astro";
 // 评论组件
 import Comment from "../../components/Comment.astro";
+// Google 广告组件
+import GoogleAd from "../../components/GoogleAd.astro";
 // 文章页面样式
 import "../../styles/Article.less";
 ---
 
 <Layout title={post.data.title} keywords={post.data.tags} description={description} pagecover={ARTICLE_COVER}>
 	<section class="vh-container">
-		<article class="vh-animation vh-article-main">
+		<article class="vh-article-main vh-animation vh-animation-init">
 			<header>
 				<h1>{post.data.title}</h1>
 				<div class="article-meta">
 					<span class="article-meta-item">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"> <path d="M152 24c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 40L64 64C28.7 64 0 92.7 0 128l0 16 0 48L0 448c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-256 0-48 0-16c0-35.3-28.7-64-64-64l-40 0 0-40c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 40L152 64l0-40zM48 192l80 0 0 56-80 0 0-56zm0 104l80 0 0 64-80 0 0-64zm128 0l96 0 0 64-96 0 0-64zm144 0l80 0 0 64-80 0 0-64zm80-48l-80 0 0-56 80 0 0 56zm0 160l0 40c0 8.8-7.2 16-16 16l-64 0 0-56 80 0zm-128 0l0 56-96 0 0-56 96 0zm-144 0l0 56-64 0c-8.8 0-16-7.2-16-16l0-40 80 0zM272 248l-96 0 0-56 96 0 0 56z"></path></svg>
 						<time>{fmtTime(post.data.date, "YYYY-MM-DD A")}</time>
+						<span class="count"><strong>{article_word_count}</strong>字</span>
+						<span class="time"><strong>{parseFloat((Number(reading_time) || 0).toFixed(1).replace(/\.0+$/, ""))}</strong>分钟</span>
 					</span>
 					<a class="article-meta-item" href={`/categories/${post.data.categories}`}>
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"> <path d="M40 48C26.7 48 16 58.7 16 72l0 48c0 13.3 10.7 24 24 24l48 0c13.3 0 24-10.7 24-24l0-48c0-13.3-10.7-24-24-24L40 48zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32l288 0c17.7 0 32-14.3 32-32s-14.3-32-32-32L192 64zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32l288 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-288 0zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32l288 0c17.7 0 32-14.3 32-32s-14.3-32-32-32l-288 0zM16 232l0 48c0 13.3 10.7 24 24 24l48 0c13.3 0 24-10.7 24-24l0-48c0-13.3-10.7-24-24-24l-48 0c-13.3 0-24 10.7-24 24zM40 368c-13.3 0-24 10.7-24 24l0 48c0 13.3 10.7 24 24 24l48 0c13.3 0 24-10.7 24-24l0-48c0-13.3-10.7-24-24-24l-48 0z"></path></svg>
@@ -49,41 +55,16 @@ import "../../styles/Article.less";
 			<main>
 				<Content />
 				<nav class="tag-list">
-					{post.data.tags.map((i: any) => <a href={`/tags/${i}`}>{i}</a>)}
+					{post.data.tags.map((i: any) => <a href={`/tag/${i}`}>{i}</a>)}
 				</nav>
 			</main>
 			<footer>
+				<!-- 底部谷歌广告 -->
+				{GoogleAds.ad_Client && GoogleAds.articleAD_Slot && <GoogleAd className="vh-article-ad" slotID={GoogleAds.articleAD_Slot} />}
 				<Copyright site={Site} id={post.data.id} title={post.data.title} sitename={Title} time={fmtTime(post.data.date, "YYYY-MM-DD A")} auther={Author} />
 			</footer>
 			{Twikoo.envId && <Comment envId={Twikoo.envId} />}
 		</article>
 		<Aside />
 	</section>
-
-	<script>
-		import updateRouter from "../../utils/updateRouter";
-		// 初始化文章功能脚本
-		import ArticleInit from "../../scripts/Article";
-		// 初始化视频播放器
-		import videoInit from "../../scripts/Video";
-		// 初始化音乐播放器
-		import musicInit from "../../scripts/Music";
-		// 进入页面时初始化
-		const videoList: any[] = [];
-		const MusicList: any[] = [];
-		updateRouter("afterMount", () => {
-			ArticleInit();
-			videoInit(videoList);
-			musicInit(MusicList);
-		});
-		// 页面离开卸载播放器
-		updateRouter("beforeCreate", () => {
-			// 销毁播放器
-			videoList.forEach((i: any) => i.destroy());
-			videoList.length = 0;
-			// 销毁音乐
-			MusicList.forEach((i: any) => i.destroy());
-			MusicList.length = 0;
-		});
-	</script>
 </Layout>

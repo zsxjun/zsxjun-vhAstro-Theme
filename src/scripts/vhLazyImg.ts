@@ -1,8 +1,10 @@
 
 // 图片懒加载
 import LazyLoad from "vanilla-lazyload";
-const vhLzImgInit = () => {
-  document.querySelectorAll("main>.vh-container>:not(aside) img:not(.view-image-container)").forEach((i: any) => {
+
+// 初始化图片懒加载
+export default () => {
+  document.querySelectorAll("main>.vh-container img:not(.view-image-container)").forEach((i: any) => {
     // 是否包含data-vh-lz-src
     if (!i.hasAttribute("data-vh-lz-src")) {
       i.setAttribute("data-vh-lz-src", i.getAttribute("src"));
@@ -15,5 +17,3 @@ const vhLzImgInit = () => {
     data_src: "vh-lz-src"
   });
 }
-
-export default vhLzImgInit;

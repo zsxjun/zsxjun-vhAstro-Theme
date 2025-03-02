@@ -7,7 +7,7 @@ const getSearchJson = async () => (searchJson = await $GET('/vh-search.json'))
 
 // 搜索
 const searchFn = async (value: string) => {
-  if (searchJson.length < 1) await getSearchJson();
+  if (!searchJson.length) await getSearchJson();
   // 渲染页面
   renderSearch(findAndModifyElements(searchJson, value))
 }
@@ -31,7 +31,7 @@ const findAndModifyElements = (arr: any[], keyword: string) => {
 // 渲染页面
 let searchHTML = '';
 const renderSearch = (arr: any[]) => {
-  searchHTML = arr.length < 1 ? '' : arr.map(i => `<a class="vh-search-item" href="${i.url}"><span>${i.title}</span><p>${i.content}</p></a>`).join('');
+  searchHTML = !arr.length ? '' : arr.map(i => `<a class="vh-search-item" href="${i.url}"><span>${i.title}</span><p>${i.content}</p></a>`).join('');
   document.querySelector('.vh-header>.main>.vh-search>main>.vh-search-list')!.innerHTML = searchHTML;
 }
 
@@ -43,4 +43,19 @@ const searchInputChange = (v: any) => {
   fnTimer = setTimeout(() => searchFn(value), 266);
 }
 
-export { searchFn, searchInputChange };
+// 初始化搜索框
+const vhSearchInit = () => {
+  const searchDOM: any = document.querySelector(".vh-header>.main>.nav-btn>span.search-btn");
+  const searchMainDOM: any = document.querySelector(".vh-header>.main>.vh-search>main");
+  const searchListDOM: any = document.querySelector(".vh-header>.main>.vh-search");
+  const addActive = () => setTimeout(() => searchListDOM.classList.add("active"));
+  const removeActive = () => setTimeout(() => searchListDOM.classList.remove("active"));
+  // 禁止默认事件
+  searchMainDOM.addEventListener("click", (e: Event) => e.stopPropagation());
+  searchDOM.addEventListener("click", addActive);
+  searchListDOM.addEventListener("click", removeActive);
+  // 搜索框初内容变化
+  searchListDOM.querySelector(".search-input>input").addEventListener("input", searchInputChange);
+};
+
+export { searchFn, searchInputChange, vhSearchInit };
