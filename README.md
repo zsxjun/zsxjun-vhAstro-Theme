@@ -1,4 +1,4 @@
-# 🍥 Astro主题 vhAstro-Theme
+# 🍥 Astro 主题 vhAstro-Theme
 
 ## 🚀 vhAstro-Theme：一款基于 Astro 构建的优雅的响应式博客主题
 
@@ -47,6 +47,57 @@
 - 执行 pnpm newpost '文章标题' 创建新文章，并在 src/content/posts/ 目录中编辑
 - 参考官方指南将博客部署至 Vercel, Netlify,Cloudflare Pages, GitHub Pages 等
 - 部署前需编辑 `astro.config.mjs` 中的站点设置。
+
+## 🍬 特色页面
+
+### 友情链接
+
+```js
+// 配置文件 src/page_data/Link.ts
+export default {
+	// API 接口请求优先，数据格式保持和 data 一致
+	api: "",
+	// api 为空则使用 data 静态数据
+	data: [
+		{
+			name: "韩小韩博客",
+			link: "https://www.vvhan.com",
+			avatar: "https://q1.qlogo.cn/g?b=qq&nk=1655466387&s=640",
+			descr: "运气是计划之外的东西."
+		},
+		{
+			name: "韩小韩API",
+			link: "https://api.vvhan.com",
+			avatar: "https://api.vvhan.com/static/images/logo.webp",
+			descr: "免费Web API数据接口调用服务平台."
+		}
+	]
+};
+```
+
+### 说说动态
+
+```js
+// 配置文件 src/page_data/Talking.ts
+export default {
+	// API 接口请求优先，数据格式保持和 data 一致
+	api: "",
+	// api 为空则使用 data 静态数据
+	// 注意：图片请用 vh-img-flex 类包裹
+	data: [
+		{
+			date: "2025-02-12 19:36:16",
+			tags: ["树", "夕阳"],
+			content: '好美🌲<p class="vh-img-flex"><img src="https://i0.wp.com/shp.qpic.cn/collector/1655466387/937ec070-8448-4c7b-9c8b-abd41ce892cb/0"></p>'
+		},
+		{
+			date: "2024-10-05 16:16:06",
+			tags: ["日常"],
+			content: "记录第一条说说"
+		}
+	]
+};
+```
 
 ## ⚙️ 文章格式
 
