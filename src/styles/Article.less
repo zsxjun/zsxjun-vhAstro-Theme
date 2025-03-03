@@ -180,8 +180,8 @@ section.vh-container {
     // p标签样式
     // ul标签样式
     p,
-    ul:not(.vh-vhMusic ul),
-    ol:not(.vh-vhMusic ol) {
+    ul:not(.vh-vhMusic ul, .vh-comment ul),
+    ol:not(.vh-vhMusic ol, .vh-comment ol) {
       margin: 0;
       padding: 0.618rem 0;
       font-size: 0.9375rem;
@@ -211,8 +211,8 @@ section.vh-container {
       }
     }
 
-    ul:not(.vh-vhMusic ul),
-    ol:not(.vh-vhMusic ol) {
+    ul:not(.vh-vhMusic ul, .vh-comment ul),
+    ol:not(.vh-vhMusic ol, .vh-comment ol) {
       box-sizing: border-box;
       padding-left: 1.25rem;
       display: flex;
