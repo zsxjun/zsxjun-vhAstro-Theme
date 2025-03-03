@@ -30,7 +30,8 @@ import "../styles/Base.less";
 	<meta name="site" content={Site} />
 	<meta name="author" content={Author} />
 	<meta name="generator" content={Astro.generator} />
-	<meta name="robots" content="max-image-preview:large" />
+	<meta name="robots" content="index, follow, max-image-preview:large" />
+	<meta itemprop="image" content={WebCover} />
 	<!-- Open Graph -->
 	<meta property="article:author" content={Author} />
 	<meta property="og:type" content={PageCover ? "article" : "website"} />

@@ -7,8 +7,8 @@ export default async (videoList: any[]) => {
   const videoDOM: any = document.querySelectorAll(".vh-node.vh-vhVideo");
   if (videoDOM.length === 0) return;
   // 载入依赖
+  if (typeof Hls === "undefined") await LoadScript("https://registry.npmmirror.com/hls.js/1.5.20/files/dist/hls.min.js");
   await LoadScript("https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/dplayer/1.26.0/DPlayer.min.js");
-  await LoadScript("https://registry.npmmirror.com/hls.js/1.5.20/files/dist/hls.min.js");
   videoDOM.forEach((i: any) => {
     const dp = new DPlayer({
       container: i,
@@ -21,9 +21,9 @@ export default async (videoList: any[]) => {
         customType: {
           hls: (video: any) => {
             if (Hls.isSupported()) {
-              const hls = new Hls({ enableWorker: true, autoStartLoad: true, capLevelToPlayerSize: true });
-              hls.loadSource(video.src);
-              hls.attachMedia(video);
+              dp.hls = new Hls({ enableWorker: true, autoStartLoad: true, capLevelToPlayerSize: true });
+              dp.hls.loadSource(video.src);
+              dp.hls.attachMedia(video);
             } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
               video.src = i.getAttribute("data-url");
             }

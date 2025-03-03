@@ -48,6 +48,8 @@ const indexInit = async (only: boolean = true) => {
   only && initMobileSidebar();
   // 顶部导航 Current 状态
   initLinkCurrent()
+  // 文章评论初始化
+  initComment();
   // 初始化文章功能脚本
   ArticleInit();
   // 图片懒加载初始化
@@ -56,8 +58,6 @@ const indexInit = async (only: boolean = true) => {
   initLinks();
   // 动态说说初始化
   initTalking();
-  // 文章评论初始化
-  initComment();
   // Google 广告
   GoogleAdInit();
   // 文章视频播放器初始化
