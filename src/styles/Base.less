@@ -1,6 +1,11 @@
 @import url('/assets/font/index.css');
 
 :root {
+	// 颜色
+	--vh-color-default: #EDEEF3;
+	--vh-color-default-66: #EDEEF366;
+	--vh-color-default-88: #EDEEF388;
+	--vh-color-default-99: #EDEEF399;
 	--vh-padding-top: calc(66px + 1rem);
 	--vh-main-max-width: 1388px;
 	--vh-back-top: calc((calc(100vw - 2rem) - min((100vw - 2rem), var(--vh-main-max-width))) / 2 + 1rem);
@@ -94,7 +99,7 @@ html {
 		width: 100%;
 		height: max-content;
 		border-radius: 0.5rem;
-		background: #fff;
+		background-color: #fff;
 		box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.05);
 		overflow: hidden;
 
@@ -164,12 +169,12 @@ html.is-animating {
 	overflow: hidden;
 
 	&.white {
-		background: #fff;
+		background-color: #fff;
 		box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.05);
 	}
 
 	&>span {
-		background: #000;
+		background-color: #000;
 		position: relative;
 		width: 5px;
 		height: 5px;
@@ -210,7 +215,7 @@ html.is-animating {
 		padding: 0.75rem;
 		margin-top: 1rem;
 		border-radius: 0.5rem;
-		background: #fff;
+		background-color: #fff;
 		box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.05);
 		overflow: hidden;
 

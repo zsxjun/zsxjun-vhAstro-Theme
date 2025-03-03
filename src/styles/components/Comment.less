@@ -4,7 +4,7 @@
   width: 100%;
   height: max-content;
   border-radius: 0.5rem;
-  background: #fff;
+  background-color: #fff;
   box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.05);
   overflow: hidden;
 
@@ -26,12 +26,12 @@
 
         // 其下面的code标签样式
         code {
-          background: transparent;
+          background-color: transparent;
         }
 
         :not(pre) {
           &>code {
-            background-color: #edeef3;
+            background-color: var(--vh-color-default);
             padding: .125rem .375rem;
             font-size: 0.8125rem;
           }
@@ -70,7 +70,7 @@
     // 及背景颜色
     .el-input-group__append,
     .el-input-group__prepend {
-      background-color: #F5F6F8 !important;
+      background-color: var(--vh-color-default-88) !important;
     }
 
     // 评论内容样式
@@ -126,7 +126,7 @@
                         bottom: 0;
                         width: 0;
                         height: 1px;
-                        background: #9999ff;
+                        background-color: #9999ff;
                         transition: all 0.28s;
                       }
 
@@ -161,8 +161,7 @@
                 bottom: -0.4rem;
                 width: 0.8rem;
                 height: 0.8rem;
-                background: #fff;
-                background: url("/public/assets/images/admin.svg") no-repeat;
+                background: #fff url("/public/assets/images/admin.svg") no-repeat;
                 background-size: cover;
               }
             }
@@ -201,7 +200,7 @@
                       bottom: 0;
                       width: 0;
                       height: 1px;
-                      background: #4c4948;
+                      background-color: #4c4948;
                       transition: all 0.28s;
                     }
 
@@ -218,7 +217,7 @@
                 .tk-tag {
                   color: #000;
                   border-color: #000;
-                  background: transparent;
+                  background-color: transparent;
                   border-radius: 2px;
                   font-size: 0.72rem;
                   border-radius: 4px;
@@ -264,7 +263,7 @@
                 box-sizing: border-box;
                 padding: 4px;
                 border-radius: 0.2rem;
-                background-color: #F5F6F8;
+                background-color: var(--vh-color-default-88);
               }
             }
 
