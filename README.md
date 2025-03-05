@@ -40,9 +40,9 @@
 
 ## 🚀 使用方法
 
-- 使用此模板生成新仓库或 Fork 此仓库
+- 使用此模板 [生成新仓库或 Fork 此仓库](https://github.com/new?template_name=vhAstro-Theme&template_owner=uxiaohan)
 - 进行本地开发，Clone 新的仓库，执行 `pnpm install` 以安装依赖
-- 若未安装 pnpm，执行 `npm install -g pnpm`
+- 若未安装 [pnpm](https://pnpm.io)，执行 `npm install -g pnpm`
 - 通过配置文件 `src/config.ts` 自定义博客
 - 执行 pnpm newpost '文章标题' 创建新文章，并在 src/content/posts/ 目录中编辑
 - 参考官方指南将博客部署至 Vercel, Netlify,Cloudflare Pages, GitHub Pages 等
