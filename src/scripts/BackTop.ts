@@ -12,7 +12,11 @@ const scrollChangeFn = () => {
   circle.style.strokeDashoffset = circumference - (percentage / 100) * circumference;
 };
 // 返回顶部事件
-const backTopFn = () => window.scrollTo({ top: 0, behavior: "smooth" });
+const backTopFn = () => {
+  (window as any).vhlenis && (window as any).vhlenis.stop();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  (window as any).vhlenis.start();
+};
 // 页面更新，初始化函数======
 // 回顶部DOM
 let backTop: any = document.querySelector(".vh-back-top");

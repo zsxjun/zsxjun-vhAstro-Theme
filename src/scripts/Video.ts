@@ -18,6 +18,7 @@ export default async (videoList: any[]) => {
       video: {
         url: i.getAttribute("data-url"),
         type: "auto",
+        pic: i.getAttribute("data-poster") || '',
         customType: {
           hls: (video: any) => {
             if (Hls.isSupported()) {

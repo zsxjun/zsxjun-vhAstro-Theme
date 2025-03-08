@@ -1,4 +1,3 @@
-import vh from 'vh-plugin'
 import { $GET } from '../utils/index'
 
 // 更新数据
@@ -48,7 +47,10 @@ const vhSearchInit = () => {
   const searchDOM: any = document.querySelector(".vh-header>.main>.nav-btn>span.search-btn");
   const searchMainDOM: any = document.querySelector(".vh-header>.main>.vh-search>main");
   const searchListDOM: any = document.querySelector(".vh-header>.main>.vh-search");
-  const addActive = () => setTimeout(() => searchListDOM.classList.add("active"));
+  const addActive = () => setTimeout(() => {
+    searchListDOM.classList.add("active");
+    searchListDOM.querySelector(".search-input>input").focus();
+  });
   const removeActive = () => setTimeout(() => searchListDOM.classList.remove("active"));
   // 禁止默认事件
   searchMainDOM.addEventListener("click", (e: Event) => e.stopPropagation());

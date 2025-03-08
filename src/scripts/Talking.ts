@@ -21,7 +21,7 @@ const TalkingInit = async (data: any) => {
     // 图片懒加载
     vhLzImgInit();
     // 灯箱JS初始化======
-    ViewImage && ViewImage.init(".vh-talking>main>article>.main img");
+    setTimeout(() => (ViewImage && ViewImage.init(".vh-talking>main>article>.main img, .vh-comment>.twikoo>.tk-comments img:not(.tk-avatar-img,.tk-owo-emotion,.OwO-item img)")));
     // 灯箱JS初始化======
   } catch {
     vh.Toast('获取数据失败')

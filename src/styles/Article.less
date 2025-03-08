@@ -195,11 +195,12 @@ section.vh-container {
 
       // 其下面的 a 标签样式
       a {
-        box-shadow: inset 0 -.12em #60a5fa;
+        color: #280F25;
+        box-shadow: inset 0 -.12rem #60a5fa;
         transition: box-shadow .2s ease-in-out, color .2s ease-in-out;
 
         &:hover {
-          box-shadow: inset 0 -1.5em #60a5fa7f
+          box-shadow: inset 0 -1.5rem #60a5fa66;
         }
       }
 
@@ -221,14 +222,17 @@ section.vh-container {
     }
 
     blockquote {
-      padding: 0.188rem 0.58rem;
-      border-left: 5px solid #eee;
-      border-left-color: #929292;
-      background-color: #f3f5f7;
+      margin: 1rem 0 1.618rem;
+      padding: 0 0.88rem;
+      border-left: 0.288rem solid #49b1f5;
+      background-color: rgba(73, 177, 245, 0.1);
+      border-radius: 0.618rem;
 
       &>p {
         font-size: 0.875rem;
         font-weight: 500;
+        line-height: 1.58rem;
+        color: #6A737D;
       }
     }
 
@@ -492,6 +496,7 @@ section.vh-container {
       // ::vhVideo
       &.vh-vhVideo {
         margin: 1.188rem 0;
+        box-sizing: border-box;
         width: 100%;
         aspect-ratio: 16 / 9;
         border: solid 1px #E8E8E8;
