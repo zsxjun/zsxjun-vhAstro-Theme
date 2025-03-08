@@ -1,6 +1,9 @@
 import Lenis from "lenis";
 
-(window as any).vhlenis = new Lenis();
+const IncludeClassName = ['vh-code-box', 'vh-search-list'];
+(window as any).vhlenis = new Lenis({
+  prevent: (node) => IncludeClassName.some((i: string) => node.className.includes(i))
+});
 const lenisInit = (time: any) => {
   (window as any).vhlenis.raf(time)
   requestAnimationFrame(lenisInit)
