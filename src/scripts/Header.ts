@@ -1,4 +1,4 @@
-const linkListArr = ['links', 'talking', 'archives', 'message', 'about']
+const linkListArr = ['links', 'friends', 'talking', 'archives', 'message', 'about']
 export default () => {
   const linkARR = document.querySelectorAll('.vh-link-list>a');
   if (!linkARR.length) return;

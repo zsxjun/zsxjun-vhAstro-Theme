@@ -9,6 +9,7 @@ export default {
   // 导航栏 (新窗口打开 newWindow: true)
   Navs: [
     { text: '朋友', link: '/links', icon: '/assets/images/svg/Navs/links.svg' },
+    { text: '圈子', link: '/friends', icon: '/assets/images/svg/Navs/friends.svg' },
     { text: '动态', link: '/talking', icon: '/assets/images/svg/Navs/talking.svg' },
     { text: '昔日', link: '/archives', icon: '/assets/images/svg/Navs/archives.svg' },
     { text: '留言', link: '/message', icon: '/assets/images/svg/Navs/message.svg' },
