@@ -2,7 +2,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import * as cheerio from 'cheerio';
 
-const setSearchJson = async (posts: any[]) => {
+export default async (posts: any[]) => {
   const searchIndex = posts.map(i => {
     const $ = cheerio.load(`<body>${i.rendered.html}</body>`);
     return {
@@ -26,5 +26,3 @@ const setSearchJson = async (posts: any[]) => {
     console.error('Error writing search index file:', error);
   }
 };
-
-export default setSearchJson;

@@ -14,11 +14,12 @@
   transition: opacity 0.16s ease-in-out;
   opacity: 0;
   pointer-events: none;
-  z-index: 10;
+  z-index: -1;
 
   &.active {
     opacity: 1;
     pointer-events: auto;
+    z-index: 1;
 
     &>main {
       transform: translateY(0);

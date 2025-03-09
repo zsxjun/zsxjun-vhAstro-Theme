@@ -59,10 +59,8 @@ async function* createImageIterator(dir: string) {
 
 const targetDir = path.resolve(__dirname, '../../public/assets/images/banner/'); // 目标目录
 const fileIter = createImageIterator(targetDir);
-const getCover = async (filename: string | null | undefined) => {
+export default async (filename: string | null | undefined) => {
   if (filename) return filename;
   const { value } = await fileIter.next();
   return SITE_INFO.Site + `/assets/images/banner/${value}`
 }
-
-export default getCover;

@@ -3,7 +3,6 @@ section.vh-container {
     flex: 1;
     min-width: 0;
 
-
     &>header {
       box-sizing: border-box;
       padding: 2rem 1rem 1rem;
@@ -69,6 +68,14 @@ section.vh-container {
       border-bottom-right-radius: 0.5rem;
       box-shadow: 0 12px 8px 6px rgba(7, 17, 27, 0.05);
       overflow: hidden;
+
+      .aplayer-list {
+        max-height: max-content !important;
+
+        &>ol {
+          max-height: 566px !important;
+        }
+      }
 
       &>.tag-list {
         box-sizing: border-box;

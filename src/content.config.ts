@@ -14,7 +14,8 @@ const blog = defineCollection({
 		id: z.union([z.string(), z.number()]),
 		cover: z.string().optional(),
 		recommend: z.boolean().optional(),
-		hide: z.boolean().optional()
+		hide: z.boolean().optional(),
+		top: z.boolean().optional()
 	}),
 });
 

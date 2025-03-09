@@ -2,12 +2,14 @@
 import { getCollection } from "astro:content";
 import type { GetStaticPathsOptions } from "astro";
 import setSearchJson from "../utils/vhSearch";
+import moveTopToFirst from "../utils/moveTopToFirst";
 export async function getStaticPaths(options: GetStaticPathsOptions) {
 	const { paginate } = options;
 	const posts = (await getCollection("blog")).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-	// 生成 Search JSON 文件 ======
+	// 置顶文章功能
+	moveTopToFirst(posts);
+	// 生成 Search JSON 文件
 	await setSearchJson(posts);
-	// 生成 Search JSON 文件 ======
 	// 隐藏的文章不显示
 	return paginate(
 		posts.filter(i => !i.data.hide),
