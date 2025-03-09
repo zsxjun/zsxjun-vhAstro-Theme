@@ -16,7 +16,7 @@ let clearTimer: any = null;
             (window as any).vhlenis.stop();
             clearTimer = setTimeout(() => {
               (window as any).vhlenis.start();
-            }, 566);
+            }, 288);
           }
         } catch {
           scrollStatus = null;

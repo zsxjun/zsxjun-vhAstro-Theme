@@ -1,6 +1,4 @@
 import { inRouter, outRouter } from "../utils/updateRouter";
-// 鼠标滚动阻尼效果
-import LenisInit from './Lenis';
 // 初始化文章代码块
 import codeInit from "../scripts/Code";
 // 初始化视频播放器
@@ -31,7 +29,7 @@ import initMobileSidebar from "../scripts/MobileSidebar";
 import GoogleAdInit from "../scripts/GoogleAd";
 // Han Analytics 统计
 import SITE_INFO from "../config";
-const { HanAnalytics } = SITE_INFO;
+const { HanAnalytics, LenisScroll } = SITE_INFO;
 import { LoadScript } from "../utils/index";
 
 // ============================================================
@@ -41,7 +39,7 @@ const videoList: any[] = [];
 const MusicList: any[] = [];
 const indexInit = async (only: boolean = true) => {
   // 鼠标滚动阻尼效果
-  only && LenisInit();
+  LenisScroll && only && (await import('./Lenis')).default();
   // 预加载搜索数据
   only && searchFn("");
   // 初始化搜索功能
