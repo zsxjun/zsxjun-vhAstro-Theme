@@ -24,8 +24,8 @@ const getTags = () => {
 
 // 获取推荐文章 (给文章添加 recommend: true 字段)
 const getRecommendArticles = () => {
-  const recommendList = posts.filter(i => i.data.recommend).slice(0, 6);
-  return (recommendList.length ? recommendList : posts).slice(0, 6).map(async i => ({ title: i.data.title, date: i.data.date, id: i.data.id, cover: await getCover(i.data.cover) }))
+  const recommendList = posts.filter(i => i.data.recommend);
+  return (recommendList.length ? recommendList : posts.slice(0, 6)).map(async i => ({ title: i.data.title, date: i.data.date, id: i.data.id, cover: await getCover(i.data.cover) }))
 };
 
 export { getCategories, getTags, getRecommendArticles };

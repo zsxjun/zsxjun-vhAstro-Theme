@@ -1,6 +1,4 @@
 import { inRouter, outRouter } from "../utils/updateRouter";
-// 鼠标滚动阻尼效果
-import LenisInit from './Lenis';
 // 初始化文章代码块
 import codeInit from "../scripts/Code";
 // 初始化视频播放器
@@ -30,9 +28,9 @@ import initMobileSidebar from "../scripts/MobileSidebar";
 // Google 广告
 import GoogleAdInit from "../scripts/GoogleAd";
 // Han Analytics 统计
-import SITE_INFO from "../config";
-const { HanAnalytics } = SITE_INFO;
-import { LoadScript } from "../utils/index";
+import HanAnalyticsInit from "../scripts/HanAnalytics";
+// SmoothScroll 滚动优化
+import SmoothScroll from "../scripts/Smoothscroll";
 
 // ============================================================
 
@@ -40,8 +38,6 @@ import { LoadScript } from "../utils/index";
 const videoList: any[] = [];
 const MusicList: any[] = [];
 const indexInit = async (only: boolean = true) => {
-  // 鼠标滚动阻尼效果
-  only && LenisInit();
   // 预加载搜索数据
   only && searchFn("");
   // 初始化搜索功能
@@ -52,6 +48,8 @@ const indexInit = async (only: boolean = true) => {
   only && BackTopInitFn();
   // 移动端侧边栏初始化
   only && initMobileSidebar();
+  // SmoothScroll 滚动优化
+  only && SmoothScroll();
   // 顶部导航 Current 状态
   initLinkCurrent()
   // 初始化文章代码块
@@ -68,12 +66,12 @@ const indexInit = async (only: boolean = true) => {
   initTalking();
   // Google 广告
   GoogleAdInit();
+  // Han Analytics 统计
+  HanAnalyticsInit();
   // 文章视频播放器初始化
   videoInit(videoList);
   // 文章音乐播放器初始化
   musicInit(MusicList);
-  // Han Analytics 统计
-  HanAnalytics.enable && LoadScript(`${HanAnalytics.server}/tracker.min.js`, [{ k: "data-website-id", v: HanAnalytics.siteId }]);
 };
 
 export default () => {

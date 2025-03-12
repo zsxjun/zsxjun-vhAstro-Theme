@@ -15,7 +15,7 @@ const scrollChangeFn = () => {
 const backTopFn = () => {
   (window as any).vhlenis && (window as any).vhlenis.stop();
   window.scrollTo({ top: 0, behavior: "smooth" });
-  (window as any).vhlenis.start();
+  (window as any).vhlenis && (window as any).vhlenis.start();
 };
 // 页面更新，初始化函数======
 // 回顶部DOM
