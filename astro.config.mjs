@@ -10,10 +10,11 @@ import rehypeKatex from "rehype-katex";
 import remarkDirective from "remark-directive";
 import { remarkNote, addClassNames } from './src/plugins/markdown.custom'
 // Markdown 配置================
+import SITE_INFO from './src/config';
 import swup from '@swup/astro';
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://www.vvhan.com',
+	site: SITE_INFO.Site,
 	build: { assets: 'vh_static' },
 	integrations: [
 		swup({
