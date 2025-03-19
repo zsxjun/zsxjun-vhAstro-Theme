@@ -322,6 +322,48 @@ console.log(Object.keys(obj));
 
 ##### H5
 
+
+### 数学公式
+
+```latex
+% 函数式
+${f(x)=a_nx^n+a_{n-1}x^{n-1}+a_{n-2}x^{n-2}}+\cdots$
+% 四则运算
+$2x - 5y =  8$
+$3x + 9y =  -12$
+$7x \times 2y \neq 3z$
+% 希腊字母
+$\Gamma$、$\iota$、$\sigma$、$\phi$、$\upsilon$、$\Pi$、$\Bbbk$、$\heartsuit$、$\int$、$\oint$
+% 三角函数、对数、指数
+$\tan$、$\sin$、$\cos$、$\lg$、$\arcsin$、$\arctan$、$\min$、$\max$、$\exp$、$\log$
+% 运算符
+$+$、$-$、$=$、$>$、$<$、$\times$、$\div$、$\equiv$、$\leq$、$\geq$、$\neq$
+% 集合符号
+$\cup$、$\cap$、$\in$、$\notin$、$\ni$、$\subset$、$\subseteq$、$\supset$、$\supseteq$、$\N$、$\Z$、$\R$、$\R$、$\infty$
+```
+> 函数式
+
+${f(x)=a_nx^n+a_{n-1}x^{n-1}+a_{n-2}x^{n-2}}+\cdots$
+> 四则运算
+
+$2x - 5y =  8$
+$3x + 9y =  -12$
+$7x \times 2y \neq 3z$
+
+> 希腊字母
+
+$\Gamma$、$\iota$、$\sigma$、$\phi$、$\upsilon$、$\Pi$、$\Bbbk$、$\heartsuit$、$\int$、$\oint$
+> 三角函数、对数、指数
+
+$\tan$、$\sin$、$\cos$、$\lg$、$\arcsin$、$\arctan$、$\min$、$\max$、$\exp$、$\log$
+> 运算符
+
+$+$、$-$、$=$、$>$、$<$、$\times$、$\div$、$\equiv$、$\leq$、$\geq$、$\neq$
+> 集合符号
+
+$\cup$、$\cap$、$\in$、$\notin$、$\ni$、$\subset$、$\subseteq$、$\supset$、$\supseteq$、$\N$、$\Z$、$\R$、$\R$、$\infty$
+
+
 ### 按钮组件
 
 ```md
