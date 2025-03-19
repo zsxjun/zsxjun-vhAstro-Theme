@@ -433,6 +433,19 @@ $\cup$、$\cap$、$\in$、$\notin$、$\ni$、$\subset$、$\subseteq$、$\supset$
 ![Astro主题-vhAstro-Theme](https://i0.wp.com/uxiaohan.github.io/v2/2023/03/42944511.png)
 :::
 
+### LivePhoto 组件
+
+```md
+<!-- 纵向图片 -->
+::vhLivePhoto{photo="https://static.vvhan.com/img/1.webp" video="https://static.vvhan.com/img/1.mp4" type="y"}
+<!-- 横向图片 -->
+::vhLivePhoto{photo="https://static.vvhan.com/img/2.webp" video="https://static.vvhan.com/img/2.mp4"}
+```
+
+::vhLivePhoto{photo="/public/assets/livephoto/1.webp" video="/public/assets/livephoto/1.mp4" type="y"}
+
+::vhLivePhoto{photo="/public/assets/livephoto/2.webp" video="/public/assets/livephoto/2.mp4"}
+
 ### Music 组件
 
 ```md
