@@ -45,6 +45,7 @@ top: true
 - [x] 图片灯箱
 - [x] 支持 LivePhoto
 - [x] LaTex数学公式
+- [x] 赞赏功能
 - [x] Twikoo 评论
 - [x] 本地搜索
 - [x] 标签
