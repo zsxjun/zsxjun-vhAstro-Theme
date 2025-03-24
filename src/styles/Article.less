@@ -40,16 +40,24 @@ section.vh-container {
           }
 
           &>time {
-            color: #9A9A9A;
+            color: var(--vh-black-66);
           }
 
           &>span {
             &.count {
               color: #3FA67F;
+
+              strong {
+                color: #3FA67F;
+              }
             }
 
             &.time {
               color: #E9B740;
+
+              strong {
+                color: #E9B740;
+              }
             }
           }
         }
@@ -77,6 +85,12 @@ section.vh-container {
         }
       }
 
+      .dplayer-controller {
+        span {
+          color: #fff;
+        }
+      }
+
       &>.tag-list {
         box-sizing: border-box;
         padding-top: 2rem;
@@ -95,13 +109,13 @@ section.vh-container {
           gap: 0.18rem;
           height: 1.68rem;
           width: max-content;
-          font-size: 0.875rem;
+          font-size: var(--vh-size-span);
           border-radius: 1rem;
-          background-color: var(--vh-color-default-88);
+          background-color: var(--vh-main-color-56);
           transition: background 0.16s ease-in-out, transform 0.16s ease-in-out;
 
           &:hover {
-            background-color: var(--vh-color-default);
+            background-color: var(--vh-main-color-88);
             transform: translateY(-0.18rem);
           }
 
@@ -148,7 +162,7 @@ section.vh-container {
       }
 
       h3 {
-        font-size: 1.18rem;
+        font-size: var(--vh-size-h1);
       }
 
 

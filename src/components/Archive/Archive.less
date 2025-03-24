@@ -22,14 +22,14 @@ section.vh-container {
           width: 100%;
           height: 2.5rem;
           border-radius: 1rem;
-          font-size: 1rem;
+          font-size: var(--vh-size-p);
           transition: background .16s;
 
 
           &:not(.title) {
 
             &:hover {
-              background-color: var(--vh-color-default-88);
+              background-color: var(--vh-main-color);
 
               &>i {
                 &::before {
@@ -43,9 +43,9 @@ section.vh-container {
             }
 
             &>em {
-              font-size: 0.875rem;
+              color: var(--vh-black-38);
+              font-size: var(--vh-size-span);
               font-weight: 500;
-              color: #00000080;
             }
 
             &>i {
@@ -72,17 +72,17 @@ section.vh-container {
 
 
             &>span {
-              font-size: 1rem;
-              color: #000000;
+              font-size: var(--vh-size-p);
+              color: var(--vh-black-100);
               font-weight: 600;
             }
           }
-
 
           &>em {
             flex-shrink: 0;
             width: 5.05rem;
             height: 3.75rem;
+            color: var(--vh-black-100);
             font-size: 1.5rem;
             font-weight: 600;
             line-height: 3.75rem;
@@ -115,7 +115,7 @@ section.vh-container {
             flex: 1;
             white-space: nowrap;
             overflow: hidden;
-            color: #0000004D;
+            color: var(--vh-black-66);
             font-weight: 500;
             text-overflow: ellipsis;
             transition: all .16s;
@@ -124,8 +124,8 @@ section.vh-container {
           &>cite {
             margin-left: auto;
             width: 7.8rem;
-            font-size: 0.875rem;
-            color: #0000004D;
+            font-size: var(--vh-size-span);
+            color: var(--vh-black-66);
             font-weight: 400;
             font-style: normal;
             white-space: nowrap;
@@ -173,11 +173,11 @@ section.vh-container {
 
             &:not(.title) {
               &>em {
-                font-size: 0.8rem;
+                font-size: var(--vh-size-h3);
               }
 
               &>span {
-                font-size: 0.88rem;
+                font-size: var(--vh-size-h2);
               }
             }
 
@@ -191,7 +191,7 @@ section.vh-container {
             }
 
             &>span {
-              font-size: 0.8rem;
+              font-size: var(--vh-size-h3);
             }
           }
         }

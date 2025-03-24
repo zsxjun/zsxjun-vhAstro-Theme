@@ -10,7 +10,7 @@
 
   // 评论样式
   .twikoo {
-    font-size: 0.88rem;
+    font-size: var(--vh-size-h2);
 
     img:not(.tk-avatar-img) {
       cursor: pointer;
@@ -28,7 +28,7 @@
       ol {
         li {
           color: #33333388;
-          font-size: 0.875rem;
+          font-size: var(--vh-size-span);
           line-height: 1.6;
         }
 
@@ -39,7 +39,7 @@
 
         :not(pre) {
           &>code {
-            background-color: var(--vh-color-default);
+            background-color: var(--vh-black-16);
             padding: .125rem .375rem;
             font-size: 0.8125rem;
           }
@@ -53,9 +53,9 @@
       }
 
       p {
-        color: #4c4948;
+        color: var(--vh-black-100);
         font-weight: 400;
-        font-size: 0.875rem;
+        font-size: var(--vh-size-span);
         line-height: 28px;
 
 
@@ -95,7 +95,7 @@
     // 及背景颜色
     .el-input-group__append,
     .el-input-group__prepend {
-      background-color: var(--vh-color-default-88) !important;
+      background-color: var(--vh-white-88) !important;
     }
 
     // 评论内容样式
@@ -137,8 +137,11 @@
                 &>.tk-meta {
                   &>.tk-nick {
                     position: relative;
-                    color: #9999ff;
-                    line-height: 1.18rem;
+
+                    strong {
+                      color: #9999ff;
+                      line-height: 1.18rem;
+                    }
 
                     &.tk-nick-link {
                       cursor: pointer;
@@ -212,7 +215,7 @@
 
                 &>.tk-nick {
                   position: relative;
-                  color: #4c4948;
+                  color: var(--vh-black-100);
                   line-height: 1.18rem;
 
                   &.tk-nick-link {
@@ -226,7 +229,7 @@
                       bottom: 0;
                       width: 0;
                       height: 1px;
-                      background-color: #4c4948;
+                      background-color: var(--vh-black-88);
                       transition: all 0.28s;
                     }
 
@@ -289,7 +292,7 @@
                 box-sizing: border-box;
                 padding: 4px;
                 border-radius: 0.2rem;
-                background-color: var(--vh-color-default-88);
+                background-color: var(--vh-black-6);
               }
             }
 

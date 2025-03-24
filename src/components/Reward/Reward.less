@@ -47,7 +47,7 @@
           pointer-events: auto;
         }
 
-        &>i {
+        &>img {
           pointer-events: auto;
           opacity: 1;
           transform: translate(-50%, -1rem);
@@ -66,7 +66,7 @@
         height: 100%;
       }
 
-      &>i {
+      &>img {
         opacity: 0;
         pointer-events: none;
         position: absolute;
@@ -75,6 +75,7 @@
         transform: translate(-50%, 0);
         width: calc(100vw - 1rem);
         max-width: 258px;
+        max-height: max-content;
         border-radius: 0.588rem;
         aspect-ratio: 6/8;
         background-size: cover;

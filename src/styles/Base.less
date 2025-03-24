@@ -1,11 +1,41 @@
 @import url('/assets/font/index.css');
 
 :root {
-	// 颜色
-	--vh-color-default: #EDEEF3;
-	--vh-color-default-66: #EDEEF366;
-	--vh-color-default-88: #EDEEF388;
-	--vh-color-default-99: #EDEEF399;
+	// 基础色
+	--vh-black-color: #34495e; //文字颜色
+	--vh-white-color: #EDEEF3; //背景颜色
+	--vh-black-100: rgb(from var(--vh-black-color) r g b);
+	--vh-black-88: rgb(from var(--vh-black-color) r g b / 88%);
+	--vh-black-66: rgb(from var(--vh-black-color) r g b / 66%);
+	--vh-black-56: rgb(from var(--vh-black-color) r g b / 56%);
+	--vh-black-38: rgb(from var(--vh-black-color) r g b / 38.88%);
+	--vh-black-28: rgb(from var(--vh-black-color) r g b / 28%);
+	--vh-black-16: rgb(from var(--vh-black-color) r g b / 16%);
+	--vh-black-6: rgb(from var(--vh-black-color) r g b / 6%);
+	--vh-white-100: rgb(from var(--vh-white-color) r g b);
+	--vh-white-88: rgb(from var(--vh-white-color) r g b / 88%);
+	--vh-white-66: rgb(from var(--vh-white-color) r g b / 66%);
+	--vh-white-38: rgb(from var(--vh-white-color) r g b / 38.88%);
+	--vh-white-28: rgb(from var(--vh-white-color) r g b / 28%);
+	--vh-white-16: rgb(from var(--vh-white-color) r g b / 16%);
+	--vh-white-6: rgb(from var(--vh-white-color) r g b / 6%);
+	// 主题色
+	--vh-main-color: #EDEEF3;
+	--vh-main-color-88: rgb(from var(--vh-main-color) r g b / 88%);
+	--vh-main-color-66: rgb(from var(--vh-main-color) r g b / 66%);
+	--vh-main-color-56: rgb(from var(--vh-main-color) r g b / 56%);
+	--vh-main-color-38: rgb(from var(--vh-main-color) r g b / 38.88%);
+	--vh-main-color-28: rgb(from var(--vh-main-color) r g b / 28%);
+	--vh-main-color-16: rgb(from var(--vh-main-color) r g b / 16%);
+	--vh-main-color-6: rgb(from var(--vh-main-color) r g b / 6%);
+	// 尺寸
+	--vh-size-h1: 1.125rem;
+	--vh-size-h2: 0.88rem;
+	--vh-size-h3: 0.8rem;
+	--vh-size-p: 1rem;
+	--vh-size-span: 0.875rem;
+	--vh-size-small: 0.8625rem;
+	--vh-size-mini: 0.805rem;
 	--vh-padding-top: calc(66px + 1rem);
 	--vh-main-max-width: 1388px;
 	--vh-back-top: calc((calc(100vw - 2rem) - min((100vw - 2rem), var(--vh-main-max-width))) / 2 + 1rem);
@@ -21,7 +51,6 @@ p,
 blockquote {
 	margin: 0;
 	padding: 0;
-	color: #333;
 	text-decoration: none;
 }
 
@@ -37,7 +66,6 @@ p {
 a {
 	margin: 0;
 	padding: 0;
-	color: #333;
 	text-decoration: none;
 	line-height: 1.6;
 }
@@ -57,6 +85,7 @@ img {
 }
 
 * {
+	color: var(--vh-black-100);
 	// IOS 点击阴影
 	-webkit-tap-highlight-color: transparent;
 	// 隐藏滚动条
@@ -75,8 +104,6 @@ img {
 html {
 	word-wrap: break-word;
 	overflow-wrap: break-word;
-	font-size: 16px;
-	color: #333;
 
 	&>body {
 		position: relative;
@@ -88,7 +115,7 @@ html {
 		align-items: center;
 		width: 100vw;
 		height: max-content;
-		font-family: 'MiSans', serif;
+		font-family: 'HarmonyOS Sans SC', serif;
 		font-weight: 400;
 		cursor: url(/assets/images/default.cur), default;
 		overflow-x: hidden;
@@ -112,7 +139,7 @@ html {
 
 		&>p {
 			padding: 0;
-			font-size: 1rem;
+			font-size: var(--vh-size-p);
 			line-height: 2;
 		}
 	}
