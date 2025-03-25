@@ -2,6 +2,7 @@
 import LazyLoad from "vanilla-lazyload";
 
 // 初始化图片懒加载
+let lazyLoadStatus: any = null;
 export default () => {
   document.querySelectorAll("main>.vh-container img:not(.view-image-container)").forEach((i: any) => {
     // 是否包含data-vh-lz-src
@@ -10,9 +11,6 @@ export default () => {
       i.setAttribute("src", '/assets/images/lazy-loading.webp');
     }
   });
-  new LazyLoad({
-    elements_selector: "img:not(.view-image-container)",
-    threshold: 0,
-    data_src: "vh-lz-src"
-  });
+  if (lazyLoadStatus) return lazyLoadStatus.update();
+  lazyLoadStatus = new LazyLoad({ elements_selector: "img:not(.view-image-container)", threshold: 0, data_src: "vh-lz-src" });
 }

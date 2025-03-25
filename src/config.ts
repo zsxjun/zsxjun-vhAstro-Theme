@@ -40,8 +40,19 @@ export default {
   ],
   // 博客音乐组件解析接口
   vhMusicApi: 'https://music.zhheo.com/meting-api/',
-  // 评论组件 Twikoo
-  Twikoo: { envId: '' },
+  // 评论组件（只允许同时开启一个）
+  Comment: {
+    // Twikoo 评论
+    Twikoo: {
+      enable: false,
+      envId: ''
+    },
+    // Waline 评论
+    Waline: {
+      enable: false,
+      serverURL: ''
+    }
+  },
   // Han Analytics 统计（https://github.com/uxiaohan/HanAnalytics）
   HanAnalytics: { enable: true, server: 'https://analytics.vvhan.com', siteId: 'Hello-HanHexoBlog' },
   // Google 广告

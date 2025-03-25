@@ -319,4 +319,108 @@
       }
     }
   }
+
+  div[data-waline] {
+    // 头像尺寸和圆角
+    --waline-avatar-size: 2.56rem;
+    --waline-avatar-radius: 0.58rem;
+    font-size: var(--vh-size-h2);
+
+    .wl-cards {
+      &>.wl-card-item {
+        padding-left: 0;
+
+        .wl-card {
+          padding-bottom: 0;
+
+          &>.wl-head {
+            .wl-nick {
+              color: var(--vh-black-100);
+              font-size: var(--vh-size-h2);
+              line-height: 1.18;
+
+              &::after {
+                position: absolute;
+                content: "";
+                right: 0;
+                left: auto;
+                bottom: 0;
+                width: 0;
+                height: 1px;
+                background-color: var(--vh-black-88);
+                transition: all 0.28s;
+              }
+
+              &:hover {
+                &::after {
+                  left: 0;
+                  right: auto;
+                  width: 100%;
+                }
+              }
+            }
+          }
+
+          // &>.wl-meta {}
+
+          &>.wl-content {
+            padding: 0;
+
+            p {
+              padding: 0.18rem 0;
+              color: var(--vh-black-100);
+              font-size: var(--vh-size-span);
+              line-height: 1.75rem;
+            }
+
+            &>p {
+              &:nth-of-type(1) {
+                padding: 0;
+              }
+
+              a {
+                color: var(--vh-black-100);
+                font-size: 0.76rem;
+                font-weight: 700;
+              }
+            }
+          }
+
+          &>.wl-quote {
+            border-left: solid 0.25rem var(--vh-main-color-38);
+          }
+        }
+
+        // item 中 wl-card 虚线间距
+        &>.wl-card {
+          padding-bottom: 1.25rem;
+          border-bottom-color: var(--vh-black-16);
+        }
+      }
+    }
+
+    // 图片
+    img {
+      &:not(.wl-user-avatar, .wl-reaction-list img) {
+        max-height: 66px;
+        object-fit: contain;
+        cursor: zoom-in;
+        cursor: -moz-zoom-in;
+        cursor: -webkit-zoom-in;
+      }
+
+      &.tk-owo-emotion {
+        max-height: 28px;
+        cursor: default;
+      }
+    }
+
+    a {
+      color: var(--vh-black-100);
+    }
+
+    code {
+      font-size: 0.68rem;
+    }
+  }
 }

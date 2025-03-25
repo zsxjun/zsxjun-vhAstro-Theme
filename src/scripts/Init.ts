@@ -13,6 +13,8 @@ import BackTopInitFn from "@/scripts/BackTop";
 import { searchFn, vhSearchInit } from "@/scripts/Search";
 // 图片懒加载
 import vhLzImgInit from "@/scripts/vhLazyImg";
+// 图片灯箱
+import ViewImage from "@/scripts/ViewImage";
 // 顶部导航 Current 状态
 import initLinkCurrent from "@/scripts/Header";
 // 底部网站运行时间
@@ -24,7 +26,7 @@ import initFriends from "@/scripts/Friends";
 // 动态说说初始化
 import initTalking from "@/scripts/Talking";
 // 文章评论初始化
-import initComment from "@/scripts/Comment";
+import { checkComment, commentInit } from "@/scripts/Comment";
 // 移动端侧边栏初始化
 import initMobileSidebar from "@/scripts/MobileSidebar";
 // Google 广告
@@ -39,6 +41,7 @@ import SmoothScroll from "@/scripts/Smoothscroll";
 // 页面初始化 Only
 const videoList: any[] = [];
 const MusicList: any[] = [];
+let commentLIst: any = { walineInit: null };
 const indexInit = async (only: boolean = true) => {
   // 预加载搜索数据
   only && searchFn("");
@@ -57,9 +60,11 @@ const indexInit = async (only: boolean = true) => {
   // 初始化文章代码块
   codeInit();
   // 文章评论初始化
-  initComment();
+  checkComment() && commentInit(checkComment(), commentLIst)
   // 图片懒加载初始化
   vhLzImgInit();
+  // 图片灯箱
+  only && ViewImage();
   // 友情链接初始化
   initLinks();
   // 朋友圈 RSS 初始化
@@ -85,6 +90,9 @@ export default () => {
   inRouter(() => indexInit(false));
   // 离开当前页面时触发
   outRouter(() => {
+    // 销毁评论
+    commentLIst.walineInit && commentLIst.walineInit.destroy();
+    commentLIst.walineInit = null;
     // 销毁播放器
     videoList.forEach((i: any) => i.destroy());
     videoList.length = 0;

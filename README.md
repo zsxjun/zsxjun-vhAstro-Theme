@@ -25,7 +25,7 @@
 - [x] LivePhoto
 - [x] LaTex 数学公式
 - [x] 赞赏功能
-- [x] Twikoo 评论
+- [x] 评论 - 内置【Twikoo、Waline】
 - [x] 本地搜索
 - [x] 标签
 - [x] 分类
