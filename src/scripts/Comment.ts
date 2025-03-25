@@ -14,7 +14,16 @@ const WalineFn = async (commentDOM: string, walineInit: any) => {
   import('@waline/client/waline.css');
   import('@waline/client/waline-meta.css');
   const { init } = await import('@waline/client');
-  walineInit = init({ el: commentDOM, serverURL: SITE_INFO.Comment.Waline.serverURL });
+  walineInit = init({
+    el: commentDOM, serverURL: SITE_INFO.Comment.Waline.serverURL, emoji: ['https://registry.npmmirror.com/@waline/emojis/1.3.0/files/alus', 'https://registry.npmmirror.com/@waline/emojis/1.3.0/files/bilibili', 'https://registry.npmmirror.com/@waline/emojis/1.3.0/files/bmoji', 'https://registry.npmmirror.com/@waline/emojis/1.3.0/files/qq', 'https://registry.npmmirror.com/@waline/emojis/1.3.0/files/tieba', 'https://registry.npmmirror.com/@waline/emojis/1.3.0/files/weibo', 'https://registry.npmmirror.com/@waline/emojis/1.3.0/files/soul-emoji'],
+    imageUploader: async (file: any) => {
+      const body = new FormData();
+      body.append('file', file);
+      const res = await fetch("https://wp-cdn.4ce.cn/upload", { method: "POST", body });
+      const resJson = await res.json();
+      return resJson.data.link.replace('i.imgur.com', 'wp-cdn.4ce.cn/v2');
+    }
+  });
 }
 
 // 检查是否开启评论
@@ -26,10 +35,11 @@ const checkComment = () => {
 
 // 初始化评论插件
 const commentInit = async (key: string, walineInit: any) => {
-  // 评论列表
-  const CommentList: any = { TwikooFn, WalineFn };
   // 评论 DOM 
   const commentDOM = '.vh-comment>section'
+  if (!document.querySelector(commentDOM)) return;
+  // 评论列表
+  const CommentList: any = { TwikooFn, WalineFn };
   // 初始化评论
   CommentList[`${key}Fn`](commentDOM, walineInit);
 }

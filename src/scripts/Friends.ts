@@ -1,5 +1,5 @@
 
-import vh from 'vh-plugin'
+import vh from 'vh-plugin';
 import { fmtDate } from '@/utils/index'
 import { $GET } from '@/utils/index'
 // 图片懒加载
