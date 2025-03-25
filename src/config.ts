@@ -39,7 +39,7 @@ export default {
     'https://npm.elemecdn.com'
   ],
   // 博客音乐组件解析接口
-  vhMusicApi: 'https://music.zhheo.com/meting-api/',
+  vhMusicApi: 'https://meting-dd.2333332.xyz/api',
   // 评论组件（只允许同时开启一个）
   Comment: {
     // Twikoo 评论
