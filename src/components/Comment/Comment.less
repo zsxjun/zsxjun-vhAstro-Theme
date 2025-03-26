@@ -60,7 +60,7 @@
 
 
         a {
-          color: #280F25;
+          color: var(--vh-black-56);
           box-shadow: inset 0 -.12rem #60a5fa;
           transition: box-shadow .2s ease-in-out, color .2s ease-in-out;
 
@@ -405,9 +405,18 @@
       }
     }
 
+    .wl-emoji-popup .wl-tab-wrapper {
+      max-height: 126.88px;
+    }
+
     // 图片
     img {
-      &:not(.wl-user-avatar, .wl-reaction-list img, .wl-panel img) {
+      &:not(.wl-user-avatar, .wl-reaction-list img, .wl-panel img, .tk-owo-emotion) {
+        box-sizing: border-box;
+        padding: 0.188rem;
+        margin: 0.188rem 0;
+        border: solid 1px #E8E8E8;
+        display: block;
         max-height: 66px;
         object-fit: contain;
         cursor: zoom-in;
@@ -422,7 +431,8 @@
     }
 
     a {
-      color: var(--vh-black-100);
+      color: var(--vh-black-56);
+      line-height: 1.288;
     }
 
     code {

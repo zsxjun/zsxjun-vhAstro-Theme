@@ -10,7 +10,7 @@ const ViewImgList: string[] = [
   // Twikoo 评论区图片
   ".vh-comment>.twikoo>.tk-comments img:not(.tk-avatar-img,.tk-owo-emotion,.OwO-item img)",
   // Waline 评论区图片
-  ".vh-comment div[data-waline] img:not(.wl-user-avatar,.wl-avatar img,.wl-reaction-list img,.wl-panel img)"
+  ".vh-comment div[data-waline] img:not(.wl-user-avatar,.tk-owo-emotion,.wl-avatar img,.wl-reaction-list img,.wl-panel img)"
 ];
 // 初始化
 export default async () => {
