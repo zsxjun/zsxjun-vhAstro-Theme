@@ -90,15 +90,16 @@
           color: #fff;
           background-color: #3366FF;
 
-          &>object {
-            filter: brightness(0) invert(100%);
+          &>svg {
+            stroke: #fff;
           }
         }
 
-        &>object {
-          width: 0.875rem;
-          height: 0.875rem;
-          transition: filter 0.16s ease-in-out;
+        &>svg {
+          width: auto;
+          height: 0.888rem;
+          object-fit: contain;
+          transition: stroke 0.16s ease-in-out;
         }
       }
     }

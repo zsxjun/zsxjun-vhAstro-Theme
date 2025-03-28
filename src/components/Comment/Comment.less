@@ -1,6 +1,6 @@
 .vh-comment {
   box-sizing: border-box;
-  padding: 2rem 1rem 2.88rem;
+  padding: 2rem 1rem 6.88rem;
   width: 100%;
   height: max-content;
   border-radius: 0.5rem;
@@ -326,6 +326,21 @@
     --waline-avatar-radius: 0.58rem;
     font-size: var(--vh-size-h2);
 
+    .wl-comment {
+      .wl-panel {
+        .wl-header {
+          label {
+            padding: 0.36rem 0.28rem;
+            font-size: 0.8rem;
+          }
+        }
+
+        .wl-input {
+          font-size: 0.688rem;
+        }
+      }
+    }
+
     .wl-cards {
       &>.wl-card-item {
         padding-left: 0;
@@ -411,7 +426,7 @@
 
     // 图片
     img {
-      &:not(.wl-user-avatar, .wl-reaction-list img, .wl-panel img, .tk-owo-emotion) {
+      &:not(.wl-user-avatar, .wl-reaction-list img, .wl-panel img, .tk-owo-emotion, .wl-emoji, .wl-login-nick>img) {
         box-sizing: border-box;
         padding: 0.188rem;
         margin: 0.188rem 0;
@@ -424,8 +439,10 @@
         cursor: -webkit-zoom-in;
       }
 
-      &.tk-owo-emotion {
-        max-height: 28px;
+      &.tk-owo-emotion,
+      &.wl-emoji {
+        height: 1.68rem;
+        object-fit: contain;
         cursor: default;
       }
     }

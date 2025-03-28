@@ -1,6 +1,8 @@
 ---
 import SITE_CONFIG from "@/config";
 const { Navs, Title } = SITE_CONFIG;
+// Svg 组件
+import Svg from "@/components/Svg/Svg.astro";
 // 侧边栏 MobileSidebar 样式
 import "./MobileSidebar.less";
 ---
@@ -15,7 +17,7 @@ import "./MobileSidebar.less";
 			{
 				Navs.map(i => (
 					<a class={i.link.replace("/", "")} href={i.link} target={i.target ? "_blank" : "_self"}>
-						<object data={i.icon} type="image/svg+xml" />
+						<Svg src={i.icon} />
 						{i.text}
 					</a>
 				))

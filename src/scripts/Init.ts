@@ -55,6 +55,8 @@ const indexInit = async (only: boolean = true) => {
   only && initMobileSidebar();
   // SmoothScroll 滚动优化
   only && SmoothScroll();
+  // 图片灯箱
+  only && ViewImage();
   // 顶部导航 Current 状态
   initLinkCurrent()
   // 初始化文章代码块
@@ -63,8 +65,6 @@ const indexInit = async (only: boolean = true) => {
   checkComment() && commentInit(checkComment(), commentLIst)
   // 图片懒加载初始化
   vhLzImgInit();
-  // 图片灯箱
-  only && ViewImage();
   // 友情链接初始化
   initLinks();
   // 朋友圈 RSS 初始化
