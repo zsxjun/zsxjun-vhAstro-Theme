@@ -4,13 +4,13 @@
   width: 100%;
   height: max-content;
   border-radius: 0.5rem;
-  background-color: #fff;
-  box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.05);
+  background-color: var(--vh-white-color);
+  box-shadow: var(--vh-box-shadow);
   overflow: hidden;
 
   // 评论样式
   .twikoo {
-    font-size: var(--vh-size-h2);
+    font-size: 0.88rem;
 
     img:not(.tk-avatar-img) {
       cursor: pointer;
@@ -28,7 +28,7 @@
       ol {
         li {
           color: #33333388;
-          font-size: var(--vh-size-span);
+          font-size: 0.875rem;
           line-height: 1.6;
         }
 
@@ -39,7 +39,7 @@
 
         :not(pre) {
           &>code {
-            background-color: var(--vh-black-16);
+            background-color: var(--vh-font-16);
             padding: .125rem .375rem;
             font-size: 0.8125rem;
           }
@@ -53,19 +53,19 @@
       }
 
       p {
-        color: var(--vh-black-100);
+        color: var(--vh-font-color);
         font-weight: 400;
-        font-size: var(--vh-size-span);
+        font-size: 0.875rem;
         line-height: 28px;
 
 
         a {
-          color: var(--vh-black-56);
-          box-shadow: inset 0 -.12rem #60a5fa;
+          color: var(--vh-font-56);
+          box-shadow: inset 0 -.12rem var(--vh-main-color);
           transition: box-shadow .2s ease-in-out, color .2s ease-in-out;
 
           &:hover {
-            box-shadow: inset 0 -1.5rem #60a5fa66;
+            box-shadow: inset 0 -1.5rem var(--vh-main-color-38);
           }
         }
       }
@@ -78,7 +78,7 @@
       }
 
       p {
-        color: #fff;
+        color: var(--vh-white-color);
       }
 
       .tk-admin-warn p {
@@ -190,7 +190,7 @@
                 width: 0.8rem;
                 height: 0.8rem;
                 border-radius: 50%;
-                background: #fff url("/public/assets/images/admin.svg") no-repeat;
+                background: var(--vh-white-color) url("/public/assets/images/admin.svg") no-repeat;
                 background-size: cover;
               }
             }
@@ -215,7 +215,7 @@
 
                 &>.tk-nick {
                   position: relative;
-                  color: var(--vh-black-100);
+                  color: var(--vh-font-color);
                   line-height: 1.18rem;
 
                   &.tk-nick-link {
@@ -229,7 +229,7 @@
                       bottom: 0;
                       width: 0;
                       height: 1px;
-                      background-color: var(--vh-black-88);
+                      background-color: var(--vh-font-88);
                       transition: all 0.28s;
                     }
 
@@ -292,7 +292,7 @@
                 box-sizing: border-box;
                 padding: 4px;
                 border-radius: 0.2rem;
-                background-color: var(--vh-black-6);
+                background-color: var(--vh-font-6);
               }
             }
 
@@ -324,7 +324,7 @@
     // 头像尺寸和圆角
     --waline-avatar-size: 2.56rem;
     --waline-avatar-radius: 0.58rem;
-    font-size: var(--vh-size-h2);
+    font-size: 0.88rem;
 
     .wl-comment {
       .wl-panel {
@@ -350,8 +350,8 @@
 
           &>.wl-head {
             .wl-nick {
-              color: var(--vh-black-100);
-              font-size: var(--vh-size-h2);
+              color: var(--vh-font-color);
+              font-size: 0.88rem;
               line-height: 1.18;
 
               &::after {
@@ -362,7 +362,7 @@
                 bottom: 0;
                 width: 0;
                 height: 1px;
-                background-color: var(--vh-black-88);
+                background-color: var(--vh-font-88);
                 transition: all 0.28s;
               }
 
@@ -389,8 +389,8 @@
 
             p {
               padding: 0.18rem 0;
-              color: var(--vh-black-100);
-              font-size: var(--vh-size-span);
+              color: var(--vh-font-color);
+              font-size: 0.875rem;
               line-height: 1.75rem;
             }
 
@@ -400,7 +400,7 @@
               }
 
               a {
-                color: var(--vh-black-100);
+                color: var(--vh-font-color);
                 font-size: 0.76rem;
                 font-weight: 700;
               }
@@ -415,7 +415,7 @@
         // item 中 wl-card 虚线间距
         &>.wl-card {
           padding-bottom: 1.25rem;
-          border-bottom-color: var(--vh-black-16);
+          border-bottom-color: var(--vh-font-16);
         }
       }
     }
@@ -448,7 +448,7 @@
     }
 
     a {
-      color: var(--vh-black-56);
+      color: var(--vh-font-56);
       line-height: 1.288;
     }
 

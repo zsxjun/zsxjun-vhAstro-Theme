@@ -26,21 +26,18 @@ const { Description } = SITE_CONFIG;
 import ArticleCard from "@/components/ArticleCard/ArticleCard.astro";
 // 公共 Layout
 import Layout from "@/layouts/Layout/Layout.astro";
-// Aside组件
-import Aside from "@/components/Aside/Aside.astro";
 // 分页组件
 import Pagination from "@/components/Pagination/Pagination.astro";
 const currentPage = page_data.url.current.replace("/", "");
 ---
 
 <Layout title={currentPage ? `第${currentPage}页文章` : ""} description={Description}>
-	<section class="vh-container">
-		<section class="article-list vh-animation vh-animation-init">
+	<section class="article-list-main">
+		<section class="article-list">
 			<!-- 文章列表 -->
 			{data.map((post, index) => <ArticleCard post={post} index={index} />)}
 			<!-- 分页 -->
-			<Pagination data={page_data.url} />
 		</section>
-		<Aside />
+		<Pagination data={page_data.url} />
 	</section>
 </Layout>

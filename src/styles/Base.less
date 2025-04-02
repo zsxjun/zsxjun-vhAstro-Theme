@@ -1,34 +1,30 @@
 @import url('/assets/font/index.css');
 
 :root {
-	// 基础色
-	--vh-black-color: #34495e; //文字颜色
-	--vh-white-color: #EDEEF3; //背景颜色
-	--vh-black-100: rgb(from var(--vh-black-color) r g b);
-	--vh-black-88: rgb(from var(--vh-black-color) r g b / 88%);
-	--vh-black-66: rgb(from var(--vh-black-color) r g b / 66%);
-	--vh-black-56: rgb(from var(--vh-black-color) r g b / 56%);
-	--vh-black-38: rgb(from var(--vh-black-color) r g b / 38.88%);
-	--vh-black-28: rgb(from var(--vh-black-color) r g b / 28%);
-	--vh-black-16: rgb(from var(--vh-black-color) r g b / 16%);
-	--vh-black-6: rgb(from var(--vh-black-color) r g b / 6%);
-	--vh-white-100: rgb(from var(--vh-white-color) r g b);
-	--vh-white-88: rgb(from var(--vh-white-color) r g b / 88%);
-	--vh-white-66: rgb(from var(--vh-white-color) r g b / 66%);
-	--vh-white-38: rgb(from var(--vh-white-color) r g b / 38.88%);
-	--vh-white-28: rgb(from var(--vh-white-color) r g b / 28%);
-	--vh-white-16: rgb(from var(--vh-white-color) r g b / 16%);
-	--vh-white-6: rgb(from var(--vh-white-color) r g b / 6%);
+	// 白色颜色
+	--vh-white-color: #fff;
+	// BoxShadow
+	--vh-box-shadow: 0 3px 8px 6px #07111b0d;
+	// Body 背景颜色
+	--vh-body-bg: #F8F8F8;
+	// Back Top 按钮位置
+	--vh-back-top: calc((calc(100vw - 2rem) - min((100vw - 2rem), var(--vh-main-max-width))) / 2);
+	// Main Header 封面高度
+	--vh-main-header-height: 38.88rem;
+	// 字体颜色
+	--vh-font-88: rgb(from var(--vh-font-color) r g b / 88%);
+	--vh-font-66: rgb(from var(--vh-font-color) r g b / 66%);
+	--vh-font-56: rgb(from var(--vh-font-color) r g b / 56%);
+	--vh-font-28: rgb(from var(--vh-font-color) r g b / 28%);
+	--vh-font-16: rgb(from var(--vh-font-color) r g b / 16%);
+	--vh-font-6: rgb(from var(--vh-font-color) r g b / 6%);
 	// 主题色
-	--vh-main-color: #EDEEF3;
 	--vh-main-color-88: rgb(from var(--vh-main-color) r g b / 88%);
 	--vh-main-color-66: rgb(from var(--vh-main-color) r g b / 66%);
 	--vh-main-color-56: rgb(from var(--vh-main-color) r g b / 56%);
-	--vh-main-color-38: rgb(from var(--vh-main-color) r g b / 38.88%);
 	--vh-main-color-28: rgb(from var(--vh-main-color) r g b / 28%);
 	--vh-main-color-16: rgb(from var(--vh-main-color) r g b / 16%);
 	--vh-main-color-6: rgb(from var(--vh-main-color) r g b / 6%);
-
 	// Info 
 	--vh-info: #3253b4;
 	--vh-info-hover: #3253b418;
@@ -44,67 +40,9 @@
 	// Import
 	--vh-import: #B984DF;
 	--vh-import-hover: #B984DF18;
-
-
-
-	// 尺寸
-	--vh-size-h1: 1.125rem;
-	--vh-size-h2: 0.88rem;
-	--vh-size-h3: 0.8rem;
-	--vh-size-p: 1rem;
-	--vh-size-span: 0.875rem;
-	--vh-size-small: 0.8625rem;
-	--vh-size-mini: 0.805rem;
-	--vh-padding-top: calc(66px + 1rem);
-	--vh-main-max-width: 1388px;
-	--vh-back-top: calc((calc(100vw - 2rem) - min((100vw - 2rem), var(--vh-main-max-width))) / 2 + 1rem);
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote {
-	margin: 0;
-	padding: 0;
-	text-decoration: none;
-}
-
-span {
-	text-decoration: none !important;
-}
-
-p {
-	line-height: 2;
-}
-
-
-a {
-	margin: 0;
-	padding: 0;
-	text-decoration: none;
-	line-height: 1.6;
-}
-
-pre,
-code {
-	margin: 0;
-	padding: 0;
-	font-family: 'SF Mono' !important;
-	font-weight: normal;
-}
-
-img {
-	max-width: 100%;
-	max-height: 100%;
-	overflow: hidden;
 }
 
 * {
-	color: var(--vh-black-100);
 	// IOS 点击阴影
 	-webkit-tap-highlight-color: transparent;
 	// 隐藏滚动条
@@ -112,68 +50,126 @@ img {
 	-ms-overflow-style: none;
 	// 平滑滚动
 	scroll-behavior: smooth;
+	// 去除下划线
+	text-decoration: none;
 	// 消除边框
-	outline: none; // 隐藏滚动条
+	outline: none;
 
+	// 隐藏滚动条
 	::-webkit-scrollbar {
 		display: none;
 	}
 }
 
+// 设置文本选中颜色
+::selection,
+::-webkit-selection {
+	color: #fff;
+	background: var(--vh-main-color-88);
+}
+
 html {
 	word-wrap: break-word;
 	overflow-wrap: break-word;
+	font-size: 16px;
+	font-weight: 400;
 
 	&>body {
 		position: relative;
-		margin: 0;
 		box-sizing: border-box;
-		padding: var(--vh-padding-top) 0.5rem 0;
 		display: flex;
 		flex-direction: column;
-		align-items: center;
 		width: 100vw;
 		height: max-content;
+		color: var(--vh-font-color);
 		font-family: 'HarmonyOS Sans SC', serif;
 		font-weight: 400;
-		cursor: url(/assets/images/default.cur), default;
+		cursor: url('/assets/images/default.cur'), default;
 		overflow-x: hidden;
+
+		&::before {
+			content: "";
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 100vw;
+			height: 100vh;
+			background: #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='8' height='8' fill='none' stroke='rgb(0 0 0 / 0.1)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+			z-index: -1;
+		}
+
+		&>footer {
+			box-sizing: border-box;
+			width: 100%;
+			height: max-content;
+		}
+	}
+}
+
+pre,
+code {
+	font-family: 'SF Mono' !important;
+}
+
+a {
+	color: var(--vh-font-color);
+}
+
+img[data-vh-lz-src] {
+	transition: all 0.18s ease-in;
+
+	&:not(.loaded) {
+		filter: blur(0.88rem) brightness(1);
+	}
+}
+
+
+// ===================================================================== Other 
+// 悬浮背景 a 标签
+.vh-hover {
+	position: relative;
+	transition: all 0.18s ease-in-out;
+
+	&:hover,
+	&.active {
+		color: var(--vh-white-color) !important;
+
+		&::before {
+			transform: scale(1.2);
+			opacity: 1;
+		}
 	}
 
-	// 其他页面Header 封装
-	header.vh-page-header {
-		box-sizing: border-box;
-		padding: 1rem;
+	&::before {
+		content: "";
+		position: absolute;
+		left: 0;
+		top: 0;
 		width: 100%;
-		height: max-content;
-		border-radius: 0.5rem;
-		background-color: #fff;
-		box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.05);
-		overflow: hidden;
-
-		&>h1 {
-			padding: 0;
-			font-size: 1.5rem;
-		}
-
-		&>p {
-			padding: 0;
-			font-size: var(--vh-size-p);
-			line-height: 2;
-		}
+		height: 100%;
+		border-radius: .5rem;
+		background-color: var(--vh-main-color-88);
+		opacity: 0;
+		z-index: -1;
+		transition: all 0.18s ease-in-out;
 	}
 }
 
-// 设置图片懒加载样式
-main>.vh-container {
-	img[data-vh-lz-src] {
-		transition: all 0.18s ease-in;
-
-		&:not(.loaded) {
-			filter: blur(0.88rem) brightness(1);
-		}
-	}
+// 超出一行省略
+.vh-ellipsis {
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
 }
+
+// 超出两行省略
+.vh-ellipsis-2 {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+}
+
 
 @media screen and (max-width: 768px) {
 	// 手机端 禁止选择
@@ -183,12 +179,24 @@ main>.vh-container {
 	-ms-user-select: none;
 }
 
+// 设置图片懒加载样式
+.main-inner>.main-inner-content,
+.avatar {
+	img[data-vh-lz-src] {
+		transition: all 0.18s ease-in;
+
+		&:not(.loaded) {
+			filter: blur(0.88rem) brightness(1);
+		}
+	}
+}
+
 // 首次加载效果
 .vh-animation.vh-animation-init {
 	opacity: 0;
 	animation: 300ms vh-init-show;
 	animation-fill-mode: forwards;
-	transition: opacity 0.16s ease-in-out, transform 0.16s ease-in-out;
+	transition: opacity 0.18s ease-in-out, transform 0.18s ease-in-out;
 }
 
 // swup 动画效果
@@ -250,7 +258,6 @@ html.is-animating {
 }
 
 // 谷歌广告模块
-
 .vh-ad {
 	position: relative;
 	display: block;
@@ -265,8 +272,8 @@ html.is-animating {
 		box-sizing: border-box;
 		padding: 0.75rem;
 		border-radius: 0.5rem;
-		background-color: #fff;
-		box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.05);
+		background-color: var(--vh-white-color);
+		box-shadow: var(--vh-box-shadow);
 		overflow: hidden;
 
 		&::before {
@@ -328,5 +335,51 @@ html.is-animating {
 
 	0% {
 		height: 5px
+	}
+}
+
+
+// 动画效果
+@keyframes talking-tag-active {
+	0% {
+		transform: translateX(0);
+	}
+
+	25% {
+		transform: translateX(-1.66px);
+	}
+
+	50% {
+		transform: translateX(1.66px);
+	}
+
+	75% {
+		transform: translateX(-1.66px);
+	}
+
+	100% {
+		transform: translateX(0);
+	}
+}
+
+@-webkit-keyframes talking-tag-active {
+	0% {
+		transform: translateX(0);
+	}
+
+	25% {
+		transform: translateX(-1.66px);
+	}
+
+	50% {
+		transform: translateX(1.66px);
+	}
+
+	75% {
+		transform: translateX(-1.66px);
+	}
+
+	100% {
+		transform: translateX(0);
 	}
 }

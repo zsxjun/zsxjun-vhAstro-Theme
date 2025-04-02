@@ -4,11 +4,12 @@
   &>main {
     box-sizing: border-box;
     padding: 1rem;
-    border-radius: 0.5rem;
-    background-color: #fff;
-    box-shadow: 0 3px 8px 6px rgba(7, 17, 27, 0.05);
     width: 100%;
+    height: max-content;
     min-height: 5.5rem;
+    border-radius: 0.5rem;
+    background-color: var(--vh-white-color);
+    box-shadow: var(--vh-box-shadow);
     overflow: hidden;
 
     &>h3 {
@@ -16,7 +17,7 @@
       padding: 0.88rem 0;
       width: 100%;
       height: max-content;
-      font-size: var(--vh-size-h1);
+      font-size: 1.125rem;
     }
 
     &>.language-tool {
@@ -34,7 +35,7 @@
         height: 2rem;
         line-height: 1;
         overflow: hidden;
-        transition: transform 0.16s ease-in-out;
+        transition: transform 0.18s ease-in-out;
 
         &>img {
           height: calc(100% - 1px);

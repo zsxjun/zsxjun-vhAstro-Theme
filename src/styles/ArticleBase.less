@@ -1,4 +1,4 @@
-.vh-container {
+.main-inner {
 
   &>section,
   &>article {
@@ -12,7 +12,7 @@
       display: inline-block;
       box-sizing: border-box;
       margin: 1.666rem 0 0.36rem;
-      font-size: var(--vh-size-p);
+      font-size: 1rem;
       width: 100%;
       max-width: 100%;
       word-break: break-all;
@@ -26,8 +26,8 @@
       &::before {
         padding-right: 0.56rem;
         content: "#";
-        color: var(--vh-black-38);
-        transition: color 0.16s ease-in-out;
+        color: var(--vh-font-28);
+        transition: color 0.18s ease-in-out;
       }
     }
 
@@ -54,7 +54,7 @@
     }
 
     h4 {
-      font-size: var(--vh-size-h1);
+      font-size: 1.125rem;
     }
 
     // p标签样式
@@ -68,25 +68,25 @@
       line-height: 1.6;
 
       li {
-        color: var(--vh-black-66);
-        font-size: var(--vh-size-span);
+        color: var(--vh-font-66);
+        font-size: 0.875rem;
         line-height: 1.6;
       }
 
       // 其下面的 a 标签样式
       a {
-        color: var(--vh-black-56);
-        box-shadow: inset 0 -.12rem #60a5fa;
+        color: var(--vh-font-56);
+        box-shadow: inset 0 -.12rem var(--vh-main-color);
         transition: box-shadow .2s ease-in-out, color .2s ease-in-out;
 
         &:hover {
-          box-shadow: inset 0 -1.5rem #60a5fa66;
+          box-shadow: inset 0 -1.5rem var(--vh-main-color-28);
         }
       }
 
       // 其下面的code标签样式
       code {
-        background-color: var(--vh-black-16);
+        background-color: var(--vh-font-16);
         padding: .125rem .375rem;
         font-size: 0.8125rem;
       }
@@ -109,7 +109,7 @@
       border-radius: 0.618rem;
 
       &>p {
-        font-size: var(--vh-size-span);
+        font-size: 0.875rem;
         font-weight: 500;
         line-height: 1.58rem;
         color: #6A737D;
@@ -124,14 +124,14 @@
       // border-collapse: collapse;
       border-spacing: 0;
       font-size: 0.9rem;
-      background-color: #fff;
+      background-color: var(--vh-white-color);
       border: 1px solid #EEEEEE;
       border-radius: 0.38rem;
       overflow: hidden;
 
       a {
         color: #49B1F5;
-        transition: all .16s;
+        transition: all .18s;
 
         &:hover {
           color: #1b99ee;
@@ -165,7 +165,7 @@
       }
 
       tr {
-        transition: background-color 0.16s ease-in-out;
+        transition: background-color 0.18s ease-in-out;
 
         &:nth-last-of-type(1) {
           td {
@@ -180,7 +180,7 @@
 
       // 其下面的code标签样式
       code {
-        background-color: var(--vh-black-16);
+        background-color: var(--vh-font-16);
         padding: .125rem .375rem;
         font-size: 0.8125rem;
       }
@@ -242,8 +242,9 @@
         }
 
         p {
-          font-size: var(--vh-size-span);
-          line-height: 2;
+          padding: 0.38rem 0;
+          font-size: 0.875rem;
+          line-height: 1.388rem;
           font-weight: 500;
         }
       }
@@ -261,7 +262,7 @@
         height: 2.28rem;
         border: solid 1px #333;
         border-radius: 0.28rem;
-        background-color: #fff;
+        background-color: var(--vh-white-color);
         cursor: pointer;
         transition: background-color 0.18s ease-in-out;
         z-index: 1;
@@ -270,31 +271,31 @@
 
         &:hover {
           &::before {
-            height: 100%;
+            left: 0;
+            width: 100%;
           }
         }
-
 
         &::after {
           flex-shrink: 0;
           content: '';
           background-color: #000;
-          mask: url('data:image/svg+xml,%3Csvg%20%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20%20width%3D%22100%25%22%20%20height%3D%22100%25%22%20%20viewBox%3D%220%200%2024%2024%22%20%20fill%3D%22none%22%20%20stroke%3D%22currentColor%22%20%20stroke-width%3D%222%22%20%20stroke-linecap%3D%22round%22%20%20stroke-linejoin%3D%22round%22%20%20class%3D%22icon%20icon-tabler%20icons-tabler-outline%20icon-tabler-unlink%22%3E%3Cpath%20stroke%3D%22none%22%20d%3D%22M0%200h24v24H0z%22%20fill%3D%22none%22%2F%3E%3Cpath%20d%3D%22M17%2022v-2%22%20%2F%3E%3Cpath%20d%3D%22M9%2015l6%20-6%22%20%2F%3E%3Cpath%20d%3D%22M11%206l.463%20-.536a5%205%200%200%201%207.071%207.072l-.534%20.464%22%20%2F%3E%3Cpath%20d%3D%22M13%2018l-.397%20.534a5.068%205.068%200%200%201%20-7.127%200a4.972%204.972%200%200%201%200%20-7.071l.524%20-.463%22%20%2F%3E%3Cpath%20d%3D%22M20%2017h2%22%20%2F%3E%3Cpath%20d%3D%22M2%207h2%22%20%2F%3E%3Cpath%20d%3D%22M7%202v2%22%20%2F%3E%3C%2Fsvg%3E') no-repeat center center;
+          mask: url('data:image/svg+xml,%3Csvg%20%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20%20width%3D%22100%25%22%20%20height%3D%22100%25%22%20%20viewBox%3D%220%200%2024%2024%22%20%20fill%3D%22none%22%20%20stroke%3D%22currentColor%22%20%20stroke-width%3D%222%22%20%20stroke-linecap%3D%22round%22%20%20stroke-linejoin%3D%22round%22%3E%3Cpath%20stroke%3D%22none%22%20d%3D%22M0%200h24v24H0z%22%20fill%3D%22none%22%2F%3E%3Cpath%20d%3D%22M17%2022v-2%22%20%2F%3E%3Cpath%20d%3D%22M9%2015l6%20-6%22%20%2F%3E%3Cpath%20d%3D%22M11%206l.463%20-.536a5%205%200%200%201%207.071%207.072l-.534%20.464%22%20%2F%3E%3Cpath%20d%3D%22M13%2018l-.397%20.534a5.068%205.068%200%200%201%20-7.127%200a4.972%204.972%200%200%201%200%20-7.071l.524%20-.463%22%20%2F%3E%3Cpath%20d%3D%22M20%2017h2%22%20%2F%3E%3Cpath%20d%3D%22M2%207h2%22%20%2F%3E%3Cpath%20d%3D%22M7%202v2%22%20%2F%3E%3C%2Fsvg%3E') no-repeat center center;
           background-size: contain;
           width: 1.18rem;
-          height:1.18rem;
+          height: 1.18rem;
           overflow: hidden;
         }
 
         &::before {
           content: '';
           position: absolute;
-          left: 0;
-          bottom: 0;
-          width: 100%;
-          height: 0;
-          background-color: var(--vh-main-color);
-          transition: height 0.16s ease-in-out;
+          right: 0;
+          top: 0;
+          width: 0;
+          height: 100%;
+          background-color: var(--vh-font-6);
+          transition: width 0.18s ease-in-out;
           z-index: -1;
         }
 
@@ -302,7 +303,7 @@
           box-sizing: border-box;
           color: #000;
           font-weight: 600;
-          font-size: var(--vh-size-span);
+          font-size: 0.875rem;
           white-space: nowrap;
           text-overflow: ellipsis;
           overflow: hidden;
@@ -316,7 +317,7 @@
             color: var(--vh-success);
           }
 
-          &::before{
+          &::before {
             background-color: var(--vh-success-hover);
           }
 
@@ -332,7 +333,7 @@
             color: var(--vh-info);
           }
 
-          &::before{
+          &::before {
             background-color: var(--vh-info-hover);
           }
 
@@ -348,7 +349,7 @@
             color: var(--vh-warning);
           }
 
-          &::before{
+          &::before {
             background-color: var(--vh-warning-hover);
           }
 
@@ -364,7 +365,7 @@
             color: var(--vh-error);
           }
 
-          &::before{
+          &::before {
             background-color: var(--vh-error-hover);
           }
 
@@ -380,7 +381,7 @@
             color: var(--vh-import);
           }
 
-          &::before{
+          &::before {
             background-color: var(--vh-import-hover);
           }
 
@@ -464,7 +465,7 @@
         justify-content: center;
         width: 100%;
         aspect-ratio: 16 / 9;
-        background: #fff url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='8' height='8' fill='none' stroke='rgb(0 0 0 / 0.1)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
+        background: var(--vh-white-color) url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32' width='8' height='8' fill='none' stroke='rgb(0 0 0 / 0.1)'%3e%3cpath d='M0 .5H31.5V32'/%3e%3c/svg%3e");
 
         &.vhLivePhoto-y {
           aspect-ratio: 9 / 16;
@@ -524,7 +525,7 @@
         overflow: hidden;
         cursor: pointer;
         opacity: 0.66;
-        transition: all .16s;
+        transition: all .18s;
 
         &:hover {
           opacity: 1;
@@ -539,7 +540,7 @@
           background: rgba(125, 125, 125, .2) url('data:image/svg+xml,%0A%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%20-960%20960%20960%22%3E%3Cpath%20fill%3D%22%23808080%22%20d%3D%22M368.37-237.37q-34.48%200-58.74-24.26-24.26-24.26-24.26-58.74v-474.26q0-34.48%2024.26-58.74%2024.26-24.26%2058.74-24.26h378.26q34.48%200%2058.74%2024.26%2024.26%2024.26%2024.26%2058.74v474.26q0%2034.48-24.26%2058.74-24.26%2024.26-58.74%2024.26H368.37Zm0-83h378.26v-474.26H368.37v474.26Zm-155%20238q-34.48%200-58.74-24.26-24.26-24.26-24.26-58.74v-515.76q0-17.45%2011.96-29.48%2011.97-12.02%2029.33-12.02t29.54%2012.02q12.17%2012.03%2012.17%2029.48v515.76h419.76q17.45%200%2029.48%2011.96%2012.02%2011.97%2012.02%2029.33t-12.02%2029.54q-12.03%2012.17-29.48%2012.17H213.37Zm155-238v-474.26%20474.26Z%22%2F%3E%3C%2Fsvg%3E') no-repeat center center;
           background-size: 1.16rem 1.16rem;
           opacity: 0;
-          transition: opacity 0.16s;
+          transition: opacity 0.18s;
         }
 
         &::after {
@@ -572,7 +573,7 @@
         border-radius: 0.618rem;
         height: max-content;
         max-height: 888px;
-        background-color: var(--vh-white-66) !important;
+        background-color: #F3F4F7 !important;
 
         code {
           box-sizing: border-box;
@@ -580,10 +581,15 @@
 
           &>span {
             box-sizing: border-box;
-            font-size: var(--vh-size-span);
+            font-size: 0.875rem;
             line-height: 1.66;
 
+            &>span {
+              text-decoration: none !important;
+            }
+
             &::before {
+              box-sizing: content-box;
               counter-increment: line;
               content: counter(line);
               display: inline-block;
@@ -595,7 +601,6 @@
               text-align: center;
               user-select: none;
             }
-
           }
         }
       }

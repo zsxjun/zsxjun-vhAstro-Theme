@@ -13,13 +13,13 @@ import "./ArticleCard.less";
 
 <article class="vh-article-item vh-animation vh-animation-init">
 	<a class={`vh-article-link${post.data.top ? " active" : ""}`} href={`/article/${post.data.id}`}>
-		<section class="vh-article-banner"><Image src="/assets/images/lazy-loading.webp" data-vh-lz-src={ARTICLE_COVER} alt={post.data.title} width="10" height="10" /></section>
+		<section class="vh-article-banner"><Image src="/assets/images/lazy-loading.webp" data-vh-lz-src={ARTICLE_COVER} alt={post.data.title} width="1" height="1" /></section>
 		<section class="vh-article-desc">
 			<header>
-				<span class={`vh-article-categories vh-categories-${post.data.categories}`}>{post.data.categories}</span>
-				<h2 class="title">{post.data.title}</h2>
+				<span class={`vh-article-cat vh-cat-${post.data.categories}`}>{post.data.categories}</span>
+				<h2 class="title vh-ellipsis">{post.data.title}</h2>
 			</header>
-			<p class="vh-article-excerpt">{description}</p>
+			<p class="vh-article-excerpt vh-ellipsis-2">{description}</p>
 			<footer>{fmtTime(post.data.date)}</footer>
 		</section>
 	</a>

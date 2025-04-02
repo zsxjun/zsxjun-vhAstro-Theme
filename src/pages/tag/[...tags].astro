@@ -22,8 +22,5 @@ import Archive from "@/components/Archive/Archive.astro";
 ---
 
 <Layout title={`标签 ${tags} 下的文章`} description={Description}>
-	<section class="vh-container">
-		<Archive articleList={articleList} />
-		<Aside />
-	</section>
+	<Archive articleList={articleList} />
 </Layout>

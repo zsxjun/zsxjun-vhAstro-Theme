@@ -4,7 +4,7 @@ import { LoadScript } from "@/utils/index";
 declare const ViewImage: any;
 const ViewImgList: string[] = [
   // 文章内图片
-  ".vh-container>article.vh-article-main img.vh-article-img",
+  "article.vh-article-main img.vh-article-img",
   // 动态页面图片
   "main.talking-main>article>.main img",
   // Twikoo 评论区图片

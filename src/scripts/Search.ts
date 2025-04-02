@@ -44,7 +44,7 @@ const searchInputChange = (v: any) => {
 
 // 初始化搜索框
 const vhSearchInit = () => {
-  const searchDOM: any = document.querySelector(".vh-header>.main>.nav-btn>span.search-btn");
+  const searchDOM: any = document.querySelector(".vh-header>.main>nav>span.search-btn");
   const searchMainDOM: any = document.querySelector(".vh-header>.main>.vh-search>main");
   const searchListDOM: any = document.querySelector(".vh-header>.main>.vh-search");
   const addActive = () => setTimeout(() => {
