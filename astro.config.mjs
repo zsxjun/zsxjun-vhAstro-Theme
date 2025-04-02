@@ -21,7 +21,7 @@ export default defineConfig({
 	integrations: [swup({
 		theme: false,
 		animationClass: "vh-animation-",
-		containers: [".vh-animation"],
+		containers: [".main-inner>.main-inner-content",'.vh-header>.main'],
 		smoothScrolling: true,
 		progress: true,
 		cache: true,
@@ -43,6 +43,6 @@ export default defineConfig({
 		syntaxHighlight: 'shiki',
 		shikiConfig: { theme: 'github-light' },
 	},
-	vite: { resolve: { alias: { "@": path.resolve(__dirname, "./src"), "@public": path.resolve(__dirname, "./public") } } },
+	vite: { resolve: { alias: { "@": path.resolve(__dirname, "./src") } } },
 	server: { host: '0.0.0.0' }
 });
