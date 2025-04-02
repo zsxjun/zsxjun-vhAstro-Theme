@@ -1,6 +1,5 @@
 export default {
   Title: '韩小韩博客',
-  // 访问的域名
   Site: 'https://www.vvhan.com',
   Subtitle: '不曾与你分享的时间,我在进步.',
   Description: '韩小韩博客 专注于前开发与相关技术的实战分享，涵盖Vue框架、Node.js、Serverless等，并涉及Node、Python、Linux、Docker等领域。同时，博客也分享作者的生活、音乐和旅行的热爱。',
@@ -11,6 +10,30 @@ export default {
   Cover: '/assets/images/banner/072c12ec85d2d3b5.webp',
   // 网站创建时间
   CreateTime: '2021-09-01',
+  // 首页打字机文案列表
+  TypeWriteList: [
+    '不曾与你分享的时间,我在进步.',
+    "I am making progress in the time I haven't shared with you.",
+  ],
+  // 顶部 Banner 配置
+  HomeBanner: {
+    enable: true,
+    cover: '/assets/images/home-banner.webp'
+  },
+  // 博客主题配置
+  Theme: {
+    // 颜色请用 16 进制颜色码
+    // 主题颜色
+    "--vh-main-color": "#01C4B6",
+    // 字体颜色
+    "--vh-font-color": "#34495e",
+    // 侧边栏宽度
+    "--vh-aside-width": "318px",
+    // 全局圆角
+    "--vh-main-radius": "0.88rem",
+    // 主体内容宽度
+    "--vh-main-max-width": "1458px",
+  },
   // 导航栏 (新窗口打开 newWindow: true)
   Navs: [
     // 仅支持 SVG 且 SVG 需放在 public/assets/images/svg/ 目录下，填入文件名即可（封装了 SVG 组件 为了极致压缩 SVG）
@@ -33,6 +56,21 @@ export default {
     { text: '骤雨重山图床', link: 'https://wp-cdn.4ce.cn', icon: 'WebSite_img' },
     { text: 'HanAnalytics', link: 'https://analytics.vvhan.com', icon: 'WebSite_analytics' },
   ],
+  // 侧边栏展示
+  AsideShow: {
+    // 是否展示个人网站
+    WebSitesShow: true,
+    // 是否展示公告
+    TipsShow: true,
+    // 是否展示数量统计
+    CountShow: true,
+    // 是否展示分类
+    CategoriesShow: true,
+    // 是否展示个人标签
+    TagsShow: true,
+    // 是否展示推荐文章
+    recommendArticleShow: true
+  },
   // DNS预解析地址
   DNSOptimization: [
     'https://i0.wp.com',
@@ -42,7 +80,7 @@ export default {
     'https://pagead2.googlesyndication.com'
   ],
   // 博客音乐组件解析接口
-  vhMusicApi: 'https://meting-dd.2333332.xyz/api',
+  vhMusicApi: 'https://vh-api.4ce.cn/blog/meting',
   // 评论组件（只允许同时开启一个）
   Comment: {
     // Twikoo 评论
