@@ -4,7 +4,7 @@ categories: Code
 tags: ["Astro", "主题", "博客", "vhAstro", "vhAstro-Theme"]
 id: "astro-theme-vhastro-theme"
 date: 2025-03-02 18:18:18
-cover: "https://i0.wp.com/uxiaohan.github.io/v2/2025/03/1740977096666.webp"
+cover: "https://i0.wp.com/uxiaohan.github.io/v2/2025/04/1743737394560.webp"
 recommend: true
 top: true
 ---
@@ -21,7 +21,7 @@ top: true
 
 **「当极简主义遇上工程之美」**
 
-![Astro主题 vhAstro-Theme](https://i0.wp.com/uxiaohan.github.io/v2/2025/03/1740977096666.webp)
+![Astro主题 vhAstro-Theme](https://i0.wp.com/uxiaohan.github.io/v2/2025/04/1743737394560.webp)
 
 ## 项目地址
 
