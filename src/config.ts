@@ -121,5 +121,7 @@ export default {
     AliPay: '/assets/images/alipay.webp',
     // 微信收款码
     WeChat: '/assets/images/wechat.webp'
-  }
+  },
+  // 页面阻尼滚动速度
+  ScrollSpeed: 666
 }

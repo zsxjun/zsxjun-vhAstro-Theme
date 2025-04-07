@@ -67,8 +67,7 @@
 
 [![vhAstro-Theme](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/uxiaohan/vhAstro-Theme)
 
-
-### 使用命令
+### 使用命令拉取模板
 
 ```bash
 # pnpm
@@ -80,6 +79,8 @@ yarn create astro --template uxiaohan/vhAstro-Theme
 # npm
 npm create astro@latest -- --template uxiaohan/vhAstro-Theme
 ```
+
+### 本地开发
 
 ```bash
 # 安装依赖
@@ -306,10 +307,6 @@ export default {
   AsideShow: {
     // 是否展示个人网站
     WebSitesShow: true,
-    // 是否展示公告
-    TipsShow: true,
-    // 是否展示数量统计
-    CountShow: true,
     // 是否展示分类
     CategoriesShow: true,
     // 是否展示个人标签
