@@ -76,6 +76,10 @@ top: true
 - 参考官方指南将博客部署至 Vercel, Netlify,Cloudflare Pages, GitHub Pages 等
 - 部署前需编辑 `astro.config.mjs` 中的站点设置。
 
+### ⚠️ Hexo 迁移 Astro 方法
+
+> `Hexo` 的部署、使用、自动化部署等方法 完全适用于 `Astro`，只需要将 `Hexo` 博客的 `src/_posts/` 目录下的文章文件迁移至 `Astro` 目录下的 `src/content/blog/` 目录下即可，然后自定义 `src/config.ts` 配置文件去自定义博客。<br> 此时，你已成功迁移 Hexo 博客至 Astro 博客！
+
 
 ## 📄 文章格式
 
