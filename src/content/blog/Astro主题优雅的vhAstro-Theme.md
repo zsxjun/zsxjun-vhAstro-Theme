@@ -68,42 +68,35 @@ top: true
 
 ## 🚀 使用方法
 
+### 使用 Github 模板
+
 - 使用此模板 [生成新仓库或 Fork 此仓库](https://github.com/new?template_name=vhAstro-Theme&template_owner=uxiaohan)
 - 进行本地开发，Clone 新的仓库，执行 `pnpm install` 以安装依赖
-- 若未安装 pnpm，执行 `npm install -g pnpm`
+- 若未安装 [pnpm](https://pnpm.io)，执行 `npm install -g pnpm`
 - 通过配置文件 `src/config.ts` 自定义博客
 - 执行 pnpm newpost '文章标题' 创建新文章，并在 src/content/posts/ 目录中编辑
 - 参考官方指南将博客部署至 Vercel, Netlify,Cloudflare Pages, GitHub Pages 等
-- 部署前需编辑 `astro.config.mjs` 中的站点设置。
 
-### ⚠️ Hexo 迁移 Astro 方法
+### Vercel 自动部署
 
-> `Hexo` 的部署、使用、自动化部署等方法 完全适用于 `Astro`，只需要将 `Hexo` 博客的 `src/_posts/` 目录下的文章文件迁移至 `Astro` 目录下的 `src/content/blog/` 目录下即可，然后自定义 `src/config.ts` 配置文件去自定义博客。<br> 此时，你已成功迁移 Hexo 博客至 Astro 博客！
+::btn[Vercel 一键部署]{link="https://vercel.com/new/clone?repository-url=https://github.com/uxiaohan/vhAstro-Theme"}
 
+其他更多部署方式（简简单单闭眼部署），请参考 [Astro 官方文档](https://docs.astro.build/en/guides/integrations-guide/cloudflare/)。
 
-## 📄 文章格式
+### 使用命令拉取模板
 
-```md
----
-title: 标题
-categories: 分类
-tags:
-  - 标签1
-  - 标签2
-id: 文章ID
-date: 文章创建日期
-updated: 文章更新日期
-cover: "封面图URL (为空默认随机内置封面 /public/assets/images/banner)"
-recommend: false # 是否推荐文章
-top: false # 是否置顶文章
-hide: false # 是否隐藏文章
-<!-- 页面独有 -->
-type: "links" # 页面类型
-comment: false # 关闭页面评论（默认开启）
----
+```bash
+# 使用 pnpm
+pnpm create astro@latest --template uxiaohan/vhAstro-Theme astro-blog
+# 或者 yarn
+yarn create astro --template uxiaohan/vhAstro-Theme astro-blog
+# 或者 npm
+npm create astro@latest -- --template uxiaohan/vhAstro-Theme astro-blog
+# 进入项目目录
+cd astro-blog
 ```
 
-## 💻 命令
+### 本地开发
 
 ```bash
 # 安装依赖
@@ -115,6 +108,16 @@ pnpm build
 # 创建新文章
 pnpm newpost '文章标题'
 ```
+
+### ⚠️ Hexo 迁移 Astro 方法
+
+:::note{type="success"}
+将 `Hexo` 博客的 `src/_posts/` 目录下的文章文件，复制到 `Astro` 的 `src/content/blog/` 目录下即可，然后自定义 `src/config.ts` 配置文件去自定义博客。
+
+⚠️ `Hexo` 的部署、使用、自动化部署等方法 完全适用于 `Astro` 博客！
+
+🎉 此时，你已成功迁移 Hexo 博客至 Astro 博客！
+:::
 
 ## 🍬 特色页面
 
@@ -200,6 +203,29 @@ export default {
   ]
 }
 ```
+
+## 📄 文章格式
+
+```md
+---
+title: 标题
+categories: 分类
+tags:
+  - 标签1
+  - 标签2
+id: 文章ID
+date: 文章创建日期
+updated: 文章更新日期
+cover: "封面图URL (为空默认随机内置封面 /public/assets/images/banner)"
+recommend: false # 是否推荐文章
+top: false # 是否置顶文章
+hide: false # 是否隐藏文章
+<!-- 页面独有 -->
+type: "links" # 页面类型
+comment: false # 关闭页面评论（默认开启）
+---
+```
+
 
 ## ✅ Lighthouse
 
@@ -628,9 +654,9 @@ $\cup$、$\cap$、$\in$、$\notin$、$\ni$、$\subset$、$\subseteq$、$\supset$
 ::vhLivePhoto{photo="https://static.vvhan.com/img/2.webp" video="https://static.vvhan.com/img/2.mp4"}
 ```
 
-::vhLivePhoto{photo="/public/assets/livephoto/1.webp" video="/public/assets/livephoto/1.mp4" type="y"}
+::vhLivePhoto{photo="/assets/livephoto/1.webp" video="/assets/livephoto/1.mp4" type="y"}
 
-::vhLivePhoto{photo="/public/assets/livephoto/2.webp" video="/public/assets/livephoto/2.mp4"}
+::vhLivePhoto{photo="/assets/livephoto/2.webp" video="/assets/livephoto/2.mp4"}
 
 ### Music 组件
 
