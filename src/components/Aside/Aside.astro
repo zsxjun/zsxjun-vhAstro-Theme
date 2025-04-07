@@ -61,7 +61,7 @@ import "./Aside.less";
 
 	<!-- 公告块 -->
 	{
-		AsideShow.TipsShow && (
+		SITE_CONFIG.Tips && (
 			<section class="vh-aside-item tips">
 				<span>
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -71,8 +71,7 @@ import "./Aside.less";
 					公告
 				</span>
 				<div class="tips-content">
-					<p>欢迎访问我的博客，我是一名前端工程师，喜欢分享前端知识和技巧。</p>
-					<p>如果你对我的博客感兴趣，欢迎关注我的公众号，我会定期发布一些前端技术文章和教程。</p>
+					<Fragment set:html={SITE_CONFIG.Tips} />
 				</div>
 			</section>
 		)
