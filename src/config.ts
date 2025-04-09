@@ -122,6 +122,12 @@ export default {
     // 微信收款码
     WeChat: '/assets/images/wechat.webp'
   },
+  // 访问网页 自动推送到搜索引擎
+  SeoPush: {
+    enable: false,
+    serverApi: '',
+    paramsName: 'url'
+  },
   // 页面阻尼滚动速度
   ScrollSpeed: 666
 }

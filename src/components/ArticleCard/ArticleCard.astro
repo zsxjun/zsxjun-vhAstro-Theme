@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import { getDescription, fmtTime } from "@/utils/index";
 const { post } = Astro.props;
 // 获取文章的摘要
@@ -13,7 +12,7 @@ import "./ArticleCard.less";
 
 <article class="vh-article-item vh-animation vh-animation-init">
 	<a class={`vh-article-link${post.data.top ? " active" : ""}`} href={`/article/${post.data.id}`}>
-		<section class="vh-article-banner"><Image src="/assets/images/lazy-loading.webp" data-vh-lz-src={ARTICLE_COVER} alt={post.data.title} width="1" height="1" /></section>
+		<section class="vh-article-banner"><img src="/assets/images/lazy-loading.webp" data-vh-lz-src={ARTICLE_COVER} alt={post.data.title} /></section>
 		<section class="vh-article-desc">
 			<header>
 				<span class={`vh-article-cat vh-cat-${post.data.categories}`}>{post.data.categories}</span>

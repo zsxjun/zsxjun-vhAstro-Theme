@@ -2,7 +2,6 @@
 // 静态图片
 // Svg 组件
 import Svg from "@/components/Svg/Svg.astro";
-import { Image } from "astro:assets";
 // 时间处理
 import { fmtTime } from "@/utils/index";
 // 获取用户配置数据
@@ -30,7 +29,7 @@ import "./Aside.less";
 	{
 		AsideShow.WebSitesShow && (
 			<section class="vh-aside-item user">
-				<Image class="vh-aside-avatar" src="/assets/images/lazy-loading.webp" data-vh-lz-src={Avatar} alt={Author} width="1" height="1" />
+				<img class="vh-aside-avatar" src="/assets/images/lazy-loading.webp" data-vh-lz-src={Avatar} alt={Author} />
 				<span class="vh-aside-auther">{Author}</span>
 				<p class="vh-aside-motto">{Motto}</p>
 				<section class="vh-aside-links">
