@@ -10,8 +10,9 @@ const WebTitle = Title || SiteName;
 const SiteCover = Site + Cover;
 const WebCover = PageCover || SiteCover;
 // Schema.org 结构化数据（JSON-LD）
-const WebSiteData = { "@context": "https://schema.org", "@type": "WebSite", name: WebTitle, url: canonicalURL, image: { "@type": "ImageObject", url: SiteCover } };
-const ArticleData = { "@context": "https://schema.org", "@type": "BlogPosting", headline: WebTitle, image: [WebCover], author: { "@type": "Person", name: Author, url: Site }, publisher: { "@type": "Organization", name: SiteName, logo: { "@type": "ImageObject", url: SiteCover } } };
+const WebSiteData = { "@context": "https://schema.org", "@type": "WebSite", url: canonicalURL, name: WebTitle, description: Description, inLanguage: "zh-CN", image: WebCover, publisher: { "@type": "Organization", name: WebTitle, logo: { "@type": "ImageObject", url: SiteCover } } };
+const ArticleData = { "@context": "https://schema.org", "@type": "BlogPosting", mainEntityOfPage: { "@type": "WebPage", "@id": canonicalURL }, headline: WebTitle, description: Description, image: [WebCover], datePublished: new Date().toISOString().replace("Z", `+08:00`), dateModified: new Date().toISOString().replace("Z", `+08:00`), author: { "@type": "Person", name: Author, url: Site }, publisher: { "@type": "Organization", name: SiteName, logo: { "@type": "ImageObject", url: SiteCover } }, keywords: (Keywords || ["Astro", "分享", "博客"]).join(", ") };
+
 // 基础 样式
 import "@/styles/Base.less";
 ---
