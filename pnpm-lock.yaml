@@ -20,6 +20,9 @@ importers:
       '@swup/astro':
         specifier: ^1.7.0
         version: 1.7.0
+      '@types/marked':
+        specifier: ^6.0.0
+        version: 6.0.0
       aplayer:
         specifier: ^1.10.1
         version: 1.10.1
@@ -29,6 +32,9 @@ importers:
       astro-compressor:
         specifier: ^1.1.2
         version: 1.1.2
+      marked:
+        specifier: ^16.4.0
+        version: 16.4.0
       overlayscrollbars:
         specifier: ^2.12.0
         version: 2.12.0
@@ -1457,6 +1463,10 @@ packages:
 
   '@types/katex@0.16.7':
     resolution: {integrity: sha512-HMwFiRujE5PjrgwHQ25+bsLJgowjGjm5Z8FVSf0N6PwgJrwxH0QxzHYDcKsTfV3wva0vzrpqMTJS2jXPr5BMEQ==}
+
+  '@types/marked@6.0.0':
+    resolution: {integrity: sha512-jmjpa4BwUsmhxcfsgUit/7A9KbrC48Q0q8KvnY107ogcjGgTFDlIL3RpihNpx2Mu1hM4mdFQjoVc4O6JoGKHsA==}
+    deprecated: This is a stub types definition. marked provides its own type definitions, so you do not need this installed.
 
   '@types/mdast@4.0.4':
     resolution: {integrity: sha512-kGaNbPh1k7AFzgpud/gMdvIm5xuECykRR+JnWKQno9TAXVa6WIVCGTPvYGekIDL4uwCZQSYbUxNBSb1aUo79oA==}
@@ -2897,8 +2907,8 @@ packages:
     peerDependencies:
       marked: '>=4 <17'
 
-  marked@16.3.0:
-    resolution: {integrity: sha512-K3UxuKu6l6bmA5FUwYho8CfJBlsUWAooKtdGgMcERSpF7gcBUrCGsLH7wDaaNOzwq18JzSUDyoEb/YsrqMac3w==}
+  marked@16.4.0:
+    resolution: {integrity: sha512-CTPAcRBq57cn3R8n3hwc2REddc28hjR7RzDXQ+lXLmMJYqn20BaI2cGw6QjgZGIgVfp2Wdfw4aMzgNteQ6qJgQ==}
     engines: {node: '>= 20'}
     hasBin: true
 
@@ -6059,6 +6069,10 @@ snapshots:
 
   '@types/katex@0.16.7': {}
 
+  '@types/marked@6.0.0':
+    dependencies:
+      marked: 16.4.0
+
   '@types/mdast@4.0.4':
     dependencies:
       '@types/unist': 3.0.3
@@ -6175,8 +6189,8 @@ snapshots:
       '@vueuse/core': 13.9.0(vue@3.5.21(typescript@5.9.2))
       '@waline/api': 1.0.0
       autosize: 6.0.1
-      marked: 16.3.0
-      marked-highlight: 2.2.2(marked@16.3.0)
+      marked: 16.4.0
+      marked-highlight: 2.2.2(marked@16.4.0)
       recaptcha-v3: 1.11.3
       vue: 3.5.21(typescript@5.9.2)
     transitivePeerDependencies:
@@ -7924,11 +7938,11 @@ snapshots:
 
   markdown-table@3.0.4: {}
 
-  marked-highlight@2.2.2(marked@16.3.0):
+  marked-highlight@2.2.2(marked@16.4.0):
     dependencies:
-      marked: 16.3.0
+      marked: 16.4.0
 
-  marked@16.3.0: {}
+  marked@16.4.0: {}
 
   math-intrinsics@1.1.0: {}
 

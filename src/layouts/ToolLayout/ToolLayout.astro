@@ -1,27 +1,49 @@
 ---
 const { frontmatter } = Astro.props;
-// 页面 Info
 import SITE_CONFIG from "@/config";
 const { Description, Title } = SITE_CONFIG;
-// 公共 Layout
 import Layout from "@/layouts/Layout/Layout.astro";
-// 评论组件
 import { checkComment } from "@/scripts/Comment";
 import Comment from "@/components/Comment/Comment.astro";
-// ToolLayout 布局样式
 import "./ToolLayout.less";
-// 文章内容基础样式
 import "@/styles/ArticleBase.less";
+
+const isCircle = frontmatter.type === "circle";
 ---
 
 <Layout title={frontmatter.title || Title} description={Description} activeNav={frontmatter.type || "-"}>
-	<section class="vh-tools-main vh-animation vh-animation-init">
-		<header class="vh-page-header">
-			<h1>{frontmatter.h1}</h1>
-			<p>{frontmatter.desc}</p>
-		</header>
-		<main><slot /></main>
-		<main class={`${frontmatter.type}-main main`}><section class="vh-space-loading"><span></span><span></span><span></span></section></main>
-		{checkComment() && frontmatter.comment != false && <Comment />}
-	</section>
+  <section class="vh-tools-main vh-animation vh-animation-init">
+    <header class="vh-page-header">
+      <h1>{frontmatter.h1}</h1>
+      <p>{frontmatter.desc}</p>
+    </header>
+
+    {isCircle ? (
+      <>
+        <div id="friend-circle-lite-root"></div>
+
+        <!-- ① 全局变量：必须 is:inline 避免被 Astro 打包成模块 -->
+        <script is:inline>
+          window.UserConfig = {
+            private_api_url: 'https://fc.kemeow.top/',
+            page_turning_number: 24,
+            error_img: 'https://pic.imgdb.cn/item/6695daa4d9c307b7e953ee3d.jpg',
+          };
+        </script>
+
+        <!-- ② 样式与脚本 -->
+        <link rel="stylesheet" href="https://fastly.jsdelivr.net/gh/willow-god/Friend-Circle-Lite/main/fclite.min.css" />
+        <script src="https://fastly.jsdelivr.net/gh/willow-god/Friend-Circle-Lite/main/fclite.min.js"></script>
+      </>
+    ) : (
+      <>
+        <main><slot /></main>
+        <main class={`${frontmatter.type}-main main`}>
+          <section class="vh-space-loading"><span></span><span></span><span></span></section>
+        </main>
+      </>
+    )}
+
+    {checkComment() && frontmatter.comment !== false && <Comment />}
+  </section>
 </Layout>

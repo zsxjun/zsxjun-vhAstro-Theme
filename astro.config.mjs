@@ -42,6 +42,7 @@ export default defineConfig({
 	],
 	markdown: {
 		remarkPlugins: [remarkMath, remarkDirective, remarkNote,],
+		extendDefaultPlugins: true,
 		rehypePlugins: [[
 			rehypeKatex, {
 				output: 'mathml',

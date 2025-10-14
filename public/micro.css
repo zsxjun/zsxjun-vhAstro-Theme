@@ -1,0 +1,108 @@
+/* 跟随主题变量 */
+:root {
+  --micro-bg: #ffffff;
+  --micro-card: #f5f5f5;
+  --micro-text: #1a1a1a;
+  --micro-time: #999;
+  --micro-border: #e6e6e6;
+  --micro-code-bg: #f4f4f4;
+}
+[data-theme="dark"] {
+  --micro-bg: #121212;
+  --micro-card: #1e1e1e;
+  --micro-text: #e1e1e1;
+  --micro-time: #666;
+  --micro-border: #2a2a2a;
+  --micro-code-bg: #2b2b2b;
+}
+
+#micro-wrapper {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 1rem;
+  font-size: 15px;
+  color: var(--micro-text);
+  background: var(--micro-bg);
+}
+.micro-item {
+  display: flex;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--micro-border);
+}
+.micro-item:last-child {
+  border-bottom: none;
+}
+.micro-left {
+  flex-shrink: 0;
+  margin-right: 12px;
+}
+.micro-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--micro-card);
+}
+.micro-right {
+  flex: 1;
+}
+.micro-header {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+.micro-name {
+  font-weight: 600;
+}
+.micro-time {
+  font-size: 13px;
+  color: var(--micro-time);
+}
+.micro-body {
+  line-height: 1.7;
+  word-break: break-word;
+}
+.micro-body img {
+  max-width: 100%;
+  border-radius: 6px;
+  margin-top: 6px;
+  cursor: zoom-in;
+}
+.micro-body pre {
+  background: var(--micro-code-bg);
+  padding: 0.75rem;
+  border-radius: 4px;
+  overflow: auto;
+}
+.micro-body code {
+  background: var(--micro-code-bg);
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+.micro-body blockquote {
+  margin: 0;
+  padding-left: 1rem;
+  border-left: 4px solid var(--micro-border);
+  color: var(--micro-time);
+}
+
+#micro-pager {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+#micro-pager button {
+  border: 1px solid var(--micro-border);
+  background: var(--micro-card);
+  color: var(--micro-text);
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+#micro-pager button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

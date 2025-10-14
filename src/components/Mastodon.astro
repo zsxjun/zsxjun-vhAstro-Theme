@@ -1,0 +1,33 @@
+---
+export interface Props {
+  instance: string;
+  userId: string;
+  limit?: string | number;   // ← 新增
+  stylePath?: string;
+  scriptPath?: string;
+}
+
+const {
+  instance,
+  userId,
+  limit = 10,               // ← 默认 10 条
+  stylePath  = '/mastodon-on-blog/default.style.css',
+  scriptPath = '/mastodon-on-blog/mastodon-on-blog.js',
+} = Astro.props;
+---
+
+<!-- 1. 样式 -->
+<link rel="stylesheet" href={stylePath} />
+
+<!-- 2. 时间线容器 -->
+<div id="my-mastodon-widget"></div>
+
+<!-- 3. 第三方脚本（自动模式） -->
+<script define:vars={{ instance, userId, limit, scriptPath }}>
+  const s = document.createElement('script');
+  s.src = scriptPath;
+  s.setAttribute('data-instance', instance);
+  s.setAttribute('data-user-id',   userId);
+  s.setAttribute('data-limit',     String(limit)); // ← 传给脚本
+  document.body.appendChild(s);
+</script>

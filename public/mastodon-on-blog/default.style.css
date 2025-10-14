@@ -1,0 +1,83 @@
+#my-mastodon-widget {
+    width: 100%;
+    height: 100%;
+    border: #eee 1px solid;
+    font-family: 'Latin Modern Roman', 'Times New Roman', serif, '宋体';
+    font-size: 13px;
+    color: #343434;
+    overflow: hidden;
+    box-sizing: border-box;
+    padding: 3px 0;
+    margin: 0;
+    background: #fcfcfc;
+}
+#my-mastodon-widget .main {
+    box-sizing: border-box;
+    padding: 3px 8px;
+    overflow-y: scroll;
+    height: 100%;
+}
+#my-mastodon-widget p {
+    margin: 0;
+    word-break: break-word;
+}
+#my-mastodon-widget a {
+    color: rgba(170, 0, 0, .5);
+}
+#my-mastodon-widget ::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+#my-mastodon-widget ::-webkit-scrollbar-thumb {
+  background: #eee;
+}
+#my-mastodon-widget .time {
+    color: #aaa;
+}
+#my-mastodon-widget .images .image-wrapper {
+    margin-left: 3px;
+    margin-top: 2px;
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+}
+#my-mastodon-widget .images img {
+    min-width: 100%;
+    min-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+}
+#my-mastodon-widget .emoji {
+    width: 18px;
+}
+#my-mastodon-widget .reply::before,
+#my-mastodon-widget .reblog::before {
+  display: inline-block;
+  margin-bottom: 5px;
+  background-color: #f3f3f3;
+  padding: 3px 5px;
+  border-radius: 3px;
+}
+#my-mastodon-widget .reblog::before {
+  content: "🔁 Repost:";
+}
+#my-mastodon-widget .reply::before {
+  content: "↩️ Reply:";
+}
+#my-mastodon-widget .item {
+  padding-bottom: 5px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #efefef;
+}
+#my-mastodon-widget .content {
+  margin-bottom: 5px;
+}
+#my-mastodon-widget .images {
+  margin-top: 3px;
+}
+#my-mastodon-widget .hashtag {
+  padding: 2px 3px;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
