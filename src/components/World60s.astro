@@ -1,0 +1,46 @@
+---
+export interface Props {
+  lazy?: boolean;
+}
+const end = 'https://60s.kemeow.top/v2/60s';
+const res  = await fetch(end);
+if (!res.ok) throw new Error(`60s 接口异常 ${res.status}`);
+const json: any = await res.json();
+if (json.code !== 200) throw new Error(json.message || '获取 60s 失败');
+const { date, news, tip, cover, day_of_week, lunar_date, api_updated, link } = json.data;
+---
+
+<style>
+  .w60s-card{max-width:720px;margin:1.5rem auto;border:1px solid #e5e7eb;border-radius:12px;background:#fff;font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;overflow:hidden}
+  .w60s-header{padding:1rem 1.25rem;border-bottom:1px solid #e5e7eb}
+  .w60s-header h4{margin:0;font-size:1.25rem;color:#111827}
+  .w60s-header small{color:#6b7280;font-size:.75rem}
+  .w60s-cover{width:100%;aspect-ratio:16/9;object-fit:cover}
+  .w60s-body{padding:1rem 1.25rem}
+  .w60s-list{margin:0;padding-left:1.25rem}
+  .w60s-list li{margin-bottom:.5rem;font-size:.95rem;line-height:1.6;color:#374151}
+  .w60s-tip{margin-top:1rem;padding:1rem;background:#f9fafb;border-radius:8px;font-size:.95rem;color:#111827}
+  .w60s-footer{display:flex;align-items:center;justify-content:space-between;margin-top:1rem;font-size:.75rem;color:#6b7280}
+  .w60s-footer a{color:#3b82f6;text-decoration:none}
+</style>
+
+<!-- 注意：client:lazy 直接写在标签上，而不是 {} 对象里 -->
+<article class="w60s-card" {...(Astro.props.lazy && { 'client:lazy': true })}>
+  <header class="w60s-header">
+    <h4>60 秒看世界 · {date} {day_of_week}</h4>
+    <small>农历 {lunar_date} ｜ 接口更新：{api_updated}</small>
+  </header>
+
+  <img class="w60s-cover" src={cover} alt="60s 封面" referrerpolicy="no-referrer" />
+
+  <div class="w60s-body">
+    <ol class="w60s-list">
+      {news.map((n:string) => <li>{n}</li>)}
+    </ol>
+    <div class="w60s-tip"><strong>每日一句：</strong>{tip}</div>
+    <footer class="w60s-footer">
+      <span>共 {news.length} 条热点</span>
+      {link && <a href={link} target="_blank" rel="noopener">阅读原文 →</a>}
+    </footer>
+  </div>
+</article>

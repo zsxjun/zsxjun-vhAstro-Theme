@@ -1,0 +1,112 @@
+---
+export interface Props {
+  city?: string;
+  days?: number;   // 1-7
+}
+const { city = '南京市', days = 3 } = Astro.props;
+if (days < 1 || days > 7) throw new Error('days 必须在 1-7 之间');
+
+const end = `https://60s.kemeow.top/v2/weather/forecast?query=${encodeURIComponent(city)}&days=${days}`;
+const res = await fetch(end);
+if (!res.ok) throw new Error(`接口异常 ${res.status}`);
+const json: any = await res.json();
+if (json.code !== 200) throw new Error(json.message || '获取失败');
+const { location, hourly_forecast, daily_forecast, sunrise_sunset } = json.data;
+
+/* 天气代码 -> Emoji */
+const emoji: Record<string, string> = {
+  '00':'☀️','01':'⛅','02':'☁️','03':'🌦️','04':'🌩️',
+  '05':'🌧️','06':'🌧️','07':'🌧️','08':'⛈️','09':'🌨️',
+  '10':'❄️','11':'❄️','12':'🌬️','13':'🌫️','14':'🌫️',
+  '15':'🌫️','16':'🌁','17':'🌪️','18':'🌫️'
+};
+const getEmoji = (c: string) => emoji[c] || '🌈';
+
+/* 按日期分组小时数据 */
+const hourlyMap = new Map<string, typeof hourly_forecast>();
+hourly_forecast.forEach((h: any) => {
+  const d = h.datetime.slice(0,10);
+  if (!hourlyMap.has(d)) hourlyMap.set(d, []);
+  hourlyMap.get(d)!.push(h);
+});
+---
+<style>
+  :root{
+    --border:#e5e7eb; --bg:#fff; --radius:12px; --text1:#111827; --text2:#6b7280;
+    --primary:#3b82f6; --gap:.75rem; --cardPad:1.25rem;
+  }
+  .fw-card{border:1px solid var(--border);background:var(--bg);border-radius:var(--radius);padding:var(--cardPad);max-width:840px;margin:1.5rem auto;font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;}
+  .fw-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;}
+  .fw-hd h3{margin:0;font-size:1.25rem;color:var(--text1)}
+  .fw-hd small{font-size:.75rem;color:var(--text2)}
+  .fw-section{margin-bottom:1.5rem}
+  .fw-section-title{font-size:1rem;font-weight:600;margin:.5rem 0}
+  details.fw-hourly{margin-bottom:.5rem}
+  summary{cursor:pointer;font-weight:500;padding:.5rem;background:#f9fafb;border:1px solid var(--border);border-radius:6px}
+  summary::-webkit-details-marker{color:var(--primary)}
+  .hour-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:var(--gap);padding:.75rem 0}
+  .hour-cell{text-align:center;font-size:.75rem;border:1px solid var(--border);border-radius:6px;padding:.5rem .25rem;background:#fafafa}
+  .hour-cell .emoji{font-size:1.8rem;line-height:1}
+  .hour-cell .temp{font-weight:600}
+  .day-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:var(--gap)}
+  .day-card{text-align:center;border:1px solid var(--border);border-radius:6px;padding:.75rem .5rem;background:#fafafa}
+  .day-card .date{font-size:.8rem;color:var(--text2)}
+  .day-card .emoji{font-size:2.2rem;line-height:1;margin:.25rem 0}
+  .day-card .temp{font-size:.9rem;font-weight:600}
+  .day-card .cond{font-size:.75rem;color:var(--text2)}
+  .day-card .wind{font-size:.65rem;color:var(--text2);margin-top:.25rem}
+  .day-card .sun{font-size:.65rem;color:var(--primary);margin-top:.25rem}
+  .day-card .aqi{display:inline-block;margin-top:.25rem;font-size:.65rem;padding:2px 6px;border-radius:4px;color:#fff;background:var(--primary)}
+</style>
+
+<div class="fw-card">
+  <!-- 头部 -->
+  <div class="fw-hd">
+    <h3>{location.name} · 完整天气数据</h3>
+    <small>数据来自 60s 开源接口</small>
+  </div>
+
+  <!-- 逐小时 -->
+  <section class="fw-section">
+    <div class="fw-section-title">逐小时预报（共 {hourly_forecast.length} 条）</div>
+    {Array.from(hourlyMap.entries()).map(([date, list]) => (
+      <details class="fw-hourly" open>
+        <summary>{date}  &nbsp;·&nbsp;  {list.length} 小时</summary>
+        <div class="hour-grid">
+          {list.map((h:any) => (
+            <div class="hour-cell">
+              <div>{h.datetime.slice(-5)}</div>
+              <div class="emoji">{getEmoji(h.condition_code)}</div>
+              <div class="temp">{h.temperature}°</div>
+              <div>{h.condition}</div>
+              <div>{h.wind_direction}{h.wind_power}</div>
+            </div>
+          ))}
+        </div>
+      </details>
+    ))}
+  </section>
+
+  <!-- 逐日 -->
+  <section class="fw-section">
+    <div class="fw-section-title">逐日预报 + 日出日落</div>
+    <div class="day-grid">
+      {daily_forecast.map((d:any, i:number) => {
+        const sun = sunrise_sunset[i] || {};
+        return (
+          <div class="day-card">
+            <div class="date">{d.date} {new Date(d.date+' 00:00:00').toLocaleDateString('zh-CN',{weekday:'short'})}</div>
+            <div class="emoji">{getEmoji(d.day_condition_code)}</div>
+            <div class="temp">{d.min_temperature}° ~ {d.max_temperature}°</div>
+            <div class="cond">白 {d.day_condition} | 夜 {d.night_condition}</div>
+            <div class="wind">白天 {d.day_wind_direction}{d.day_wind_power}</div>
+            <div class="sun">🌅 {sun.sunrise_desc}  🌇 {sun.sunset_desc}</div>
+            <span class="aqi" style={d.aqi_level===1?{background:'#10b981'}:{background:'#f59e0b'}}>
+              {d.air_quality} {d.aqi}
+            </span>
+          </div>
+        );
+      })}
+    </div>
+  </section>
+</div>

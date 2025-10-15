@@ -60,6 +60,8 @@ export default {
     { text: '动态', link: '/talking', icon: 'dongtai' },
     { text: '昔日', link: '/archives', icon: 'Archives' },
     { text: '留言', link: '/message', icon: 'message' },
+    { text: '60s', link: '/60s', icon: 'newspaper' },
+    { text: '天气', link: '/weather', icon: 'weather' },
     { text: '关于', link: '/about', icon: 'about' },
     // { text: 'API', link: 'https://api.vvhan.com/', target: true, icon: 'Nav_link' },
   ],
@@ -71,7 +73,9 @@ export default {
     { text: 'Telegram', link: 'https://t.me/zhzsx_me', icon: 'telegram' },
     { text: '每日热榜', link: 'https://hot-list.zhzsx.cn', icon: 'News' },
     { text: 'QQ', link: 'https://qm.qq.com/q/Y2AaAdbkku', icon: 'QQ' },
-    { text: 'HanAnalytics', link: 'https://analytics.vvhan.com', icon: 'WebSite_analytics' },
+    { text: 'HanAnalytics', link: 'https://analytic.zhzsx.cn', icon: 'analytics' },
+    { text: 'uptime-status', link: 'https://status.zhzsx.cn/', icon: 'tat' },
+    { text: 'Mail', link: 'mailto:zsx@zhzsx.cn', icon: 'mail' },
   ],
   // 侧边栏展示
   AsideShow: {

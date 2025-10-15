@@ -22,6 +22,18 @@ const recommendArticles = getRecommendArticles();
 import GoogleAd from "@/components/GoogleAd/GoogleAd.astro";
 // 侧边栏样式
 import "./Aside.less";
+// 获取实时问候语
+const greetingApi = 'https://api.kuleu.com/api/getGreetingMessage';
+let greeting = '愿你度过愉快的一天！';
+
+try {
+  const res = await fetch(greetingApi);
+  // 接口返回纯文本，不是 JSON
+  greeting = await res.text();   // ← 关键修复
+} catch (e) {
+  // 网络异常才用兜底
+  greeting = '愿你度过愉快的一天！';
+}
 ---
 
 <aside class="vh-aside">
@@ -76,6 +88,26 @@ import "./Aside.less";
 		)
 	}
 
+	<!-- 欢迎信息 -->
+
+	<section class="vh-aside-item info-card">
+  <h3>欢迎信息</h3>
+  <div class="info-card-img-box">
+    <img
+      src={`https://api.szfx.top/info-card/?word=${encodeURIComponent('欢迎来到ZSXの小站')}&ts=${Date.now()}`}
+      alt="欢迎信息"
+      loading="lazy"
+      style="width:100%; height:auto; display:block;"
+    />
+  </div>
+</section>
+
+<!-- 时间欢迎 -->
+<section class="vh-aside-item greeting-text">
+  <h3>时间问候</h3>
+  <p class="greeting-content">{greeting}</p>
+</section>
+
 	<!-- 分类块 -->
 	{
 		AsideShow.CategoriesShow && (
@@ -113,16 +145,7 @@ import "./Aside.less";
 	}
 
 	<!-- 流量卡 -->
-	<!-- {
-		(
-			<section class="vh-aside-item adcard">
-				<h3>精品流量卡</h3>
-				<a class="vh-aside-adcard" href="https://h5.lot-ml.com/ProductEn/Index/548465d7349b6599" target="_blank" rel="noopener noreferrer">
-					<img src="/assets/images/phone-card.webp" alt="精品大流量卡" />
-				</a>
-			</section>
-		)
-	} -->
+
 
 	<section class="sticky-aside">
 		<!-- 最新文章块 -->
@@ -156,3 +179,5 @@ import "./Aside.less";
 		}
 	</section>
 </aside>
+
+
