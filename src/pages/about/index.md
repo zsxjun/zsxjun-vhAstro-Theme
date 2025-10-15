@@ -45,12 +45,7 @@ type: "about"
 </div>
 
 <p align="center">
-      <img 
-      src="https://media.giphy.com/media/SWoSkN6DxTszqIKEqv/giphy.gif" 
-      alt="GIF Link" 
-      height="275" 
-      style="max-width: 100%; height: auto; display: inline-block;"
-    />
+    <img src="https://activity.kemeow.top/graph?username=zsxjun&theme=github-compact&custom_title=Activity&radius=30&height=250" alt="Activity">
 </p>
 
 <div align="center">
