@@ -1,0 +1,28 @@
+<section class="vh-aside-item greeting-text">
+  <h3>时间问候</h3>
+  <p class="greeting-content" id="greeting">加载中…</p>
+</section>
+
+<script>
+  // 浏览器端运行，每次刷新都会执行
+  fetch('https://api.kuleu.com/api/getGreetingMessage')
+    .then(r => r.text())
+    .then(t => {
+      document.getElementById('greeting')!.textContent = t;
+    })
+    .catch(() => {
+      document.getElementById('greeting')!.textContent = '愿你度过愉快的一天！';
+    });
+</script>
+
+<style>
+  .greeting-content {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--vh-color-text);
+    padding: 8px 12px;
+    background: var(--vh-bg-card);
+    border-radius: 6px;
+  }
+</style>

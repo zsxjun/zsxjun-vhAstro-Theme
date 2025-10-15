@@ -23,17 +23,7 @@ import GoogleAd from "@/components/GoogleAd/GoogleAd.astro";
 // 侧边栏样式
 import "./Aside.less";
 // 获取实时问候语
-const greetingApi = 'https://api.kuleu.com/api/getGreetingMessage';
-let greeting = '愿你度过愉快的一天！';
-
-try {
-  const res = await fetch(greetingApi);
-  // 接口返回纯文本，不是 JSON
-  greeting = await res.text();   // ← 关键修复
-} catch (e) {
-  // 网络异常才用兜底
-  greeting = '愿你度过愉快的一天！';
-}
+import GreetingText from '@/components/Greeting/GreetingText.astro';
 ---
 
 <aside class="vh-aside">
@@ -103,10 +93,7 @@ try {
 </section>
 
 <!-- 时间欢迎 -->
-<section class="vh-aside-item greeting-text">
-  <h3>时间问候</h3>
-  <p class="greeting-content">{greeting}</p>
-</section>
+<GreetingText />
 
 	<!-- 分类块 -->
 	{
